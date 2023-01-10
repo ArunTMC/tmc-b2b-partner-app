@@ -1,0 +1,288 @@
+<resources>
+    <string name="app_name">TMC B2B Partner App</string>
+    <string name="Version_No"> 1.0.0 (6) </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="tmc_supplier_1">TMC Supplier 1</string>
+
+
+    <string name="pos_device_emulator_name">sdk_gphone_x86_arm</string>
+    <string name="pos_device_name">TODO</string>
+    <string name="orderid">Orderid</string>
+    <string name="orderplacedtime"> Order Placed Time </string>
+    <string name="tmc_deliveryCenter_1">TMC Delivery Center 1</string>
+    <string name="home">Home</string>
+    <string name="batches">Batches</string>
+    <string name="placeOrder">Place Order</string>
+    <string name="CASH">CASH</string>
+    <string name="CARD">CARD</string>
+    <string name="UPI">UPI</string>
+    <string name="CREDIT">CREDIT</string>
+    <string name="change_goatGrade_details"> Change Goat Grade Details </string>
+    <string name="place_Order_screen">Place Orders Screen</string>
+    <string name="settings">Settings</string>
+    <string name="create_new_batch">Create New Batch</string>
+    <string name="click_to_create_new_batch">Click to Create New Batch</string>
+    <string name="lastly_created_batch">Lastly Created Batch</string>
+    <string name="batch_id">Batch No</string>
+    <string name="created_date">Created Date</string>
+    <string name="sent_date">Sent Date</string>
+    <string name="status">Status</string>
+    <string name="view">View</string>
+    <string name="Generate_Report"> Generate Report </string>
+    <string name="Generate_Report_FinishBatch"> Generate Report &amp; Finish Batch </string>
+    <string name="Generate_Report_CompleteBatch"> Generate Report &amp; Complete Batch </string>
+
+    <string name="stock_and_audit_batch">Stock &amp; Audit Batch  </string>
+    <string name="audit_batch"> Audit Batch  </string>
+
+    <string name="sampleDate">Thu, 28 Oct 2022 10:45:38</string>
+    <string name="sampleBatchId">00000</string>
+    <string name="select_supplier">Select Supplier</string>
+    <string name="barcode_sampleData">0001</string>
+    <string name="select_delivery_center">Select Delivery Center</string>
+    <string name="selected_delivery_center">Selected Delivery Center</string>
+    <string name="batch_supplied_by">Batch Supplied By</string>
+    <string name="barcode">Barcode</string>
+
+    <string name="total_count">Total Count</string>
+    <string name="total_weight">Total Weight</string>
+    <string name="total_weightwitgkg">Total Weight (Kg)</string>
+    <string name="total_price">Total Price</string>
+    <string name="total_unscanned_item">UnScanned Items</string>
+    <string name="item_count">Item Count</string>
+    <string name="add_new_item_existing_batch">Add New Item in Existing Batch</string>
+    <string name="switch_lost_eartag">Switch Lost Eat Tag Item</string>
+    <string name="stock_batch_item">Stock Batch Item</string>
+    <string name="stock_batch_item_withoutScan_allowedScan">Stock Batch Item Without Scan &amp; Allowed to Scan</string>
+    <string name="stock_batch_item_withoutScan">Stock Batch Item WithOut Scan</string>
+
+    <string name="view_stockedBatch_item">View Stocked Batch Item</string>
+    <string name="view_unstockedBatch_item">View Unstocked Batch Item</string>
+    <string name="close_batchAnd_MarkAs_Received">Close Batch and Mark as Received</string>
+    <string name="supplier_goatItemList">SUPPLIER_LIST</string>
+    <string name="deliverycenter_UnreviewedgoatItemList">DELIVERYCENTER_UNREVIEWED_LIST</string>
+    <string name="deliverycenter_ReviewedgoatItemList">DELIVERYCENTER_REVIEWED_LIST</string>
+    <string name="deliverycenter_SoldgoatItemList">DELIVERYCENTER_SOLD_LIST</string>
+    <string name="deliverycenter_UnsoldgoatItemList">DELIVERYCENTER_UNSOLD_LIST</string>
+
+    <string name="delivery_center_batchDetails">DELIVERY CENTER BATCH DETAILS</string>
+    <string name="supplier">SUPPLIER</string>
+    <string name="delivery_center">DELIVERY CENTER</string>
+    <string name="view_edit_batch_item_deliveryCenter">Edit Batch Item Delivery Center</string>
+    <string name="view_edit_batch_item_supplier">Edit Batch Item Supplier</string>
+    <string name="add_new_item">Add New Item</string>
+    <string name="edit_existing_batch">View / Edit Existing Batch</string>
+    <string name="view_audit_batch_item">View /Audit Batch Item</string>
+    <string name="audit_unstocked_batch_item">Audit Unstocked Batch Item</string>
+    <string name="scanned_barcode">Scanned Barcode</string>
+    <string name="view_edit_existing_item">View / Edit Existing Item</string>
+    <string name="review_and_finish_batch">Review &amp; Finish Batch</string>
+    <string name="generateReport_and_finish_batch">Generate Report &amp; Finish Batch</string>
+
+    <string name="mark_batch_as_sold">Mark Batch as Sold</string>
+    <string name="finish_batch">Finish Batch</string>
+    <string name="called_from">CalledFrom</string>
+    <string name="scanner_called_to_do">scannercalledtodo</string>
+    <string name="scannerCalled_to_FetchData">scannercalledtoFetchData</string>
+    <string name="scannerCalled_Not_to_FetchData">scannercalledNottoFetchData</string>
+
+    <string name="batches_readyForSale">Batches ready for sales  : </string>
+    <string name="batches_on_the_way">Batches Sent by the selected Supplier : </string>
+    <string name="items_in_the_cart">Items Added in the Cart </string>
+    <string name="items_in_the_order">Items Added in this order </string>
+    <string name="unscanned_stocks_instruction">Items Not yet Scanned  in this batch :  </string>
+
+    <string name="item_not_scannedinstruction">This Barcode is Not Added in this batch Yet   </string>
+    <string name="choose_an_item">Choose an item</string>
+    <string name="item_ctgy">Item Ctgy</string>
+    <string name="currentWeight"> Current Weight</string>
+    <string name="currentWeight_inKg"> Current Weight (Kg) </string>
+    <string name="gender_type">Gender</string>
+    <string name="breed_type">Breed Type</string>
+    <string name="FEMALE_WITH_BABY">FEMALE WITH BABY</string>
+    <string name="FEMALE">FEMALE</string>
+    <string name="MALE">MALE</string>
+    <string name="MALEQUANTITY">Male Quantity</string>
+    <string name="MALEWEIGHT">Male Weight</string>
+    <string name="FEMALEQUANTITY">Female Quantity</string>
+    <string name="FEMALEWEIGHT">Female Weight</string>
+    <string name="TOTALQUANTITY">Total Quantity</string>
+    <string name="TOTALWEIGHT">Total Weight</string>
+    <string name="scan">Scan</string>
+    <string name="retailermobileno"> Retailer Mobile No </string>
+    <string name="retailername"> Retailer Name </string>
+    <string name="priceperkg"> Price Per Kg </string>
+    <string name="paymentmode">Payment Mode</string>
+    <string name="payableamount">Payable Amount</string>
+    <string name="placedtime">Placed Time</string>
+    <string name="retailername_priceperkg">Retailer and Price Per Kg </string>
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="search_edit_barcode">Scan &amp; Edit Item</string>
+    <string name="search_view_barcode">Scan &amp; View Item</string>
+
+    <string name="final_batch_item_report">Finial Batch items Report</string>
+
+    <string name="retailersAlreadyCreated_Instruction"> This Retailer is already added . Please add new Mobile number.</string>
+
+    <string name="Please_Select_Retailer_Instruction">Please Select Retailer Name before CheckOut.</string>
+    <string name="Please_Add_PricePerKg_Instruction">PricePerKg Should be greater than zero .</string>
+
+    <string name="Please_Add_PricePerKg_toAddItem_Instruction">Please Set Price Per Kg before add item in the cart.</string>
+    <string name="Please_Select_Retailer_toAddItem_Instruction">Please Select Retailer Name before add item in the cart.</string>
+
+    <string name="Please_WaitUntil_Add_or_update_Instruction">Please wait Until Add / Updation process gets Finished.</string>
+
+    <string name="scan_new_barcode_toChangeEarTag">Scan New Eartag to replace the Lost EarTag</string>
+    <string name="Should_add_one_item"> You Should add atleast one item to finish the batch</string>
+    <string name="BatchDetailsAlreadyCreated_Instruction"> Sorry!!  Batch for this Batch ID is Already Created .</string>
+    <string name="GoatEarTagAlreadyCreated_Instruction"> This Barcode is already added . Please scan new One.</string>
+    <string name="GoatEarTagAlreadyCreated_SwitchTag_Instruction"> This Barcode is already added . Please scan new One .</string>
+    <string name="CantEditItem_Which_isInCart_Instruction"> Please Clear this item from the cart to Edit it !</string>
+    <string name="BatchDetailsCannotUpdated_Instruction"> Sorry!! Cannot Update Item which is not  created yet .</string>
+    <string name="GoatEatTagsCannotUpdated_Instruction"> Sorry!! Cannot Update Item which is not  created yet.</string>
+    <string name="GoatEatTagsCannotUpdated_PleaseChangeTOUpdate_Instruction"> Sorry!! Cannot Save Item without Changing anything .</string>
+    <string name="PleaseTryAgainAfterSometime_Instruction"> Sorry!! Please Try Again After Sometime .</string>
+    <string name="BatchDetailsnotReviewedYet_Instruction"> Sorry!! Please Finish Reviewing this batch before place order  .</string>
+
+    <string name="BatchDetailsnotFound_Instruction"> Sorry!! Item for this Batch No is not found .</string>
+    <string name="EarTagDetailsNotFound_Instruction"> Sorry!! Item for this BarcodeNo is not  found .</string>
+    <string name="CartItemListNotFound_Instruction"> Sorry!! There is no Item Added in the cart .</string>
+    <string name="GoatLost_Instruction"> Sorry!! Goat Item for this Barcode is Already Marked as LOST !! .</string>
+    <string name="GoatDead_Instruction"> Sorry!! Goat Item for this Barcode is Already Marked as DEAD !! .</string>
+    <string name="GoatSick_Instruction"> Sorry!! Goat Item for this Barcode is Already Marked as SICK !! .</string>
+    <string name="EarTagLost_Instruction"> Sorry!! Ear Tag for this Barcode is Already Marked as LOST !! .</string>
+    <string name="EarTagSick_Instruction"> Sorry!! Ear Tag for this Barcode is Already Marked as SICK !! .</string>
+    <string name="EarTagSold_Instruction"> Sorry!! Ear Tag for this Barcode is Already Marked as SOLD !! .</string>
+    <string name="notStockedYet_Instruction"> Sorry!! This Item is Not Stocked Yet !! .</string>
+    <string name="EarTag_Is_AlreadyReviewedInstruction"> Sorry!! Ear Tag for this Barcode is Already Reviewed !! .</string>
+    <string name="EarTagCancelled_Instruction"> Sorry!! Ear Tag for this Barcode is Marked as CANCELLED !! .</string>
+
+    <string name="retailers_mobileno_should_be_10digits">Retailers Mobile No Should be 10 digits </string>
+    <string name="retailers_name_cant_be_empty">Retailers  Name Cant be Empty </string>
+
+    <string name="cant_enter_more_thanOne_ponit_weight">You cant Enter more than one Point</string>
+
+    <string name="EnteredWeightShouldbegreaterthan0Instruction">Entered Weight should be Greater than 0 Kg</string>
+
+    <string name="EnteredWeightShouldbelessthan50Instruction">Entered Weight should be Less than 50 Kg</string>
+    <string name="NetworkErrorPlease_Try_again_afterSometime">Network Issue .. Please try again Later !!!! </string>
+
+    <string name="LimitExceed_Please_Try_again_afterSometime">You tried too many times .. Please try again Later !!!! </string>
+    <string name="CannotSaveWithOutItemnameAlert">You Cannot save without Choosing item !!!! </string>
+    <string name="CannotSaveWithOutGenderAlert">You Cannot save without Choosing Gender !!!! </string>
+    <string name="CannotSaveWithOutBreedTypeAlert">You Cannot save without Choosing BreedType !!!! </string>
+
+    <string name="CannotSaveWithOutBarcodeAlert">You Cannot save without Scanning barcode !!!! </string>
+    <string name="CannotSaveWithOutWeightDetailsAlert">You Cannot leave weight as zero / Empty !!!! </string>
+    <string name="please_enter_correctweight">Please try to enter correct value in weight !!!! </string>
+
+    <string name="Goat_Status_is_Not_good"> Goat Status is not GOOD / Sold . Do you need to Continue . </string>
+    <string name="CannotCreate_NewBatchAlert">You Cannot Create a New batch . When Last Batch is not closed yet !!!! </string>
+    <string name="Please_Connect_To_Internet">Please make sure your phone has an Internet Connection and try again !!  </string>
+
+    <string name="selectItem_SpinnerInstruction"> --- Select an Item --- </string>
+    <string name="Enter_weightDetails_Instruction"> Enter weight </string>
+    <string name="DeleteBatch_Instruction">Are you sure you want to Delete this Batch !!!</string>
+    <string name="Enter_Supplier_Password_Instruction">Enter correct Supplier Password</string>
+    <string name="Please_scan_items_to_finish_this_batch">Please Scan All items to Finish this item .</string>
+    <string name="PleaseConfirmUpdateRetailerName">Are you Sure ! Do you need to update Retailer Details </string>
+    <string name="PleaseConfirmPaymentMode">Are you Sure ! Do you need to update Payment Mode </string>
+    <string name="PleaseConfirmUpdatePricePerKg">Are you Sure ! Do you need to update Price Per Kg Details </string>
+    <string name="PleaseConfirmUpdateRetailer_pricePerKg">Are you Sure ! Do you need to update Retailer &amp; Price Details  </string>
+
+    <string name="Enter_DeliveryCenter_Password_Instruction">Enter correct Delivery Center Password</string>
+    <string name="DeleteItemFromCart">Do you want to delete this Item from the cart !!!</string>
+    <string name="Enter_Mobileno_Instruction">Enter correct 10 digit Mobile Number</string>
+    <string name="Select_DeliveryCenter_Instruction">Please Select Delivery Center First</string>
+    <string name="Enter_Otp_Instruction">Enter correct 6 digit OTP</string>
+    <string name="Exit_Instruction">Are you sure you want to Exit !!!</string>
+    <string name="Logout_Instruction">Are you sure you want to Logout !!!</string>
+    <string name="ScanAgain_Instruction">Please Use TMCBarcode &amp; Scan Again !!!</string>
+    <string name="ChangeGoatStatus_Instruction">Do you need to change the status ? </string>
+    <string name="Yes_Text">Yes</string>
+    <string name="No_Text">No</string>
+    <string name="Cancel_Text">Cancel</string>
+    <string name="OK_Text">OK</string>
+    <string name="Empty_Text"></string>
+    <string name="weight_details">Weight Details</string>
+    <string name="current_weight">Current Weight</string>
+    <string name="new_details">New Weight</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="click_to_create_new_item">Click to Create New Item</string>
+    <string name="scanned_items">Scanned Items</string>
+    <string name="goat_status">Goat Status</string>
+    <string name="goatdead">DEADGOAT</string>
+    <string name="goatlost">GOATLOST</string>
+    <string name="goatsick">SICKGOAT</string>
+    <string name="sold"> SOLD </string>
+
+    <string name="good">GOOD</string>
+    <string name="change_ear_tag_to_new_one">Change Ear Tag to New One</string>
+    <string name="LogOut">Logout</string>
+    <string name="LogInAsAnotherVendor">Login As another Delivery Center</string>
+
+    <string name="addNewGrade">Add New Grade Detail</string>
+    <string name="view_items_From_bill"> View Items in the Bill </string>
+    <string name="view_items_From_cart"> View Item in Cart </string>
+    <string name="addNew_items"> Add Item in Cart </string>
+    <string name="Cancel_bill"> Cancel Bill </string>
+    <string name="Print_bill"> Print Bill </string>
+    <string name="Generate_bill_Pdf"> Generate Bill PDF </string>
+    <string name="Mobile_Number">Mobile Number</string>
+    <string name="Delivery_Center_Name">Delivery Center Name </string>
+    <string name="Supplier_Name">Supplier Name </string>
+    <string name="create_batch_amp_continue"> Contniue  </string>
+    <string name="loaded_weightInGrams">Loaded Weight</string>
+    <string name="stocked_weightInGrams">Stocked Weight</string>
+    <string name="minimum_weight">Mini - Weight</string>
+    <string name="maximum_weight">Maxi - Weight</string>
+    <string name="average_weight">Average Weight</string>
+    <string name="review_items">Review Items</string>
+    <string name="view_unreviewed_items">View Un-Reviewed Items</string>
+    <string name="view_reviewed_items">View Reviewed Items</string>
+    <string name="goatEarTagItemList">Goat Items List</string>
+    <string name="mark_batch_as_reviewed">Mark Batch as Reviewed</string>
+    <string name="batch_item_details">Batch Item Details</string>
+    <string name="edit_batch_item_details">Edit Batch Item Details</string>
+    <string name="view_batch_item_details">View Batch Item Details</string>
+    <string name="edit_unreviewedItem_details">Edit UnReviewed Item Details</string>
+    <string name="unsold_items_list">UnSold Items List</string>
+    <string name="sold_items_list">Sold Items List</string>
+    <string name="unreviewed_items_list">UnReviewed Items List</string>
+    <string name="reviewed_items_list">Reviewed Items List</string>
+    <string name="view_items">View Details</string>
+    <string name="edit_items">Edit Details</string>
+    <string name="add_items">Add New Details</string>
+    <string name="view_added_items">View Added Item Details</string>
+    <string name="unreviewed_item_details">UnReviewed Item Details</string>
+    <string name="reviewed_item_details">Reviewed Item Details</string>
+    <string name="placedOrder_Details_Screen">Placed Orders Details Screen</string>
+    <string name="billing_Screen">Billing Screen</string>
+    <string name="billing_Screen_retailer">Billing Screen_Retailer</string>
+    <string name="pos_billing_Screen_placeOrder">POS Billing Screen_PlaceOrder</string>
+    <string name="billing_Screen_placeOrder">Billing Screen_PlaceOrder</string>
+    <string name="billing_Screen_editOrder">Billing Screen_EditOrder</string>
+    <string name="billing_Screen_orderSummary">Billing Screen_OrderSummary</string>
+    <string name="sold_item_details">Sold Item Details</string>
+    <string name="unsold_item_details">Unsold Item Details</string>
+    <string name="reviewed_item_details_instruction">Reviewed Item Details :</string>
+    <string name="readyForsale_Sold_item_details_instruction">ReadyForSale / Sold Item Details :</string>
+    <string name="sold_item_details_instruction">Sold Item Details :</string>
+
+    <string name="order_details_screen"> Order Details Screen </string>
+
+    <string name="datewise_placed_orders_list"> Datewise Placed Orders List  </string>
+
+    <string-array name="paymentmode">
+        <item>CASH</item>
+        <item>CARD</item>
+        <item>CREDIT</item>
+        <item>UPI</item>
+    </string-array>
+
+
+</resources>

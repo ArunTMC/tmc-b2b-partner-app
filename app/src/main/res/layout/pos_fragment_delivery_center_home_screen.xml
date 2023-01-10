@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.DeliveryCenterHomeScreenFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+
+
+
+    <TextView
+        android:id="@+id/supplierNameLabel_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_semibold"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="24dp"
+        android:textColor="@color/TMCPrimaryPurpleColor"
+        android:textSize="24sp"
+        android:text="@string/select_supplier" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/white_background_view"
+        android:elevation="9dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:id="@+id/supplierName_spinner"
+            android:fontFamily="@font/open_sans"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:id="@+id/batchDetailslabel"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textColor="@color/TMCPrimaryPurpleColor"
+        android:text="@string/batches_on_the_way" />
+
+    <ListView
+        android:id="@+id/batches_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/TMCBackgroundLightPurpleColor"
+        android:elevation="10dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/batchDetailslabel"
+
+        />
+
+
+
+
+    <LinearLayout
+        android:id="@+id/loadingpanelmask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/TMC_ProgressBarGrey_Color"
+        android:alpha=".6"
+        android:translationZ="90dp"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+
+        android:translationZ="100dp"
+        android:visibility="gone">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loadinganim_layout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            app:indicatorColor="@color/TMCPrimaryPurpleColor"
+            app:indicatorName="BallPulseIndicator" />
+
+    </LinearLayout>
+
+</RelativeLayout>

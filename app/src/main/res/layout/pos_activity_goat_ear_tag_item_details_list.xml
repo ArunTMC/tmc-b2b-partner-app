@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/TMCBackgroundLightPurpleColor"
+
+    tools:context=".activity.GoatEarTagItemDetailsList">
+
+
+    <LinearLayout
+        android:layout_width="70dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="4dp"
+        android:id="@+id/back_IconLayout"
+        >
+
+        <ImageView
+            android:id="@+id/backButton_icon"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:scaleType="center"
+            android:layout_marginTop="7dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/icon_backbutton"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/toolBarHeader_TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="14dp"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:text="@string/reviewed_item_details"
+        tools:ignore="RelativeOverlap" />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/border_line"
+        />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/scanBarcode_view"
+        android:layout_width="450dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/TMCPink"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/courier_prime_bold"
+        android:textAllCaps="false"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/TMCDarkPinkTextColor"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/scanner"
+            android:layout_marginStart="80dp"
+            android:contentDescription="@string/todo" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="28sp"
+            android:layout_gravity="center"
+            android:id="@+id/scanBarcodeLayout_textview"
+            android:textColor="@color/black"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="7dp"
+            android:layout_height="wrap_content"
+            android:text="@string/search_edit_barcode" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <ListView
+        android:id="@+id/earTagItems_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:scrollbars="none"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_marginBottom="15dp"
+        android:elevation="30dp"
+        android:visibility="gone"
+        android:dividerHeight="2dp"
+        android:background="@drawable/grey_backgroundwith_black_border"
+        android:layout_below="@+id/scanBarcode_view"
+        android:layout_marginTop="15dp"/>
+
+    <FrameLayout
+        android:id="@+id/batchItemDetailsFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/TMCTransparentColor"
+        android:elevation="30dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/loadingpanelmask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/TMC_ProgressBarGrey_Color"
+        android:alpha=".6"
+        android:translationZ="90dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:translationZ="100dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loadinganim_layout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            app:indicatorColor="@color/TMCPrimaryPurpleColor"
+            app:indicatorName="BallPulseIndicator" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

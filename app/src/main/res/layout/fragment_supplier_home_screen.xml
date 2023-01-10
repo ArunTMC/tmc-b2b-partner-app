@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.SupplierHomeScreenFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="bottom|center"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/createNewBatch_Button"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/blue_button_background"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:elevation="60dp"
+                android:fontFamily="@font/courier_prime_bold"
+                android:text="@string/create_new_batch" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/courier_prime_bold"
+                android:textSize="15sp"
+                android:text="@string/click_to_create_new_batch" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:visibility="invisible"
+            android:id="@+id/lastBatchLayout"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/courier_prime_bold"
+                android:textSize="15sp"
+                android:text="@string/lastly_created_batch" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="9dp"
+                app:cardCornerRadius="15dp"
+                android:layout_height="140dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/TMCPrimaryPurpleColor"
+                    android:textSize="16sp"
+                    android:text="@string/batch_id" />
+
+                <TextView
+                    android:id="@+id/batchNo_textview"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:paddingStart="8dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:background="@drawable/white_edittext_with_greyborder"
+                    android:paddingEnd="5dp"
+                    android:text="@string/sampleBatchId" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:layout_marginTop="72dp"
+                    android:layout_marginStart="15dp"
+                    android:textColor="@color/TMCPrimaryPurpleColor"
+                    android:textSize="16sp"
+                    android:text="@string/created_date"  />
+
+                <TextView
+                    android:id="@+id/batch_createdDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:layout_marginTop="98dp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:paddingStart="8dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:background="@drawable/white_edittext_with_greyborder"
+                    android:paddingEnd="30dp"
+                    android:text="@string/sampleDate" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:layout_marginTop="12dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="126dp"
+                    android:textColor="@color/TMCPrimaryPurpleColor"
+                    android:textSize="16sp"
+                    android:text="@string/status" />
+
+                <TextView
+                    android:id="@+id/batchStatus_textview"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginEnd="60dp"
+                    android:layout_gravity="end"
+                    android:paddingStart="8dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:background="@drawable/white_edittext_with_greyborder"
+                    android:paddingEnd="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:text="Loaddding" />
+
+
+                <Button
+                    android:id="@+id/viewBatchDetails_Button"
+                    android:layout_width="110dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="90dp"
+                    android:background="@drawable/pink_button_background"
+                    android:text="@string/view"
+                    android:textColor="@color/TMCDarkPinkTextColor"
+                    android:textSize="16sp"
+                    android:elevation="30dp"
+                    android:fontFamily="@font/courier_prime_bold"/>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2.4"
+        android:gravity="center_vertical"
+        android:orientation="vertical"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/createNewBatchFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="3dp"
+
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/loadingpanelmask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/TMC_ProgressBarGrey_Color"
+        android:alpha=".6"
+        android:translationZ="90dp"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:layout_marginBottom="140dp"
+
+        android:translationZ="100dp"
+        android:visibility="gone">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loadinganim_layout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            app:indicatorColor="@color/TMCPrimaryPurpleColor"
+            app:indicatorName="BallPulseIndicator" />
+
+    </LinearLayout>
+
+</FrameLayout>

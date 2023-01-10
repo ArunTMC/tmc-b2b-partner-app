@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="9dp"
+        android:elevation="5dp"
+        android:layout_marginTop="15dp"
+        android:visibility="visible"
+        android:id="@+id/batchDetails_CardView"
+        app:cardCornerRadius="15dp"
+        android:layout_height="150dp" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/batchno_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="15dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/TMCPrimaryPurpleColor"
+            android:textSize="16sp"
+            android:text="@string/batch_id" />
+
+        <TextView
+            android:id="@+id/batchNo_textview"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/batchno_label"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:paddingStart="8dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:background="@drawable/white_edittext_with_greyborder"
+            android:paddingEnd="5dp"
+            android:text="@string/sampleBatchId" />
+
+
+            <TextView
+                android:id="@+id/sentDate_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/batchNo_textview"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/sent_date"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/batch_SentDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sentDate_label"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="12sp"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/sampleDate"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/statusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="12dp"
+
+                android:layout_toEndOf="@+id/batchno_label"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/status"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/batchStatus_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_below="@+id/statusLabel"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@id/batchNo_textview"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                android:text="Loaddding"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/viewReports_Button"
+
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/blue_button_background"
+                android:elevation="30dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/batch_SentDate"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="18dp"
+                android:paddingEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/Generate_Report"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+            <Button
+                android:id="@+id/viewBatchDetails_Button"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="@drawable/pink_button_background"
+                android:text="@string/view_items"
+                android:textColor="@color/TMCDarkPinkTextColor"
+                android:textSize="13sp"
+                android:elevation="30dp"
+                android:fontFamily="@font/open_sans_semibold"/>
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="9dp"
+        android:elevation="5dp"
+        android:id="@+id/goatgradedetailsCardView"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        app:cardCornerRadius="15dp"
+        android:layout_height="150dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/gradename_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Grade Name"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/gradename_textview"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gradename_label"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/sampleBatchId"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/gradeprice_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gradename_textview"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="Price "
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/gradeprice_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gradeprice_label"
+                android:layout_marginStart="12sp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text=" 113 "
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/description_Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="12dp"
+
+                android:layout_toEndOf="@+id/gradename_textview"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/description"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/description_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description_Label"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                android:layout_toEndOf="@id/gradename_textview"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:paddingStart="8dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/editGrade_Button"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="end"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/pink_button_background"
+                android:elevation="30dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/edit_items"
+                android:textColor="@color/TMCDarkPinkTextColor"
+                android:textSize="13sp" />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</RelativeLayout>

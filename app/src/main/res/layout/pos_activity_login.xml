@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/TMCPalePurple"
+    tools:context=".activity.LoginActivity">
+
+
+
+
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        android:id="@+id/back_IconLayout"
+        >
+
+        <ImageView
+            android:id="@+id/backButton_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:scaleType="center"
+            android:layout_marginTop="15dp"
+
+            android:layout_marginStart="15dp"
+            android:src="@drawable/icon_backbutton"
+            />
+
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="410dp"
+        app:cardElevation="40dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/tmcpurplelogoclear" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/mobileNoCardView"
+        android:layout_width="630dp"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="visible"
+        android:layout_marginBottom="40dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/TMCPrimaryPurpleColor"
+            android:textSize="18sp"
+            android:text="Enter Mobile  number" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="+91"
+                android:layout_weight=".2"
+                android:textAlignment="viewEnd"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/mobileNumber_editText"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:ems="10"
+                android:digits="0123456789"
+                android:maxLength="10"
+                android:textSize="20sp"
+                android:layout_marginEnd="40dp"
+                android:layout_weight="1.2"
+                android:elevation="1dp"
+                android:paddingStart="5dp"
+                android:imeOptions="actionDone"
+                android:background="@drawable/grey_edittext_withoutborder"
+                android:inputType="number" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sendOtpbutton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/pink_button_background"
+            android:elevation="20dp"
+            android:fontFamily="@font/courier_prime_bold"
+            android:text="Send OTP"
+            android:textColor="@color/TMCDarkPinkTextColor"
+            android:textSize="18sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/otpCardView"
+        android:layout_width="630dp"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="gone"
+        android:layout_marginBottom="40dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/TMCPrimaryPurpleColor"
+            android:textSize="18sp"
+            android:text="Enter 6 digits OTP Number" />
+        <TextView
+            android:id="@+id/mobileNumber_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="19dp"
+            android:layout_gravity="end"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:alpha=".6"
+            android:text="+919999999999" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_marginTop="59dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/otp_first_et"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/grey_edittext_withoutborder"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/abc_vector_test"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/otp_second_et"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/grey_edittext_withoutborder"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/abc_vector_test"
+                android:textSize="18sp" />
+            <EditText
+                android:id="@+id/otp_third_et"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/grey_edittext_withoutborder"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/abc_vector_test"
+                android:textSize="18sp" />
+            <EditText
+                android:id="@+id/otp_fourth_et"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/grey_edittext_withoutborder"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/abc_vector_test"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/otp_fifth_et"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/grey_edittext_withoutborder"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/abc_vector_test"
+                android:textSize="18sp" />
+
+
+            <EditText
+                android:id="@+id/otp_sixth_et"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/grey_edittext_withoutborder"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="false"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/abc_vector_test"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/verifyOtpButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/pink_button_background"
+            android:elevation="20dp"
+            android:fontFamily="@font/courier_prime_bold"
+            android:text="Send OTP"
+            android:textColor="@color/TMCDarkPinkTextColor"
+            android:textSize="18sp" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <LinearLayout
+        android:id="@+id/loadingpanelmask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/TMC_ProgressBarGrey_Color"
+        android:alpha=".6"
+        android:translationZ="90dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:translationZ="100dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loadinganim_layout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            app:indicatorColor="@color/TMCPrimaryPurpleColor"
+            app:indicatorName="BallPulseIndicator" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+

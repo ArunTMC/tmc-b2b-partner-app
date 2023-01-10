@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tmc.tmcb2bpartnerapp">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <meta-data
+        android:name="com.google.android.gms.vision.DEPENDENCIES"
+        android:value="barcode" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".utils.volleyrequestqueuehelper"
+        android:allowBackup="true"
+        android:icon="@mipmap/tmcpurplelogo"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/tmcpurplelogo"
+        android:usesCleartextTraffic="true"
+        android:supportsRtl="true"
+        android:hardwareAccelerated="true"
+
+        android:theme="@style/Theme.TMCB2BPartnerApp">
+        <activity android:name=".activity.PlacedOrderDetailsScreen"/>
+        <activity android:name=".activity.DatewisePlacedOrdersList" />
+        <activity
+            android:name=".activity.ChangeGoatGradeDetails"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.BillingScreen"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".utils.BaseActivity" />
+        <activity android:name=".activity.GoatEarTagItemDetailsList" />
+        <activity android:name=".activity.View_or_Edit_BatchItem_deliveryCenter" />
+        <activity
+            android:name=".activity.View_or_Edit_BatchItem_Supplier"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.Audit_UnstockedBatch_item" />
+        <activity android:name=".activity.UnStockedBatchEarTagItemList" />
+        <activity
+            android:name=".activity.View_OR_Audit_BatchItem"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.FinishBatch_ConsolidatedReport" />
+        <activity android:name=".utils.BarcodeScannerScreen" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activity.BatchwiseConsolidatedReport" />
+        <activity
+            android:name=".activity.CreateNew_Or_EditOldBatchScreen"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.DeliveryCenterDashboardScreen" />
+        <activity
+            android:name=".activity.SupplierDashboardScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PasswordVerificationScreen"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

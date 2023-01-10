@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="9dp"
+        app:cardCornerRadius="15dp"
+        android:layout_height="wrap_content" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/parentRelativeLayout"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/barcode_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="22sp"
+                android:text="@string/barcode" />
+
+
+            <TextView
+                android:id="@+id/barcodeno_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="48dp"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:paddingTop="5dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingBottom="5dp"
+                android:text="@string/sampleBatchId"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/gender_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="50dp"
+                android:layout_toEndOf="@+id/barcode_label"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="22sp"
+                android:text="@string/gender_type" />
+
+            <TextView
+                android:id="@+id/genderName_textview"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gender_label"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_toEndOf="@+id/barcodeno_textview"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/sampleBatchId"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/breedType_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="80dp"
+                android:layout_toEndOf="@+id/gender_label"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="22sp"
+                android:text="@string/breed_type" />
+
+            <TextView
+                android:id="@+id/breedType_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/breedType_label"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_toEndOf="@+id/genderName_textview"
+                android:paddingTop="5dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingBottom="5dp"
+                android:text="@string/sampleBatchId"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+
+
+            <TextView
+                android:id="@+id/currentweight_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="50dp"
+                android:layout_toEndOf="@+id/breedType_label"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="22sp"
+                android:text="Weight" />
+
+            <TextView
+                android:id="@+id/currentweight_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/currentweight_label"
+                android:layout_marginStart="54dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:layout_marginTop="9dp"
+                android:layout_toEndOf="@+id/breedType_label"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/sampleBatchId"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/kg_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/currentweight_label"
+                android:layout_toEndOf="@+id/currentweight_textview"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:text="Kg"
+                />
+
+            <Button
+                android:id="@+id/reviewItem_button"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_toEndOf="@+id/currentweight_label"
+                android:layout_marginStart="256dp"
+                android:layout_marginTop="34dp"
+                android:alpha=".8"
+                android:background="@drawable/blue_button_background"
+                android:text="Review"
+                android:visibility="visible"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="45dp"
+                    android:id="@+id/deletebatchLayout"
+                    android:visibility="gone"
+                    android:layout_marginStart="256dp"
+                    android:layout_toEndOf="@+id/currentweight_label"
+                    android:background="@drawable/blue_button_background"
+                    android:text="Delete "
+                    android:layout_marginTop="34dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white" />
+
+
+            <Button
+                android:id="@+id/auditItem_button"
+                android:layout_width="150dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="34dp"
+
+                android:layout_marginStart="10dp"
+                android:alpha=".8"
+                android:layout_marginEnd="200dp"
+                android:background="@drawable/black_button_background"
+                android:text="Edit"
+                android:textSize="20sp"
+                android:textColor="@color/white" />
+
+
+
+            <TextView
+                android:id="@+id/sickGoatInstruction_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="center"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="20sp"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/auditItem_button"
+                android:text="@string/EarTagSick_Instruction" />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

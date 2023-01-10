@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:alpha="2"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.CreateNewBatch">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/cardview"
+        android:layout_marginBottom="50dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="15dp" >
+
+
+        <LinearLayout
+            android:layout_width="70dp"
+            android:id="@+id/backButton_layout"
+            android:layout_height="60dp">
+            <ImageView
+                android:id="@+id/backButton_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:scaleType="center"
+                android:src="@drawable/icon_backbutton"
+                android:contentDescription="@string/todo" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/deliveryCenterNameLabel_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/courier_prime_bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="72dp"
+            android:textColor="@color/TMCPrimaryPurpleColor"
+            android:textSize="22sp"
+            android:text= "@string/select_delivery_center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/white_background_view"
+            android:elevation="9dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="60dp"
+            android:id="@+id/delieryCenterName_spinnerLayout"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:id="@+id/delieryCenterName_spinner"
+                android:fontFamily="@font/open_sans"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="110dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/batch_id"
+            android:textColor="@color/TMCPrimaryPurpleColor"
+
+            android:textSize="22sp" />
+
+
+        <TextView
+            android:id="@+id/batchid_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="145dp"
+            android:background="@drawable/white_edittext_with_greyborder"
+            android:fontFamily="@font/open_sans"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:text="@string/sampleBatchId"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+
+
+        <Button
+            android:id="@+id/createBatch_button"
+            android:layout_width="500dp"
+            android:layout_height="50dp"
+            android:text="@string/create_batch_amp_continue"
+            android:layout_marginTop="230dp"
+            android:layout_marginStart="400dp"
+            android:layout_marginBottom="5dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textSize="18sp"
+            android:background="@drawable/blue_button_background"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans"
+            android:layout_marginTop="300dp"
+            android:gravity="center"
+            android:textColor="@color/TMCPrimaryPurpleColor"
+            android:textSize="16sp"
+            android:paddingStart="8dp"
+            android:layout_marginStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="Click Continue to create new Batch &amp; Add Item !! " />
+
+        <LinearLayout
+            android:id="@+id/loadingpanelmask"
+            android:layout_width="match_parent"
+            android:layout_height="390dp"
+            android:background="@color/TMC_ProgressBarGrey_Color"
+            android:alpha=".6"
+            android:translationZ="90dp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/loadingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:translationZ="100dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/loadinganim_layout"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                app:indicatorColor="@color/TMCPrimaryPurpleColor"
+                app:indicatorName="BallPulseIndicator" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</RelativeLayout>

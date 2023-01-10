@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+
+    <color name="teal_200">#FF000000</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="Grey">#F1A1A1A1</color>
+
+    <color name="TMCTransparentColor">#80000000</color>
+
+    <color name="TMCBackgroundLightPurpleColor">#F4F0FE</color>
+    <color name="TMCNavigationButtonBackgroundColor">#E3D8FB</color>
+    4C19D1
+    <color name="TMCGreyEditText">#E9E9E9</color>
+    <color name="TMCLightGreyEditText">#EFEFEF</color>
+
+    <color name="TMCPink">#FDC0BF</color>
+    <color name="TMCDarkPinkTextColor">#4B3939</color>
+    <color name="TMCPalePurple">#CFBFFF</color>
+    <color name="TMCPrimaryPurpleColor">#4D19D3</color>
+    <color name="TMCButtonPurpleColor">#4D19D3</color>
+    <color name="TMC_ProgressBarGrey_Color">#EFEFFF</color>
+</resources>

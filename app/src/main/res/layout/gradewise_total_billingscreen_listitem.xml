@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="20dp"
+    android:id="@+id/parentLayout"
+     android:paddingBottom="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingStart="4dp"
+        android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/gradename_textview"
+        android:textColor="@color/TMCPrimaryPurpleColor"
+        android:text="dummy tittle"
+        android:layout_weight="1"
+        android:textAllCaps="true"
+        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/gradeprice_textview"
+            android:textColor="@color/TMCPrimaryPurpleColor"
+            android:text="dummy tittle"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="13sp"/>
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/border_line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingStart="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="Gender "
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:text=" Qty "
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text=" Weight "
+            android:textSize="13sp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
+            android:text=" Price "
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingStart="4dp"
+        android:id="@+id/male_layout"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/MALE"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/male_Qty_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:text=" Qty "             android:gravity="center"
+
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/male_Weight_textview"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text=" Weight "
+            android:gravity="center"
+
+            android:textSize="13sp"/>
+
+
+        <TextView
+            android:id="@+id/maleprice_textview"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
+            android:text=" Price "
+            android:gravity="center"
+
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:id="@+id/female_layout"
+        android:paddingStart="4dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/FEMALE"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/female_Qty_textview"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:text=" Qty "
+            android:gravity="center"
+
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:id="@+id/female_Weight_textview"
+
+            android:fontFamily="@font/open_sans_semibold"
+            android:text=" Weight "
+            android:textSize="13sp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/female_price_textview"
+
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
+            android:text=" Price "
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingStart="4dp"
+        android:visibility="gone"
+        android:id="@+id/femaleBaby_layout"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/FEMALE_WITH_BABY"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:id="@+id/femalewithBaby_Qty_textview"
+
+            android:gravity="center"
+            android:text=" Qty "
+            android:fontFamily="@font/open_sans_semibold"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:id="@+id/femalewithBaby_Weight_textview"
+
+            android:fontFamily="@font/open_sans_semibold"
+            android:text=" Weight "
+            android:textSize="13sp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/femalewithBaby_Price_textview"
+
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/black"
+            android:text=" Price "
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
