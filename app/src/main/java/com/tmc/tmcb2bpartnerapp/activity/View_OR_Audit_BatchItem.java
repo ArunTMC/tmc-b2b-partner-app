@@ -23,9 +23,9 @@ import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BBatchDetails;
 import com.tmc.tmcb2bpartnerapp.fragment.BatchItemDetailsDeliveryCenterScreenfragment;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsUpdate;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsUpdate;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
@@ -310,7 +310,7 @@ public class View_OR_Audit_BatchItem extends BaseActivity {
         if(callMethod.equals(Constants.CallGETMethod)) {
 
 
-            String addApiToCall = API_Manager.getBatchDetailsWithSupplierkeyBatchNo + "?supplierkey=" + supplierKey + "&batchno=" + batchId;
+            String addApiToCall = API_Manager.getBatchDetailsWithDeliveryCenterKeyBatchNo + "?supplierkey=" + supplierKey + "&batchno=" + batchId;
 
             B2BBatchDetails asyncTask = new B2BBatchDetails(callback_B2BBatchDetailsInterface, addApiToCall, Constants.CallGETMethod);
             asyncTask.execute();
@@ -323,6 +323,8 @@ public class View_OR_Audit_BatchItem extends BaseActivity {
             modal_b2BBatchDetailsUpdate.setStatus(Constants.batchDetailsStatus_Reviewing);
             modal_b2BBatchDetailsUpdate.setReceiveddate(DateParser.getDate_and_time_newFormat());
             modal_b2BBatchDetailsUpdate.setReceivermobileno(usermobileno);
+            modal_b2BBatchDetailsUpdate.setDeliverycenterkey(deliveryCenterKey);
+
 
             String addApiToCall = API_Manager.updateBatchDetailsWithSupplierkeyBatchNo;
 

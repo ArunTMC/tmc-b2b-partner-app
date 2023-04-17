@@ -8,7 +8,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagTransactionInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagTransaction;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagTransaction;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
 
@@ -207,7 +207,81 @@ public class GoatEarTagTransaction extends AsyncTask<String, String, List<Modal_
             if(!Modal_GoatEarTagTransaction.getDeliverycentername().toString().equals("") && !Modal_GoatEarTagTransaction.getDeliverycentername().toString().equals("null")){
                 jsonObject.put("deliverycentrename",String.valueOf(Modal_GoatEarTagTransaction.getDeliverycentername()));
             }
-            
+
+
+
+           /* if(!Modal_GoatEarTagTransaction.getTotalPrice_ofItem().toString().equals("") && !Modal_GoatEarTagTransaction.getTotalPrice_ofItem().toString().equals("null")){
+                jsonObject.put("totalprice",String.valueOf(Modal_GoatEarTagTransaction.getTotalPrice_ofItem()));
+            }
+
+            */
+            if(!Modal_GoatEarTagTransaction.getItemPrice().toString().equals("") && !Modal_GoatEarTagTransaction.getItemPrice().toString().equals("null")){
+                jsonObject.put("price",String.valueOf(Modal_GoatEarTagTransaction.getItemPrice()));
+            }
+            if(!Modal_GoatEarTagTransaction.getDiscount().toString().equals("") && !Modal_GoatEarTagTransaction.getDiscount().toString().equals("null")){
+                jsonObject.put("discount",String.valueOf(Modal_GoatEarTagTransaction.getDiscount()));
+            }
+
+
+
+            if(!Modal_GoatEarTagTransaction.getMeatyieldweight().toString().equals("") && !Modal_GoatEarTagTransaction.getMeatyieldweight().toString().equals("null")){
+                String weightinGrams_str = Modal_GoatEarTagTransaction.getMeatyieldweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("meatyieldweight",weightinGrams_double);
+
+
+            }
+
+
+
+            if(!Modal_GoatEarTagTransaction.getPartsweight().toString().equals("") && !Modal_GoatEarTagTransaction.getPartsweight().toString().equals("null")){
+                String weightinGrams_str = Modal_GoatEarTagTransaction.getPartsweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("partsweight",weightinGrams_double);
+
+
+            }
+
+
+
+
+
+            if(!Modal_GoatEarTagTransaction.getApproxliveweight().toString().equals("") && !Modal_GoatEarTagTransaction.getApproxliveweight().toString().equals("null")){
+                String weightinGrams_str = Modal_GoatEarTagTransaction.getApproxliveweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("approxliveweight",weightinGrams_double);
+
+
+            }
+
+
+
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

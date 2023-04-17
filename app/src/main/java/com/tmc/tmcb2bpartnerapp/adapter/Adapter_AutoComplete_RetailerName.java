@@ -1,9 +1,7 @@
 package com.tmc.tmcb2bpartnerapp.adapter;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +11,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 
 import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.activity.BillingScreen;
 import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCentre_PlaceOrderScreen_Fragment;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BRetailerDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BRetailerDetails;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
-import com.tmc.tmcb2bpartnerapp.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;

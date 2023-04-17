@@ -1,6 +1,5 @@
 package com.tmc.tmcb2bpartnerapp.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.tmc.tmcb2bpartnerapp.R;
-import com.tmc.tmcb2bpartnerapp.activity.ChangeGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 
 import java.util.ArrayList;

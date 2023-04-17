@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/TMCLightGreyEditText"
+    tools:context=".second_version.activity.PlaceNewOrder_activity">
+
+
+
+    <LinearLayout
+        android:id="@+id/back_IconLayout"
+        android:layout_width="40dp"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:id="@+id/backButton_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/todo"
+            android:scaleType="center"
+            android:src="@drawable/icon_backbutton" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/toolBarHeader_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/back_IconLayout"
+        android:text="Change Delivery Status For Bills "
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/border_line" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:background="@drawable/white_backgroundwith_black_border"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/searchBarcodeno_layout"
+        android:orientation="horizontal">
+
+
+
+
+
+        <TextView
+            android:id="@+id/searchbarcodeNo_textView"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:text="Search Barcode Here"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:visibility="visible"
+            />
+
+        <EditText
+            android:id="@+id/baarcodeNo_search_editText"
+            android:background="@drawable/white_background_view"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginEnd="12dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:hint="Enter Barcode "
+            android:imeOptions="actionDone"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            />
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="1dp"
+            android:visibility="visible"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/search_IconLayout"
+            >
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:scaleType ="centerCrop"
+                android:src="@mipmap/search_icon"
+                android:visibility="visible"
+                android:contentDescription="@string/todo" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"
+            android:layout_marginTop="1dp"
+
+            android:id="@+id/close_IconLayout"
+            >
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:scaleType ="fitXY"
+                android:alpha=".8"
+                android:visibility="visible"
+                android:src="@mipmap/close_thicker_icon"
+                android:contentDescription="@string/todo" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/colorHintLayoyt"
+        android:gravity="start"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/searchBarcodeno_layout"
+
+        >
+        <TextView
+            android:id="@+id/listwiseInstruction_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:textColor="@color/TMCPrimaryPurpleColor"
+            android:textSize="11sp"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginEnd="8dp"
+            android:gravity="start"
+            android:text="## This list shows not delivered items from this order . "
+            />
+        <View
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="3dp"
+            android:visibility="gone"
+            android:background="@color/Grey"
+            android:alpha=".8"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:textColor="@color/black"
+            android:textSize="9sp"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:visibility="gone"
+
+            android:text="Already Delivered"/>
+
+
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="3dp"
+            android:visibility="gone"
+
+            android:background="@color/purple_200"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:textColor="@color/black"
+            android:textSize="9sp"
+            android:fontFamily="@font/open_sans_bold"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:text="Marked for Delivery"
+            />
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="5dp"
+            android:visibility="gone"
+
+            android:background="@color/white"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:textColor="@color/black"
+            android:textSize="9sp"
+            android:gravity="center"            android:visibility="gone"
+
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Not delivered"
+            />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/colorHintLayoyt"
+
+        >
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:elevation="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_background_view"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:layout_below="@+id/searchBarcodeno_layout"
+            />
+
+
+        <TextView
+            android:id="@+id/noItem_inthis_order_instructionTextview"
+            android:layout_width="match_parent"
+            android:elevation="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:fontFamily="@font/open_sans_bold"
+            android:textColor="@color/black"
+            android:text="All the Item's in this Order is Delivered"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_background_view"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:layout_below="@+id/searchBarcodeno_layout"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:id="@+id/itemCountDetails2_LinearLayout"
+            android:translationZ="90dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:visibility="visible"
+            android:background="@color/TMCLightPalePurple"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/itemCountDetails2_CardView"
+                android:layout_gravity="center"
+                android:translationZ="90dp"
+                android:alpha=".8"
+                android:backgroundTint="@color/TMCNavigationButtonBackgroundColor"
+                app:cardElevation="10dp"
+                android:layout_height="40dp" >
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="visible"
+
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="15dp"
+                        android:orientation="horizontal">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:id="@+id/checkBox_selectAllitems_parentLayout"
+                            android:orientation="horizontal">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:translationZ="90dp"
+                                android:id="@+id/checkBox_selectAllitems_View"
+                                />
+                        <CheckBox
+                            android:id="@+id/checkBox_selectAllitems"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:checked="false"
+                            android:buttonTint="@color/purple_200"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/open_sans_bold"
+                            android:textColor="@color/black"
+                            android:text="Mark this box to  select all items" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_weight="2"
+                            android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0"
+                            android:fontFamily="@font/open_sans_bold"
+                            android:gravity="left|center_vertical"
+                            android:paddingStart="3dp"
+                            android:text="Total :"
+                            android:textColor="@color/TMCPrimaryPurpleColor"
+                            android:visibility="visible"
+                            android:textSize="12sp"
+                            tools:ignore="RtlSymmetry" />
+
+
+                            <TextView
+                                android:id="@+id/total_itemCount"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="27dp"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/open_sans_bold"
+                                android:gravity="left|center_vertical"
+                                android:paddingStart="6dp"
+                                android:paddingEnd="4dp"
+                                android:text="0"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"
+                                android:visibility="visible" />
+
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/goatInfo_IconLayout"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="end"
+                            android:gravity="end|center_vertical"
+                            android:paddingStart="5dp"
+                            android:layout_weight="2.4"
+
+                            android:layout_marginStart="5dp"
+                            android:paddingEnd="5dp"
+                            android:visibility="visible"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/goatInfo_icon"
+                                android:layout_width="20dp"
+                                android:layout_height="19dp"
+                                android:contentDescription="@string/todo"
+                                android:scaleType="fitXY"
+                                android:src="@mipmap/info_icon" />
+                        </LinearLayout>
+
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+
+
+                <Button
+                    android:id="@+id/markselectedOrders_as_deliveredbutton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight=".8"
+                    android:fontFamily="@font/courier_prime_bold"
+                    android:text="Mark selected items as delivered"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginTop="0dp"
+                    android:visibility="visible"
+                    android:background="@drawable/blue_button_background"
+                    android:elevation="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal" />
+
+                <Button
+                    android:id="@+id/showDelivered_item_list_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight=".8"
+                    android:fontFamily="@font/courier_prime_bold"
+                    android:text="Show Delivered Items list"
+                    android:gravity="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginTop="0dp"
+                    android:visibility="gone"
+                    android:background="@drawable/black_button_background"
+                    android:elevation="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal" />
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/greyDisplaymask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/TMC_ProgressBarGrey_Color"
+        android:translationZ="90dp"
+        android:orientation="vertical"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/loadingpanelmask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/TMC_ProgressBarGrey_Color"
+        android:alpha=".6"
+        android:translationZ="90dp"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+
+        android:translationZ="100dp"
+        android:visibility="gone">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loadinganim_layout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            app:indicatorColor="@color/TMCPrimaryPurpleColor"
+            app:indicatorName="BallPulseIndicator" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

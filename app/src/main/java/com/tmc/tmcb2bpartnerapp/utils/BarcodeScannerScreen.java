@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
@@ -34,6 +35,7 @@ import com.tmc.tmcb2bpartnerapp.activity.View_or_Edit_BatchItem_Supplier;
 import com.tmc.tmcb2bpartnerapp.activity.View_or_Edit_BatchItem_deliveryCenter;
 import com.tmc.tmcb2bpartnerapp.fragment.BatchItemDetailsDeliveryCenterScreenfragment;
 import com.tmc.tmcb2bpartnerapp.fragment.BatchItemDetailsScreenFragment;
+import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenter_PlaceOrderScreen_SecondVersn;
 import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCentre_PlaceOrderScreen_Fragment;
 import com.tmc.tmcb2bpartnerapp.fragment.SwitchEarTag_Fragment_UnscannedItems;
 
@@ -55,6 +57,8 @@ public class BarcodeScannerScreen extends BaseActivity {
     SparseArray<Barcode> barcodes = new SparseArray<>();
     String scannercalledToDo ="",calledFrom="";
     boolean isMobileDevice = false;
+    public static boolean isScannerModeTurnedOn = false;
+
     ConstraintLayout parentBarcodeScanner;
     Dialog show_scan_barcode_dialog = null;
     @Override
@@ -66,7 +70,7 @@ public class BarcodeScannerScreen extends BaseActivity {
         Intent intent = getIntent();
         scannercalledToDo = intent.getStringExtra(String.valueOf(getString(R.string.scanner_called_to_do)));
         calledFrom = intent.getStringExtra(String.valueOf(getString(R.string.called_from)));
-
+        isScannerModeTurnedOn = intent.getBooleanExtra((getString(R.string.isScannerModeTurnedOn)),false);
         try {
             BaseActivity.baseActivity.getDeviceName();
         }
@@ -77,8 +81,17 @@ public class BarcodeScannerScreen extends BaseActivity {
             if (BaseActivity.isDeviceIsMobilePhone) {
                 // Inflate the layout for this fragment
                 isMobileDevice = true;
-                parentBarcodeScanner.setVisibility(View.VISIBLE);
-                setupEnvironment_and_initialiseDetectorsAndSources();
+                if(isScannerModeTurnedOn){
+                    parentBarcodeScanner.setVisibility(View.VISIBLE);
+                    setupEnvironment_and_initialiseDetectorsAndSources();
+
+                }
+                else{
+                    parentBarcodeScanner.setVisibility(View.GONE);
+                    showScanBarcodeDialog();
+                }
+
+
             } else {
                 isMobileDevice = false;
                 parentBarcodeScanner.setVisibility(View.GONE);
@@ -94,6 +107,32 @@ public class BarcodeScannerScreen extends BaseActivity {
 
         }
 
+        if(isMobileDevice){
+            if(!isScannerModeTurnedOn){
+                show_scan_barcode_dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+                    public void onCancel(DialogInterface dialog) {
+                        // finish activity
+                        finish();
+                        onBackPressed();
+                    }
+                });
+
+            }
+        }
+        else{
+            show_scan_barcode_dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+                public void onCancel(DialogInterface dialog) {
+                    // finish activity
+                    finish();
+                    onBackPressed();
+                }
+            });
+
+        }
+
+
 
 
     }
@@ -108,14 +147,36 @@ public class BarcodeScannerScreen extends BaseActivity {
                     show_scan_barcode_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     //  dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                     show_scan_barcode_dialog.setContentView(R.layout.show_scan_barcode_activity);
+                   // show_scan_barcode_dialog.setCancelable(false);
+                    show_scan_barcode_dialog.setCanceledOnTouchOutside(false);
 
-                    
                     show_scan_barcode_dialog.show();
+                    TextView scanBarcode_label = show_scan_barcode_dialog.findViewById(R.id.scanBarcode_label);
                     EditText scannedbarcode_EditText = show_scan_barcode_dialog.findViewById(R.id.scannedbarcode_EditText);
+
+
+
+                    if(isMobileDevice){
+                        if(!isScannerModeTurnedOn){
+                            scanBarcode_label.setText("Please  Enter  Barcode");
+                            scanBarcode_label.setTextSize(16);
+                            scannedbarcode_EditText .setHint("Please Enter Barcode                    ");
+                            scannedbarcode_EditText.setTextSize(16);
+                        }
+
+                    }
+                    else{
+                        scanBarcode_label.setText("Please  Scan / Enter  Barcode");
+                        scanBarcode_label.setTextSize(25);
+                        scannedbarcode_EditText .setHint("Please Enter | Scan Barcode Using Barcode Scanner");
+                        scannedbarcode_EditText.setTextSize(25);
+                    }
                     EditTextListener editTextListener = new EditTextListener();
                     scannedbarcode_EditText.addTextChangedListener(editTextListener);
 
-                } catch (WindowManager.BadTokenException e) {
+                }
+
+                catch (WindowManager.BadTokenException e) {
                     
 
                     e.printStackTrace();
@@ -128,8 +189,6 @@ public class BarcodeScannerScreen extends BaseActivity {
 
 
     }
-
-
 
 
 
@@ -978,7 +1037,7 @@ public class BarcodeScannerScreen extends BaseActivity {
 
     private void sendResponsebackToActivity(String barcodeData) {
 
-
+        barcodeData = barcodeData.toUpperCase();
         if(calledFrom.equals(getString(R.string.supplier))) {
             if (scannercalledToDo.equals(getString(R.string.scannerCalled_to_FetchData))) {
                 BatchItemDetailsScreenFragment.barcodeScannerInterface.notifySuccessAndFetchData(barcodeData);
@@ -1013,6 +1072,16 @@ public class BarcodeScannerScreen extends BaseActivity {
            // BillingScreen.barcodeScannerInterface.notifySuccessAndFetchData(barcodeData);
             try {
                 DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.barcodeScannerInterface.notifySuccessAndFetchData(barcodeData);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            finish();
+        }
+        else  if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion))) {
+            // BillingScreen.barcodeScannerInterface.notifySuccessAndFetchData(barcodeData);
+            try {
+                DeliveryCenter_PlaceOrderScreen_SecondVersn.barcodeScannerInterface.notifySuccessAndFetchData(barcodeData);
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -1064,6 +1133,13 @@ public class BarcodeScannerScreen extends BaseActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+      finish();
+        super.onBackPressed();
+    }
+
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -1077,8 +1153,20 @@ public class BarcodeScannerScreen extends BaseActivity {
             if (BaseActivity.isDeviceIsMobilePhone) {
                 // Inflate the layout for this fragment
                 isMobileDevice = true;
-                parentBarcodeScanner.setVisibility(View.VISIBLE);
-                setupEnvironment_and_initialiseDetectorsAndSources();
+                if(isScannerModeTurnedOn){
+                    parentBarcodeScanner.setVisibility(View.VISIBLE);
+                    setupEnvironment_and_initialiseDetectorsAndSources();
+
+                }
+                else{
+                    parentBarcodeScanner.setVisibility(View.GONE);
+                    showScanBarcodeDialog();
+                }
+
+
+
+
+
             } else {
                 isMobileDevice = false;
                 parentBarcodeScanner.setVisibility(View.GONE);

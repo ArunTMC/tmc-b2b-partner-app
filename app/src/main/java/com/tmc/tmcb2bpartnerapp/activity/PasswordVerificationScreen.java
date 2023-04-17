@@ -21,9 +21,10 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.DeliveryCenterDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.SupplierDetails;
 import com.tmc.tmcb2bpartnerapp.interfaces.DeliveryCenterDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.SupplierDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_AppUserAccess;
-import com.tmc.tmcb2bpartnerapp.model.Modal_DeliveryCenterDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_SupplierDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_AppUserAccess;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_DeliveryCenterDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_SupplierDetails;
+import com.tmc.tmcb2bpartnerapp.second_version.activity.Home_Screen;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
@@ -107,7 +108,7 @@ public class PasswordVerificationScreen extends BaseActivity {
                 {
                     saveDataInSharedPreference();
 
-                    Intent intent = new Intent(PasswordVerificationScreen.this, DeliveryCenterDashboardScreen.class);
+                    Intent intent = new Intent(PasswordVerificationScreen.this, Home_Screen.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     overridePendingTransition(0,0);

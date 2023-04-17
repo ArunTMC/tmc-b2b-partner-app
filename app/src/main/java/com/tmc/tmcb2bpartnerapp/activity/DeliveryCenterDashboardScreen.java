@@ -8,9 +8,9 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,13 +22,17 @@ import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.DeliveryCenterDetails;
 import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenterHomeScreenFragment;
 import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenterSettingsFragment;
+import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenter_PlaceOrderScreen_SecondVersn;
+import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenter_StockList_Fragment;
 import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCentre_PlaceOrderScreen_Fragment;
+import com.tmc.tmcb2bpartnerapp.fragment.TestFragment;
 import com.tmc.tmcb2bpartnerapp.interfaces.DeliveryCenterDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_DeliveryCenterDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_DeliveryCenterDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 
+import static android.view.View.GONE;
 import static com.tmc.tmcb2bpartnerapp.utils.Constants.TAG;
 
 public class DeliveryCenterDashboardScreen extends BaseActivity {
@@ -36,9 +40,10 @@ TextView toolBarHeader_TextView;
 TextView deliveryCenterHome_navigationButton;
 TextView deliveryCenterSettings_navigationButton;
 TextView deliveryCenterPlaceOrder_navigationButton;
+TextView deliveryCenterStocklist_navigationButton;
 FrameLayout deliveryCenterFrame;
 ImageView backButton_icon;
-LinearLayout loadingpanelmask,loadingPanel,back_IconLayout;
+public static LinearLayout loadingpanelmask,loadingPanel,back_IconLayout;
 Fragment mfragment;
 public  static LinearLayout deliveryCenterFrame_backgroundMask;
     //Boolean variable to mark if there is any transaction pending
@@ -66,8 +71,13 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
         }
 
 
+
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
+        );
         toolBarHeader_TextView =findViewById(R.id.toolBarHeader_TextView);
-        deliveryCenterHome_navigationButton =findViewById(R.id.deliveryCenterHome_navigationButton);
+        deliveryCenterStocklist_navigationButton = findViewById(R.id.deliveryCenterStocklist_navigationButton);
+        deliveryCenterHome_navigationButton = findViewById(R.id.deliveryCenterHome_navigationButton);
         deliveryCenterSettings_navigationButton =findViewById(R.id.deliveryCenterSettings_navigationButton);
         deliveryCenterPlaceOrder_navigationButton = findViewById(R.id.deliveryCenterPlaceOrder_navigationButton);
         deliveryCenterFrame = findViewById(R.id.deliveryCenterFrame);
@@ -82,8 +92,12 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
         deliveryCenterKey = sh.getString("DeliveryCenterKey","");
         deliveryCenterName = sh.getString("DeliveryCenterName","");
         toolBarHeader_TextView.setText(deliveryCenterName);
-        mfragment = new DeliveryCenterHomeScreenFragment();
-        value_forFragment = getString(R.string.home);
+      //  mfragment = new DeliveryCenterHomeScreenFragment();
+      //  value_forFragment = getString(R.string.home);
+       // loadMyFragment();
+
+        mfragment = new DeliveryCenter_PlaceOrderScreen_SecondVersn();
+        value_forFragment = getString(R.string.placeOrder);
         loadMyFragment();
 
        /* if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
@@ -103,13 +117,34 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
        // call_and_init_DeliveryCenterService(deliveryCenterKey);
 
 
+        deliveryCenterStocklist_navigationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deliveryCenterSettings_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
+                deliveryCenterPlaceOrder_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
+                deliveryCenterStocklist_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.grey_navigation_bar_button));
+
+
+                mfragment = new DeliveryCenter_StockList_Fragment();
+
+                value_forFragment = DeliveryCenterDashboardScreen.this.getString(R.string.stocklist);
+                DeliveryCenterDashboardScreen.this.loadMyFragment();
+
+
+            }
+        });
+
+
+
         deliveryCenterPlaceOrder_navigationButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 deliveryCenterSettings_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
-                deliveryCenterHome_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
+                deliveryCenterStocklist_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
                 deliveryCenterPlaceOrder_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.grey_navigation_bar_button));
-                mfragment = new DeliveryCentre_PlaceOrderScreen_Fragment();
+               // mfragment = new DeliveryCentre_PlaceOrderScreen_Fragment();
+                mfragment = new DeliveryCenter_PlaceOrderScreen_SecondVersn();
+
                 value_forFragment = DeliveryCenterDashboardScreen.this.getString(R.string.placeOrder);
                 DeliveryCenterDashboardScreen.this.loadMyFragment();
 
@@ -127,7 +162,7 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 deliveryCenterSettings_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.grey_navigation_bar_button));
-                deliveryCenterHome_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
+                deliveryCenterStocklist_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
                 deliveryCenterPlaceOrder_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
 
                 mfragment = new DeliveryCenterSettingsFragment();
@@ -143,8 +178,8 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 deliveryCenterSettings_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
                 deliveryCenterHome_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.grey_navigation_bar_button));
+                deliveryCenterStocklist_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
                 deliveryCenterPlaceOrder_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
-
                 mfragment = new DeliveryCenterHomeScreenFragment();
                 value_forFragment = DeliveryCenterDashboardScreen.this.getString(R.string.home);
                 DeliveryCenterDashboardScreen.this.loadMyFragment();
@@ -157,7 +192,7 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
         back_IconLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                DeliveryCenterDashboardScreen.this.onBackPressed();
+                onBackPressed();
                 return false;
             }
         });
@@ -249,11 +284,15 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
                             FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction()
                                     .addToBackStack(null);
                             if(value_forFragment.equals(getString(R.string.placeOrder))){
-                                transaction2.replace(deliveryCenterFrame.getId(), DeliveryCentre_PlaceOrderScreen_Fragment.newInstance(getString(R.string.called_from), value_forFragment));
+                                transaction2.replace(deliveryCenterFrame.getId(), TestFragment.newInstance(getString(R.string.called_from), value_forFragment));
 
                             }
                             else if(value_forFragment.equals(getString(R.string.home))){
                                 transaction2.replace(deliveryCenterFrame.getId(), DeliveryCenterHomeScreenFragment.newInstance(getString(R.string.called_from), value_forFragment));
+
+                            }
+                            else if(value_forFragment.equals(getString(R.string.stocklist))){
+                                transaction2.replace(deliveryCenterFrame.getId(), DeliveryCenter_StockList_Fragment.newInstance(getString(R.string.called_from), value_forFragment));
 
                             }
                         else{
@@ -333,10 +372,10 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
         isTransactionSafe=true;
         try{
             if(value_forFragment.equals(getString(R.string.placeOrder))) {
-                DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.isTransactionSafe = true;
-                if(DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.isTransactionPending)
+                DeliveryCenter_PlaceOrderScreen_SecondVersn.deliveryCenter_placeOrderScreen_secondVersn.isTransactionSafe = true;
+                if(DeliveryCenter_PlaceOrderScreen_SecondVersn.deliveryCenter_placeOrderScreen_secondVersn.isTransactionPending)
                 {
-                    DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.loadMyFragment();
+                    DeliveryCenter_PlaceOrderScreen_SecondVersn.deliveryCenter_placeOrderScreen_secondVersn.loadMyFragment();
                 }
             }
         }
@@ -357,7 +396,7 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
     @Override
     public void onBackPressed() {
 
-        if(value_forFragment.equals(getString(R.string.placeOrder))) {
+     /*   if(value_forFragment.equals(getString(R.string.placeOrder))) {
 
 
             if (DeliveryCentre_PlaceOrderScreen_Fragment.frameLayout_for_Fragment.getVisibility() == View.VISIBLE) {
@@ -375,6 +414,10 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
                 }
 
             }
+            else if(DeliveryCenter_PlaceOrderScreen_SecondVersn.show_goatEarTagItemDetails_Dialog.isShowing()){
+                DeliveryCenter_PlaceOrderScreen_SecondVersn.show_goatEarTagItemDetails_Dialog.cancel();
+            }
+
             else{
 
                 if (pressedTime + 2000 > System.currentTimeMillis()) {
@@ -388,8 +431,43 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
 
 
         }
+
+      */
+        // else {
+
+
+        if (value_forFragment.equals(getString(R.string.settings))) {
+            deliveryCenterSettings_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
+            deliveryCenterStocklist_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
+            deliveryCenterPlaceOrder_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.grey_navigation_bar_button));
+            // mfragment = new DeliveryCentre_PlaceOrderScreen_Fragment();
+            mfragment = new DeliveryCenter_PlaceOrderScreen_SecondVersn();
+
+            value_forFragment = DeliveryCenterDashboardScreen.this.getString(R.string.placeOrder);
+            DeliveryCenterDashboardScreen.this.loadMyFragment();
+        }
+        else if (value_forFragment.equals(getString(R.string.stocklist))) {
+            deliveryCenterSettings_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
+            deliveryCenterStocklist_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.white_navigation_bar_button));
+            deliveryCenterPlaceOrder_navigationButton.setBackground(DeliveryCenterDashboardScreen.this.getDrawable(R.drawable.grey_navigation_bar_button));
+            // mfragment = new DeliveryCentre_PlaceOrderScreen_Fragment();
+            mfragment = new DeliveryCenter_PlaceOrderScreen_SecondVersn();
+
+            value_forFragment = DeliveryCenterDashboardScreen.this.getString(R.string.placeOrder);
+            DeliveryCenterDashboardScreen.this.loadMyFragment();
+        }
         else {
 
+            try {
+                if (DeliveryCenter_PlaceOrderScreen_SecondVersn.show_goatEarTagItemDetails_Dialog.isShowing()) {
+                    DeliveryCenter_PlaceOrderScreen_SecondVersn.show_goatEarTagItemDetails_Dialog.cancel();
+                    if (DeliveryCenter_PlaceOrderScreen_SecondVersn.loadingpanelmask.getVisibility() == View.VISIBLE) {
+                        DeliveryCenter_PlaceOrderScreen_SecondVersn.loadingpanelmask.setVisibility(GONE);
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             if (pressedTime + 2000 > System.currentTimeMillis()) {
                 finish();
@@ -398,9 +476,9 @@ public  static LinearLayout deliveryCenterFrame_backgroundMask;
             }
             pressedTime = System.currentTimeMillis();
 
+            // }
         }
     }
-
 
 
 

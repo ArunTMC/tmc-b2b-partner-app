@@ -20,7 +20,7 @@ import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BRetailerDetails;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BRetailerDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BRetailerDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BRetailerDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
@@ -180,7 +180,7 @@ public class AddRetailer_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                // ((BillingScreen)getActivity()).closeFragment();
-                DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.closeFragment();
+                DeliveryCenter_PlaceOrderScreen_SecondVersn.deliveryCenter_placeOrderScreen_secondVersn.closeFragment();
 
             }
         });
@@ -216,13 +216,33 @@ public class AddRetailer_Fragment extends Fragment {
 
                 }
                 else if(result.equals(Constants.successResult_volley)){
-                    DeliveryCentre_PlaceOrderScreen_Fragment.retailerDetailsArrayList = DatabaseArrayList_PojoClass.retailerDetailsArrayList;
+                    try {
+                        DeliveryCentre_PlaceOrderScreen_Fragment.retailerDetailsArrayList = DatabaseArrayList_PojoClass.retailerDetailsArrayList;
 
-                  //  BillingScreen.retailerDetailsArrayList = DatabaseArrayList_PojoClass.retailerDetailsArrayList;
-                    isRetailerDetailsServiceCalled = false;
-                    showProgressBar(false);
-                   // ((BillingScreen)getActivity()).closeFragment();
-                    DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.closeFragment();
+                        //  BillingScreen.retailerDetailsArrayList = DatabaseArrayList_PojoClass.retailerDetailsArrayList;
+                        isRetailerDetailsServiceCalled = false;
+                        showProgressBar(false);
+                        // ((BillingScreen)getActivity()).closeFragment();
+                        DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.closeFragment();
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+
+                    try{
+
+
+
+
+                              //  DeliveryCenter_PlaceOrderScreen_SecondVersn.deliveryCenter_placeOrderScreen_secondVersn. call_and_init_B2BRetailerDetailsService(Constants.CallGETListMethod , true,retailers_mobileno);
+
+                        isRetailerDetailsServiceCalled = false;
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+
 
                 }
                 else{

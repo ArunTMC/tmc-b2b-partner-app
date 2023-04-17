@@ -15,10 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.tmc.tmcb2bpartnerapp.R;
+import com.tmc.tmcb2bpartnerapp.activity.Add_Or_Edit_Retailer_Activity;
 import com.tmc.tmcb2bpartnerapp.activity.DatewisePlacedOrdersList;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 import com.tmc.tmcb2bpartnerapp.activity.ChangeGoatGradeDetails;
@@ -39,7 +41,8 @@ public class DeliveryCenterSettingsFragment extends Fragment {
     TextView userMobileNo,supplier_name;
     String usermobileno_string ="",supplierName ="";
     Context mContext;
-    Button logout_button , goatgradeDetails_button , datewisePlacedOrdersList_button;
+    Button logout_button ,goatgradeDetails_button;
+    LinearLayout add_or_edit_retailers_button , datewisePlacedOrdersList_button;
 
 
 
@@ -124,7 +127,7 @@ public class DeliveryCenterSettingsFragment extends Fragment {
         userMobileNo = view.findViewById(R.id.userMobileNo);
         goatgradeDetails_button = view.findViewById(R.id.goatgradeDetails_button);
         datewisePlacedOrdersList_button  = view.findViewById(R.id.datewisePlacedOrdersList_button);
-
+        add_or_edit_retailers_button = view.findViewById(R.id.add_or_edit_retailers_button);
         SharedPreferences sh = mContext.getSharedPreferences("LoginData",MODE_PRIVATE);
         usermobileno_string = sh.getString("UserMobileNumber","");
 
@@ -136,6 +139,9 @@ public class DeliveryCenterSettingsFragment extends Fragment {
 
         logout_button = view.findViewById(R.id.logout_button);
        // datewisePlacedOrdersList_button.setVisibility(View.GONE);
+
+
+
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -175,6 +181,14 @@ public class DeliveryCenterSettingsFragment extends Fragment {
             }
         });
 
+
+        add_or_edit_retailers_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, Add_Or_Edit_Retailer_Activity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

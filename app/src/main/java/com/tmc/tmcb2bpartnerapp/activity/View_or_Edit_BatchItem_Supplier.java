@@ -32,10 +32,10 @@ import com.tmc.tmcb2bpartnerapp.fragment.BatchItemDetailsScreenFragment;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.BarcodeScannerInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsUpdate;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsUpdate;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BarcodeScannerScreen;
@@ -867,6 +867,8 @@ public class View_or_Edit_BatchItem_Supplier extends BaseActivity {
             modal_b2BBatchDetailsUpdate.setBatchno(batchno);
             modal_b2BBatchDetailsUpdate.setSupplierkey(supplierKey);
             modal_b2BBatchDetailsUpdate.setStatus(Constants.batchDetailsStatus_Cancelled);
+            modal_b2BBatchDetailsUpdate.setDeliverycenterkey(selectDeliveryCenterKey);
+
 
             String addApiToCall = API_Manager.updateBatchDetailsWithSupplierkeyBatchNo;
 

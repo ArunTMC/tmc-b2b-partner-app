@@ -18,10 +18,7 @@ import android.widget.TextView;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.activity.LoginActivity;
-import com.tmc.tmcb2bpartnerapp.model.Modal_AppUserAccess;
-import com.tmc.tmcb2bpartnerapp.model.Modal_SupplierDetails;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
-import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.TMCAlertDialogClass;
 
 import static android.content.Context.MODE_PRIVATE;

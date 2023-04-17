@@ -13,15 +13,19 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.tmc.tmcb2bpartnerapp.R;
+import com.tmc.tmcb2bpartnerapp.activity.View_or_Edit_BatchItem_deliveryCenter_secondVersn;
+import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenter_StockList_Fragment;
+import com.tmc.tmcb2bpartnerapp.second_version.activity.BatchList_activity;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 import com.tmc.tmcb2bpartnerapp.activity.BillingScreen;
 import com.tmc.tmcb2bpartnerapp.activity.FinishBatch_ConsolidatedReport;
 import com.tmc.tmcb2bpartnerapp.activity.View_or_Edit_BatchItem_deliveryCenter;
 import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenterHomeScreenFragment;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsStatic;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_B2BBatchItemsList  extends ArrayAdapter<Modal_B2BBatchDetails> {
@@ -29,6 +33,9 @@ public class Adapter_B2BBatchItemsList  extends ArrayAdapter<Modal_B2BBatchDetai
     List<Modal_B2BBatchDetails> batchDetailsList;
     DeliveryCenterHomeScreenFragment deliveryCenterHomeScreenFragment;
     String calledFrom = "";
+    DeliveryCenter_StockList_Fragment deliveryCenter_stockList_fragment;
+    boolean isCalledFromStockList = false;
+    BatchList_activity batchList_activity ;
 
 
     public Adapter_B2BBatchItemsList(Context mContext, List<Modal_B2BBatchDetails> batchDetailsListt, DeliveryCenterHomeScreenFragment deliveryCenterHomeScreenFragmentt, String calledFrom) {
@@ -37,6 +44,25 @@ public class Adapter_B2BBatchItemsList  extends ArrayAdapter<Modal_B2BBatchDetai
         this.batchDetailsList=batchDetailsListt;
         this.deliveryCenterHomeScreenFragment = deliveryCenterHomeScreenFragmentt;
         this.calledFrom = calledFrom;
+        this.isCalledFromStockList = false;
+    }
+
+    public Adapter_B2BBatchItemsList(Context mContext, ArrayList<Modal_B2BBatchDetails> batchDetailsListt, DeliveryCenter_StockList_Fragment deliveryCenter_stockList_fragment) {
+        super(mContext, R.layout.adapter_batch_item_list, batchDetailsListt);
+
+        this.mContext=mContext;
+        this.batchDetailsList=batchDetailsListt;
+        this.deliveryCenter_stockList_fragment = deliveryCenter_stockList_fragment;
+        this.isCalledFromStockList = true;
+    }
+
+    public Adapter_B2BBatchItemsList(Context mContext, ArrayList<Modal_B2BBatchDetails> batchDetailsArrayList, BatchList_activity batchList_activityy) {
+        super(mContext, R.layout.adapter_batch_item_list, batchDetailsArrayList);
+
+        this.mContext=mContext;
+        this.batchDetailsList=batchDetailsArrayList;
+        this.batchList_activity = batchList_activityy;
+        this.isCalledFromStockList = true;
     }
 
 
@@ -52,24 +78,22 @@ public class Adapter_B2BBatchItemsList  extends ArrayAdapter<Modal_B2BBatchDetai
     }
 
     public View getView(final int pos, View view, ViewGroup v) {
-        @SuppressLint("ViewHolder")  View listViewItem = null;
-        try{
+        @SuppressLint("ViewHolder") View listViewItem = null;
+        try {
             BaseActivity.baseActivity.getDeviceName();
-            for(int i =0 ; i<500; i++){
-                if(i==499){
-                    if(BaseActivity.isDeviceIsMobilePhone){
-                        listViewItem =     LayoutInflater.from(mContext).inflate(R.layout.adapter_batch_item_list, (ViewGroup) view, false);
+            for (int i = 0; i < 500; i++) {
+                if (i == 499) {
+                    if (BaseActivity.isDeviceIsMobilePhone) {
+                        listViewItem = LayoutInflater.from(mContext).inflate(R.layout.adapter_batch_item_list, (ViewGroup) view, false);
 
-                    }
-                    else{
+                    } else {
                         listViewItem = LayoutInflater.from(mContext).inflate(R.layout.pos_adapter_batch_item_list, (ViewGroup) view, false);
 
                     }
                 }
 
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             listViewItem = LayoutInflater.from(mContext).inflate(R.layout.adapter_batch_item_list, (ViewGroup) view, false);
 
             e.printStackTrace();
@@ -85,13 +109,15 @@ public class Adapter_B2BBatchItemsList  extends ArrayAdapter<Modal_B2BBatchDetai
 
         batchNo_textview.setText(modal_b2BBatchDetails.getBatchno());
 
-        if(calledFrom . equals(mContext.getString(R.string.placeOrder))){
+        if (isCalledFromStockList) {
+            viewBatchDetails_Button.setText(mContext.getString(R.string.view));
+        } else if (calledFrom.equals(mContext.getString(R.string.placeOrder))) {
             viewBatchDetails_Button.setText(mContext.getString(R.string.placeOrder));
-        }
-        else {
+        } else {
             viewBatchDetails_Button.setText(mContext.getString(R.string.view));
 
         }
+
 
 
         if(modal_b2BBatchDetails.getStatus().toUpperCase().equals(Constants.batchDetailsStatus_Fully_Loaded)){
@@ -103,7 +129,7 @@ public class Adapter_B2BBatchItemsList  extends ArrayAdapter<Modal_B2BBatchDetai
         //batchStatus_textview.setText(modal_b2BBatchDetails.getStatus());
 
 
-        batch_SentDate.setText(modal_b2BBatchDetails.getSentdate());
+        batch_SentDate.setText(modal_b2BBatchDetails.getReceiveddate());
 
         viewReports_Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,9 +157,17 @@ public class Adapter_B2BBatchItemsList  extends ArrayAdapter<Modal_B2BBatchDetai
 
                 Intent intent1 = new Intent(mContext, FinishBatch_ConsolidatedReport.class);
                 intent1.putExtra("batchno", modal_b2BBatchDetails.getBatchno()) ;
-                intent1.putExtra("deliveryCenterKey",  deliveryCenterHomeScreenFragment.deliveryCenterKey) ;
-                intent1.putExtra("deliveryCenterName", deliveryCenterHomeScreenFragment.deliveryCenterName) ;
-                intent1.putExtra(mContext.getString(R.string.called_from), mContext.getString(R.string.delivery_center_batchDetails)) ;
+                if(isCalledFromStockList){
+                    intent1.putExtra("deliveryCenterKey",  batchList_activity.deliveryCenterKey) ;
+                    intent1.putExtra("deliveryCenterName", batchList_activity.deliveryCenterName) ;
+                    intent1.putExtra(mContext.getString(R.string.called_from), mContext.getString(R.string.delivery_center_stockDetails)) ;
+                }
+                else{
+                    intent1.putExtra("deliveryCenterKey",  deliveryCenterHomeScreenFragment.deliveryCenterKey) ;
+                    intent1.putExtra("deliveryCenterName", deliveryCenterHomeScreenFragment.deliveryCenterName) ;
+                    intent1.putExtra(mContext.getString(R.string.called_from), mContext.getString(R.string.delivery_center_batchDetails)) ;
+                }
+
                 mContext.startActivity(intent1);
 
 
@@ -169,7 +203,16 @@ public class Adapter_B2BBatchItemsList  extends ArrayAdapter<Modal_B2BBatchDetai
                   mContext.startActivity(intent);
             }
               else{
-                  Intent intent = new Intent(mContext, View_or_Edit_BatchItem_deliveryCenter.class);
+                  Intent intent = null;
+                  if (isCalledFromStockList) {
+                       intent = new Intent(mContext, View_or_Edit_BatchItem_deliveryCenter_secondVersn.class);
+
+                  }
+                  else{
+                       intent = new Intent(mContext, View_or_Edit_BatchItem_deliveryCenter.class);
+
+                  }
+
                   intent.putExtra("batchno", modal_b2BBatchDetails.getBatchno() );
                   intent.putExtra("supplierkey", modal_b2BBatchDetails.getSupplierkey() );
                   intent.putExtra("suppliername", modal_b2BBatchDetails.getSuppliername() );

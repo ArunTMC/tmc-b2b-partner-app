@@ -31,12 +31,12 @@ import com.tmc.tmcb2bpartnerapp.fragment.BatchItemDetailsScreenFragment;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchNoManagerInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.DeliveryCenterDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_AppUserAccess;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsUpdate;
-import com.tmc.tmcb2bpartnerapp.model.Modal_DeliveryCenterDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_SupplierDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_AppUserAccess;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsUpdate;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_DeliveryCenterDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_SupplierDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
@@ -476,6 +476,7 @@ boolean iscalledFromCreateNewbatch =false;
             modal_b2BBatchDetailsUpdate.setBatchno(batchno);
             modal_b2BBatchDetailsUpdate.setSupplierkey(supplierKey);
             modal_b2BBatchDetailsUpdate.setStatus(Constants.batchDetailsStatus_Cancelled);
+            modal_b2BBatchDetailsUpdate.setDeliverycenterkey(selectDeliveryCenterKey);
 
             String addApiToCall = API_Manager.updateBatchDetailsWithSupplierkeyBatchNo;
 

@@ -9,9 +9,9 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_UpdatedGoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_UpdatedGoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.DateParser;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
@@ -33,6 +33,10 @@ public class GoatEarTagDetails extends AsyncTask<String, String, List<Modal_Stat
     GoatEarTagDetailsInterface callback_GoatEarTagDetailsInterface = null;
     JSONObject jsonToADD_Or_Update = new JSONObject();
     ArrayList<Modal_GoatEarTagDetails> earTagItemsForBatch = new ArrayList<>();
+    double meatyeild_weight_double = 0 , parts_Weight_double =0 , total_Weight_double = 0;
+
+
+
     public GoatEarTagDetails(GoatEarTagDetailsInterface callback_GoatEarTagDetailsInterfacee, String addApiToCall, String callADDMethod) {
         this.ApitoCall = addApiToCall;
         this.callMethod = callADDMethod;
@@ -48,6 +52,7 @@ public class GoatEarTagDetails extends AsyncTask<String, String, List<Modal_Stat
          else if(callMethod.equals(Constants.CallGETMethod)){
             new Modal_Static_GoatEarTagDetails();
             new Modal_UpdatedGoatEarTagDetails();
+            new Modal_GoatEarTagDetails();
         }
 
     }
@@ -125,9 +130,9 @@ public class GoatEarTagDetails extends AsyncTask<String, String, List<Modal_Stat
                                         }
                                         try {
                                             if (json.has("barcodeno")) {
-                                                modal_goatEarTagDetails.barcodeno = String.valueOf(json.get("barcodeno"));
+                                                modal_goatEarTagDetails.barcodeno = String.valueOf(json.get("barcodeno")).toUpperCase();
                                                 if (callMethod.equals(Constants.CallGETMethod)) {
-                                                    Modal_Static_GoatEarTagDetails.barcodeno = String.valueOf(json.get("barcodeno"));
+                                                    Modal_Static_GoatEarTagDetails.barcodeno = String.valueOf(json.get("barcodeno")).toUpperCase();
                                                 }
                                             } else {
                                                 if (callMethod.equals(Constants.CallGETMethod)) {
@@ -482,6 +487,246 @@ public class GoatEarTagDetails extends AsyncTask<String, String, List<Modal_Stat
                                         }
 
 
+
+                                        try {
+                                            if (json.has("partsweight")) {
+                                                modal_goatEarTagDetails.partsweight = ConvertGramsToKilograms(String.valueOf(json.get("partsweight")));
+                                                try{
+
+                                                    parts_Weight_double  = Double.parseDouble(ConvertGramsToKilograms(String.valueOf(json.get("partsweight"))));;
+
+
+                                                }
+                                                catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.partsweight = ConvertGramsToKilograms(String.valueOf(json.get("partsweight")));
+                                                }
+                                            } else {
+                                                modal_goatEarTagDetails.partsweight = "";
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.partsweight = "";
+                                                    try{
+
+                                                        parts_Weight_double  = 0;
+
+
+                                                    }
+                                                    catch (Exception e){
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+
+                                            }
+                                        } catch (Exception e) {
+                                            modal_goatEarTagDetails.partsweight = "";
+                                            if (callMethod.equals(Constants.CallGETMethod)) {
+                                                Modal_Static_GoatEarTagDetails.partsweight = "";
+                                            }
+                                            try{
+
+                                                parts_Weight_double  = 0;
+
+
+                                            }
+                                            catch (Exception e1){
+                                                e1.printStackTrace();
+                                            }
+                                            e.printStackTrace();
+                                        }
+
+
+
+
+
+                                        try {
+                                            if (json.has("meatyieldweight")) {
+                                                modal_goatEarTagDetails.meatyieldweight = ConvertGramsToKilograms(String.valueOf(json.get("meatyieldweight")));
+                                                try{
+
+                                                    meatyeild_weight_double  = Double.parseDouble(ConvertGramsToKilograms(String.valueOf(json.get("meatyieldweight"))));;
+
+
+                                                }
+                                                catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.meatyieldweight = ConvertGramsToKilograms(String.valueOf(json.get("meatyieldweight")));
+                                                }
+                                            } else {
+                                                modal_goatEarTagDetails.meatyieldweight = "";
+                                                try{
+
+                                                    meatyeild_weight_double  = 0;
+
+
+                                                }
+                                                catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.meatyieldweight = "";
+                                                }
+
+                                            }
+                                        } catch (Exception e) {
+                                            modal_goatEarTagDetails.meatyieldweight = "";
+                                            try{
+
+                                                meatyeild_weight_double  = 0;
+
+
+                                            }
+                                            catch (Exception e1){
+                                                e1.printStackTrace();
+                                            }
+                                            if (callMethod.equals(Constants.CallGETMethod)) {
+                                                Modal_Static_GoatEarTagDetails.meatyieldweight = "";
+                                            }
+                                            e.printStackTrace();
+                                        }
+
+
+                                        try{
+                                            total_Weight_double = meatyeild_weight_double  + parts_Weight_double;
+                                        }
+                                        catch (Exception e){
+                                            e.printStackTrace();
+                                        }
+                                        double temp_totalWeight =0;
+                                        try{
+                                            temp_totalWeight  = total_Weight_double ;
+                                            DecimalFormat df = new DecimalFormat(Constants.threeDecimalPattern);
+
+                                            total_Weight_double = Double.parseDouble(df.format(total_Weight_double));
+                                        }
+                                        catch (Exception e){
+                                            total_Weight_double = temp_totalWeight ;
+                                            e.printStackTrace();
+                                        }
+                                        try {
+                                                modal_goatEarTagDetails.totalItemWeight = String.valueOf(total_Weight_double);
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.itemWeight =String.valueOf(total_Weight_double); ;
+                                                }
+
+                                        } catch (Exception e) {
+                                            modal_goatEarTagDetails.totalItemWeight = String.valueOf(total_Weight_double);;
+                                            if (callMethod.equals(Constants.CallGETMethod)) {
+                                                Modal_Static_GoatEarTagDetails.itemWeight =String.valueOf(total_Weight_double); ;
+                                            }
+                                            e.printStackTrace();
+                                        }
+
+
+
+                                        try {
+                                            if (json.has("approxliveweight")) {
+                                                modal_goatEarTagDetails.approxliveweight = ConvertGramsToKilograms(String.valueOf(json.get("approxliveweight")));
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.approxliveweight = ConvertGramsToKilograms(String.valueOf(json.get("approxliveweight")));
+                                                }
+                                            } else {
+                                                modal_goatEarTagDetails.approxliveweight = "";
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.approxliveweight = "";
+                                                }
+
+                                            }
+                                        } catch (Exception e) {
+                                            modal_goatEarTagDetails.approxliveweight = "";
+                                            if (callMethod.equals(Constants.CallGETMethod)) {
+                                                Modal_Static_GoatEarTagDetails.approxliveweight = "";
+                                            }
+                                            e.printStackTrace();
+                                        }
+
+
+
+                                        try {
+                                            if (json.has("totalprice")) {
+                                                modal_goatEarTagDetails.totalPrice_ofItem = String.valueOf(json.get("totalprice"));
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.totalPrice_ofItem = String.valueOf(json.get("totalprice"));
+                                                }
+                                            } else {
+                                                modal_goatEarTagDetails.totalPrice_ofItem = "";
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.totalPrice_ofItem = "";
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                            modal_goatEarTagDetails.totalPrice_ofItem = "";
+                                            if (callMethod.equals(Constants.CallGETMethod)) {
+                                                Modal_Static_GoatEarTagDetails.totalPrice_ofItem = "";
+                                            }
+                                            e.printStackTrace();
+                                        }
+
+
+
+                                        try {
+                                            if (json.has("price")) {
+                                                modal_goatEarTagDetails.itemPrice = String.valueOf(json.get("price"));
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.itemPrice = String.valueOf(json.get("price"));
+                                                }
+                                            } else {
+                                                modal_goatEarTagDetails.itemPrice = "";
+                                                if (callMethod.equals(Constants.CallGETMethod)) {
+                                                    Modal_Static_GoatEarTagDetails.itemPrice = "";
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                            modal_goatEarTagDetails.itemPrice = "";
+                                            if (callMethod.equals(Constants.CallGETMethod)) {
+                                                Modal_Static_GoatEarTagDetails.itemPrice = "";
+                                            }
+                                            e.printStackTrace();
+                                        }
+
+
+                                        double  meatYield_double =0 , parts_double = 0 , totalWeight_double =0 ;
+                                        try{
+                                            String text = String.valueOf(Modal_Static_GoatEarTagDetails.getMeatyieldweight());
+                                            text = text.replaceAll("[^\\d.]", "");
+                                            if(text.equals("")){
+                                                text = "0";
+                                            }
+                                            meatYield_double = Double.parseDouble(text);
+                                        }
+                                        catch (Exception e){
+                                            meatYield_double = 0;
+                                            e.printStackTrace();
+                                        }
+
+
+                                        try{
+                                            String text = String.valueOf(Modal_Static_GoatEarTagDetails.getPartsweight());
+                                            text = text.replaceAll("[^\\d.]", "");
+                                            if(text.equals("")){
+                                                text = "0";
+                                            }
+                                            parts_double = Double.parseDouble(text);
+                                        }
+                                        catch (Exception e){
+                                            parts_double = 0;
+                                            e.printStackTrace();
+                                        }
+
+                                        try{
+                                            totalWeight_double = meatYield_double+parts_double;
+                                        }
+                                        catch (Exception e){
+                                            totalWeight_double = 0;
+                                            e.printStackTrace();
+                                        }
+                                        Modal_Static_GoatEarTagDetails.setItemWeight(String.valueOf(totalWeight_double));
+
+
+
                                         if (callMethod.equals(Constants.CallGETListMethod)) {
                                             earTagItemsForBatch.add(modal_goatEarTagDetails);
                                         }
@@ -743,6 +988,81 @@ public class GoatEarTagDetails extends AsyncTask<String, String, List<Modal_Stat
                     Modal_Static_GoatEarTagDetails.gradekey =  jsonToADD_Or_Update.getString("gradekey");
                 }
             }
+
+
+            if(jsonToADD_Or_Update.has("meatyieldweight")){
+                if(!jsonToADD_Or_Update.getString("meatyieldweight").equals("")){
+
+                    String weightinGrams_str = jsonToADD_Or_Update.getString("meatyieldweight");
+                    weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                    if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                        weightinGrams_str = "0";
+                    }
+                    String convertedValue =  ConvertGramsToKilograms(weightinGrams_str);
+                    if(convertedValue.equals(null) || convertedValue.equals("")){
+                        convertedValue = "0";
+                    }
+                    Modal_Static_GoatEarTagDetails.meatyieldweight = String.valueOf(convertedValue);
+
+
+                }
+            }
+
+
+
+            if(jsonToADD_Or_Update.has("partsweight")){
+                if(!jsonToADD_Or_Update.getString("partsweight").equals("")){
+
+                    String weightinGrams_str = jsonToADD_Or_Update.getString("partsweight");
+                    weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                    if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                        weightinGrams_str = "0";
+                    }
+                    String convertedValue =  ConvertGramsToKilograms(weightinGrams_str);
+                    if(convertedValue.equals(null) || convertedValue.equals("")){
+                        convertedValue = "0";
+                    }
+                    Modal_Static_GoatEarTagDetails.partsweight = String.valueOf(convertedValue);
+
+
+                }
+            }
+
+
+            if(jsonToADD_Or_Update.has("approxliveweight")){
+                if(!jsonToADD_Or_Update.getString("approxliveweight").equals("")){
+
+                    String weightinGrams_str = jsonToADD_Or_Update.getString("approxliveweight");
+                    weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                    if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                        weightinGrams_str = "0";
+                    }
+                    String convertedValue =  ConvertGramsToKilograms(weightinGrams_str);
+                    if(convertedValue.equals(null) || convertedValue.equals("")){
+                        convertedValue = "0";
+                    }
+                    Modal_Static_GoatEarTagDetails.approxliveweight = String.valueOf(convertedValue);
+
+
+                }
+            }
+
+            if(jsonToADD_Or_Update.has("price")){
+                if(!jsonToADD_Or_Update.getString("price").equals("")){
+                    Modal_Static_GoatEarTagDetails.itemPrice =  jsonToADD_Or_Update.getString("price");
+                }
+            }
+
+
+          /*  if(jsonToADD_Or_Update.has("totalprice")){
+                if(!jsonToADD_Or_Update.getString("totalprice").equals("")){
+                    Modal_Static_GoatEarTagDetails.totalPrice_ofItem =  jsonToADD_Or_Update.getString("totalprice");
+                }
+            }
+
+           */
+
+
             callback_GoatEarTagDetailsInterface.notifySuccess(Constants.successResult_volley);
 
         } catch (JSONException e) {
@@ -943,6 +1263,81 @@ public class GoatEarTagDetails extends AsyncTask<String, String, List<Modal_Stat
                     jsonObject.put("deliverycentrename", String.valueOf(Modal_UpdatedGoatEarTagDetails.getUpdated_deliverycentername()));
                 }
             }
+
+            /*if(!Modal_UpdatedGoatEarTagDetails.getUpdated_totalPrice_ofItem().toString().equals("") && !Modal_UpdatedGoatEarTagDetails.getUpdated_totalPrice_ofItem().toString().equals("null")){
+                jsonObject.put("totalprice",String.valueOf(Modal_UpdatedGoatEarTagDetails.getUpdated_totalPrice_ofItem()));
+            }
+
+             */
+
+            if(!Modal_UpdatedGoatEarTagDetails.getUpdated_Price().toString().equals("") && !Modal_UpdatedGoatEarTagDetails.getUpdated_Price().toString().equals("null")){
+                jsonObject.put("price",String.valueOf(Modal_UpdatedGoatEarTagDetails.getUpdated_Price()));
+            }
+            if(!Modal_UpdatedGoatEarTagDetails.getUpdated_discount().toString().equals("") && !Modal_UpdatedGoatEarTagDetails.getUpdated_discount().toString().equals("null")){
+                jsonObject.put("discount",String.valueOf(Modal_UpdatedGoatEarTagDetails.getUpdated_discount()));
+            }
+
+
+            if(!Modal_UpdatedGoatEarTagDetails.getUpdated_meatyieldweight().toString().equals("") && !Modal_UpdatedGoatEarTagDetails.getUpdated_meatyieldweight().toString().equals("null")){
+                String weightinGrams_str = Modal_UpdatedGoatEarTagDetails.getUpdated_meatyieldweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("meatyieldweight",weightinGrams_double);
+
+
+
+
+
+
+            }
+
+
+            if(!Modal_UpdatedGoatEarTagDetails.getUpdated_partsweight().toString().equals("") && !Modal_UpdatedGoatEarTagDetails.getUpdated_partsweight().toString().equals("null")){
+                String weightinGrams_str = Modal_UpdatedGoatEarTagDetails.getUpdated_partsweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("partsweight",weightinGrams_double);
+
+
+
+            }
+
+
+
+
+
+            if(!Modal_UpdatedGoatEarTagDetails.getUpdated_approxliveweight().toString().equals("") && !Modal_UpdatedGoatEarTagDetails.getUpdated_approxliveweight().toString().equals("null")){
+                String weightinGrams_str = Modal_UpdatedGoatEarTagDetails.getUpdated_approxliveweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("approxliveweight",weightinGrams_double);
+            }
+
+
+
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -1035,6 +1430,72 @@ public class GoatEarTagDetails extends AsyncTask<String, String, List<Modal_Stat
             if(!Modal_Static_GoatEarTagDetails.getGradename().toString().equals("") && !Modal_Static_GoatEarTagDetails.getGradename().toString().equals("null")){
                 jsonObject.put("gradename",String.valueOf(Modal_Static_GoatEarTagDetails.getGradename()));
             }
+
+          /*  if(!Modal_Static_GoatEarTagDetails.getTotalPrice_ofItem().toString().equals("") && !Modal_Static_GoatEarTagDetails.getTotalPrice_ofItem().toString().equals("null")){
+                jsonObject.put("totalprice",String.valueOf(Modal_Static_GoatEarTagDetails.getTotalPrice_ofItem()));
+            }
+
+           */
+
+
+            if(!Modal_Static_GoatEarTagDetails.getItemPrice().toString().equals("") && !Modal_Static_GoatEarTagDetails.getItemPrice().toString().equals("null")){
+                jsonObject.put("price",String.valueOf(Modal_Static_GoatEarTagDetails.getItemPrice()));
+            }
+
+
+            if(!Modal_Static_GoatEarTagDetails.getDiscount().toString().equals("") && !Modal_Static_GoatEarTagDetails.getDiscount().toString().equals("null")){
+                jsonObject.put("discount",String.valueOf(Modal_Static_GoatEarTagDetails.getDiscount()));
+            }
+
+
+            if(!Modal_Static_GoatEarTagDetails.getMeatyieldweight().toString().equals("") && !Modal_Static_GoatEarTagDetails.getMeatyieldweight().toString().equals("null")){
+                String weightinGrams_str = Modal_Static_GoatEarTagDetails.getMeatyieldweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("meatyieldweight",weightinGrams_double);
+            }
+
+
+            if(!Modal_Static_GoatEarTagDetails.getPartsweight().toString().equals("") && !Modal_Static_GoatEarTagDetails.getPartsweight().toString().equals("null")){
+                String weightinGrams_str = Modal_Static_GoatEarTagDetails.getPartsweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("partsweight",weightinGrams_double);
+            }
+
+
+
+
+            if(!Modal_Static_GoatEarTagDetails.getApproxliveweight().toString().equals("") && !Modal_Static_GoatEarTagDetails.getApproxliveweight().toString().equals("null")){
+                String weightinGrams_str = Modal_Static_GoatEarTagDetails.getApproxliveweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("approxliveweight",weightinGrams_double);
+            }
+
+
+
 
 
         } catch (JSONException e) {

@@ -31,8 +31,9 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.AppUserAccess;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BPartnerAppUser;
 import com.tmc.tmcb2bpartnerapp.interfaces.AppUserAccessInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BPartnerAppUserInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_AppUserAccess;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BPartnerAppUser;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_AppUserAccess;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BPartnerAppUser;
+import com.tmc.tmcb2bpartnerapp.second_version.activity.Home_Screen;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
@@ -52,7 +53,7 @@ public class LoginActivity extends BaseActivity {
 CardView otpCardView,mobileNoCardView;
 Button sendOtpbutton,verifyOtpButton;
 EditText mobileNumber_editText;
-String mobileNo_String , userType =Constants.userType_SupplierCenter ,passCode;
+String mobileNo_String , userType =Constants.userType_SupplierCenter ,userName ="",passCode;
 boolean loginStatusBoolean;
 LinearLayout loadingPanel , loadingpanelmask,back_IconLayout;
 EditText edOtp1, edOtp2, edOtp3, edOtp4, edOtp5, edOtp6;
@@ -226,7 +227,7 @@ TextView mobileNumber_textView;
                                     showProgressBar(true);
                                     Modal_AppUserAccess.usertype = userType;
                                     if(userType.toUpperCase().equals(Constants.userType_DeliveryCenter) ){
-                                        i = new Intent(LoginActivity.this, DeliveryCenterDashboardScreen.class);
+                                        i = new Intent(LoginActivity.this, Home_Screen.class);
 
                                     }
                                     else if(userType.toUpperCase().equals(Constants.userType_SupplierCenter)) {
@@ -387,19 +388,20 @@ TextView mobileNumber_textView;
            //     Toast.makeText(mContext, "response : "+result, Toast.LENGTH_SHORT).show();
                 if(result.equals(Constants.emptyResult_volley)){
                     showProgressBar(false);
-                    userType ="";
+                    userType =""; userName ="";
                     Toast.makeText(LoginActivity.this, "Sorry you Don't have Access !!" , Toast.LENGTH_SHORT).show();
 
                 }
                 else {
                     if(Modal_AppUserAccess.getUsertype().equals(Constants.userType_SupplierCenter) || Modal_AppUserAccess.getUsertype().equals(Constants.userType_DeliveryCenter)){
                         userType = Modal_AppUserAccess.getUsertype();
+                        userName = Modal_AppUserAccess.getName();
                         StartSignUp(mobileNo_String);
 
                     }
                     else{
                         showProgressBar(false);
-                        userType ="";
+                        userType =""; userName ="";
                         Toast.makeText(LoginActivity.this, "Sorry you Don't have Access !!" , Toast.LENGTH_SHORT).show();
 
                     }
@@ -413,6 +415,7 @@ TextView mobileNumber_textView;
                 Log.d(TAG, "Volley JSON post" + "That didn't work!");
                 showProgressBar(false);
                 userType ="";
+                userName ="";
                 Toast.makeText(LoginActivity.this, "Sorry you Don't have Access !!" + Modal_AppUserAccess.getName(), Toast.LENGTH_SHORT).show();
 
                 isAppUserAccessTableServiceCalled = false;
@@ -533,11 +536,13 @@ TextView mobileNumber_textView;
                 if(result.equals(Constants.emptyResult_volley)){
                     showProgressBar(false);
                     userType ="";
+                    userName ="";
                     Toast.makeText(LoginActivity.this, "Sorry you Don't have Access !!" + Modal_AppUserAccess.getName(), Toast.LENGTH_SHORT).show();
 
                 }
                 else {
                     userType = Modal_AppUserAccess.getUsertype();
+                    userName = Modal_AppUserAccess.getName();
                     //  Toast.makeText(LoginActivity.this, "response namee : " + Modal_AppUserAccess.getName(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -552,7 +557,7 @@ TextView mobileNumber_textView;
                 Log.d(TAG, "Volley JSON post" + "That didn't work!");
                 showProgressBar(false);
                 userType =Constants.userType_SupplierCenter;
-
+                userName ="";
                 isAppUserAccessTableServiceCalled = false;
             }
 
@@ -702,6 +707,11 @@ TextView mobileNumber_textView;
         myEdit.putString(
                 "UserMobileNumber", mobileNo_String
         );
+
+        myEdit.putString(
+                "UserName", userName
+        );
+
 
         myEdit.putString(
                 "UserType", userType

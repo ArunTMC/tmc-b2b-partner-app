@@ -8,11 +8,10 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BOrderItemDetails_BulkUpdateInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BOrderItemDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagTransaction;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_UpdatedGoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BOrderItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_UpdatedGoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
@@ -31,7 +30,7 @@ public class B2BOrderItemDetails_BulkUpdate extends AsyncTask<String, String, Li
 
 
 
-    String ApitoCall ="", callMethod ="" , orderplaceddate ="" ,usermobileno_string ="";
+    String ApitoCall ="", callMethod ="" , orderplaceddate ="" ,usermobileno_string ="" , statustoUpdate  ="" ,orderid ="";
     B2BOrderItemDetails_BulkUpdateInterface callbackB2BOrderItemDetails_BulkUpdateInterface = null;
     
     JSONObject jsontoUpdateEarTagDetails = new JSONObject();
@@ -42,17 +41,12 @@ public class B2BOrderItemDetails_BulkUpdate extends AsyncTask<String, String, Li
 
 
 
-    public B2BOrderItemDetails_BulkUpdate(B2BOrderItemDetails_BulkUpdateInterface callBackB2BOrderItemDetails_bulkUpdateInterfacee, String addApiToCall, String callADDMethod , Modal_B2BOrderItemDetails modal_b2BOrderItemDetailss,String orderplaceddate, String usermobileno_string) {
-        this.ApitoCall = addApiToCall;
+    public B2BOrderItemDetails_BulkUpdate(B2BOrderItemDetails_BulkUpdateInterface callBackB2BOrderItemDetails_bulkUpdateInterfacee, String callADDMethod , String orderid , String statusToUpdate , ArrayList<String> earTagDetailsArrayList_Stringg) {
         this.callMethod = callADDMethod;
-        this.callMethod = callADDMethod;
-        this.orderplaceddate = orderplaceddate;
-        this.usermobileno_string = usermobileno_string;
         this.callbackB2BOrderItemDetails_BulkUpdateInterface = callBackB2BOrderItemDetails_bulkUpdateInterfacee;
-        this.modal_b2BOrderItemDetails = modal_b2BOrderItemDetailss;
-        this.earTagDetailsHashMap = modal_b2BOrderItemDetailss.getEarTagDetailsHashMap();
-        this.earTagDetailsArrayList_String = modal_b2BOrderItemDetailss.getEarTagDetailsArrayList_String();
-
+        this.orderid = orderid;
+        this.earTagDetailsArrayList_String = earTagDetailsArrayList_Stringg;
+        this.statustoUpdate = statusToUpdate;
 
     }
 
@@ -65,28 +59,15 @@ public class B2BOrderItemDetails_BulkUpdate extends AsyncTask<String, String, Li
 
         for(int iterator =0 ; iterator < earTagDetailsArrayList_String.size();iterator++) {
             String barcodeString = earTagDetailsArrayList_String.get(iterator);
-            if (earTagDetailsHashMap.containsKey(barcodeString)) {
+           // if (earTagDetailsHashMap.containsKey(barcodeString)) {
 
-                Modal_GoatEarTagDetails modal_goatEarTagDetails = earTagDetailsHashMap.get(barcodeString);
+             //   Modal_GoatEarTagDetails modal_goatEarTagDetails = earTagDetailsHashMap.get(barcodeString);
 
                 try{
-                    jsontoUpdateEarTagDetails.put("barcodeno" , modal_goatEarTagDetails.getBarcodeno());
-                    jsontoUpdateEarTagDetails.put("batchno",modal_goatEarTagDetails.getBatchno());
-                    jsontoUpdateEarTagDetails.put("status" , modal_b2BOrderItemDetails.getStatus());
-                    try{
-                        String weightinGrams_str = modal_goatEarTagDetails.getNewWeight_forBillingScreen();
-                        weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
-                        if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
-                            weightinGrams_str = "0";
-                        }
+                    jsontoUpdateEarTagDetails.put("barcodeno" , barcodeString);
+                    jsontoUpdateEarTagDetails.put("orderid",orderid);
+                    jsontoUpdateEarTagDetails.put("status" ,statustoUpdate);
 
-
-                        weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
-                        double weightinGrams_double = Double.parseDouble(weightinGrams_str);
-                        jsontoUpdateEarTagDetails.put("currentweightingrams",weightinGrams_double);
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -116,7 +97,7 @@ public class B2BOrderItemDetails_BulkUpdate extends AsyncTask<String, String, Li
 
                 }
 
-            }
+          /*  }
             else{
                 if(iterator == (earTagDetailsArrayList_String.size()-1)){
 
@@ -135,6 +116,8 @@ public class B2BOrderItemDetails_BulkUpdate extends AsyncTask<String, String, Li
                     }
                 }
             }
+
+           */
         }
 
 
@@ -148,7 +131,7 @@ public class B2BOrderItemDetails_BulkUpdate extends AsyncTask<String, String, Li
 
     private void updateEntryInEarTagDetails() {
 
-        ApitoCall = API_Manager.updateGoatEarTag;
+        ApitoCall = API_Manager.updateOrderItemDetails;
         try{
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApitoCall, jsontoUpdateEarTagDetails,

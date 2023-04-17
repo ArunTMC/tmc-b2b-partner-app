@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TMC B2B Partner App</string>
-    <string name="Version_No"> 1.0.0 (6) </string>
+    <string name="Version_No"> 1.0.2 (Beta) </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -14,6 +14,9 @@
     <string name="orderplacedtime"> Order Placed Time </string>
     <string name="tmc_deliveryCenter_1">TMC Delivery Center 1</string>
     <string name="home">Home</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="stocklist">Stock List</string>
+
     <string name="batches">Batches</string>
     <string name="placeOrder">Place Order</string>
     <string name="CASH">CASH</string>
@@ -29,6 +32,7 @@
     <string name="batch_id">Batch No</string>
     <string name="created_date">Created Date</string>
     <string name="sent_date">Sent Date</string>
+    <string name="received_date">Received Date</string>
     <string name="status">Status</string>
     <string name="view">View</string>
     <string name="Generate_Report"> Generate Report </string>
@@ -48,9 +52,11 @@
     <string name="barcode">Barcode</string>
 
     <string name="total_count">Total Count</string>
-    <string name="total_weight">Total Weight</string>
-    <string name="total_weightwitgkg">Total Weight (Kg)</string>
-    <string name="total_price">Total Price</string>
+    <string name="total_weight">Total weight</string>
+    <string name="total_weightwitgkg">Total weight (Kg)</string>
+    <string name="total_price">Total price</string>
+    <string name="price_withoutDiscount"> Price  </string>
+    <string name="enterDiscount_amount_value"> Enter discount Amt value </string>
     <string name="total_unscanned_item">UnScanned Items</string>
     <string name="item_count">Item Count</string>
     <string name="add_new_item_existing_batch">Add New Item in Existing Batch</string>
@@ -68,9 +74,14 @@
     <string name="deliverycenter_SoldgoatItemList">DELIVERYCENTER_SOLD_LIST</string>
     <string name="deliverycenter_UnsoldgoatItemList">DELIVERYCENTER_UNSOLD_LIST</string>
 
+    <string name="delivery_center_stockDetails">DELIVERY CENTER STOCK DETAILS</string>
     <string name="delivery_center_batchDetails">DELIVERY CENTER BATCH DETAILS</string>
     <string name="supplier">SUPPLIER</string>
     <string name="delivery_center">DELIVERY CENTER</string>
+    <string name="view_sold_items_in_batch">View Sold Items in Batch</string>
+    <string name="view_unsold_items_in_batch">View UnSold Items in Batch</string>
+
+    <string name="edit_unsold_items_in_batch">Edit UnSold Items in Batch</string>
     <string name="view_edit_batch_item_deliveryCenter">Edit Batch Item Delivery Center</string>
     <string name="view_edit_batch_item_supplier">Edit Batch Item Supplier</string>
     <string name="add_new_item">Add New Item</string>
@@ -84,121 +95,172 @@
 
     <string name="mark_batch_as_sold">Mark Batch as Sold</string>
     <string name="finish_batch">Finish Batch</string>
+
+    <string name="isScannerModeTurnedOn">isScannerModeTurnedOn</string>
     <string name="called_from">CalledFrom</string>
     <string name="scanner_called_to_do">scannercalledtodo</string>
     <string name="scannerCalled_to_FetchData">scannercalledtoFetchData</string>
     <string name="scannerCalled_Not_to_FetchData">scannercalledNottoFetchData</string>
 
+
+    <string name="batches_List">Batch List  </string>
+
     <string name="batches_readyForSale">Batches ready for sales  : </string>
     <string name="batches_on_the_way">Batches Sent by the selected Supplier : </string>
+    <string name="cant_mark_batch_as_sold_instruction">Cant mark batch as Sold when batch have some  Unsold items.  </string>
     <string name="items_in_the_cart">Items Added in the Cart </string>
     <string name="items_in_the_order">Items Added in this order </string>
+    <string name="delivered_items_in_the_list">Delivered Items in the list </string>
+
     <string name="unscanned_stocks_instruction">Items Not yet Scanned  in this batch :  </string>
 
     <string name="item_not_scannedinstruction">This Barcode is Not Added in this batch Yet   </string>
     <string name="choose_an_item">Choose an item</string>
     <string name="item_ctgy">Item Ctgy</string>
-    <string name="currentWeight"> Current Weight</string>
-    <string name="currentWeight_inKg"> Current Weight (Kg) </string>
+    <string name="currentWeight"> Current weight</string>
+    <string name="currentWeight_inKg"> Current weight (Kg) </string>
     <string name="gender_type">Gender</string>
+    <string name="grade_Name">Grade Name</string>
     <string name="breed_type">Breed Type</string>
     <string name="FEMALE_WITH_BABY">FEMALE WITH BABY</string>
     <string name="FEMALE">FEMALE</string>
     <string name="MALE">MALE</string>
     <string name="MALEQUANTITY">Male Quantity</string>
-    <string name="MALEWEIGHT">Male Weight</string>
+    <string name="MALEWEIGHT">Male weight</string>
     <string name="FEMALEQUANTITY">Female Quantity</string>
-    <string name="FEMALEWEIGHT">Female Weight</string>
-    <string name="TOTALQUANTITY">Total Quantity</string>
-    <string name="TOTALWEIGHT">Total Weight</string>
+    <string name="FEMALEWEIGHT">Female weight</string>
+    <string name="TOTALQUANTITY">total Quantity</string>
+    <string name="TOTALWEIGHT">total weight</string>
     <string name="scan">Scan</string>
-    <string name="retailermobileno"> Retailer Mobile No </string>
-    <string name="retailername"> Retailer Name </string>
-    <string name="priceperkg"> Price Per Kg </string>
+    <string name="retailermobileno"> Buyer Mobile No </string>
+    <string name="retailername"> Buyer Name </string>
+    <string name="discount"> discount Value </string>
+    <string name="feedvalue"> Feed Value </string>
+    <string name="priceperkg"> price Per Kg </string>
     <string name="paymentmode">Payment Mode</string>
     <string name="payableamount">Payable Amount</string>
     <string name="placedtime">Placed Time</string>
-    <string name="retailername_priceperkg">Retailer and Price Per Kg </string>
+    <string name="retailername_priceperkg">Buyer and price Per Kg </string>
     <string name="scan_barcode">Scan Barcode</string>
     <string name="search_edit_barcode">Scan &amp; Edit Item</string>
     <string name="search_view_barcode">Scan &amp; View Item</string>
+    <string name="search_view_barcode_secondVersn">Search &amp; View Item</string>
 
     <string name="final_batch_item_report">Finial Batch items Report</string>
 
-    <string name="retailersAlreadyCreated_Instruction"> This Retailer is already added . Please add new Mobile number.</string>
+    <string name="retailersAlreadyCreated_Instruction"> This Buyer is already added . Please add new mobile number.</string>
+    <string name="Please_Fill_correct_FeedValueDetails_Instruction">Please fill correct feed value details and click enter , Before generating bill.</string>
 
-    <string name="Please_Select_Retailer_Instruction">Please Select Retailer Name before CheckOut.</string>
-    <string name="Please_Add_PricePerKg_Instruction">PricePerKg Should be greater than zero .</string>
+    <string name="Please_Select_Retailer_Instruction">Please select buyer before generate bill.</string>
+    <string name="Please_Add_PricePerKg_Instruction">PricePerKg should be greater than zero .</string>
 
-    <string name="Please_Add_PricePerKg_toAddItem_Instruction">Please Set Price Per Kg before add item in the cart.</string>
-    <string name="Please_Select_Retailer_toAddItem_Instruction">Please Select Retailer Name before add item in the cart.</string>
+    <string name="Please_Add_PricePerKg_toAddItem_Instruction">Please Set price Per Kg before add item in the cart.</string>
+    <string name="Please_Select_Retailer_toAddItem_Instruction">Please select buyer before add item in the cart.</string>
 
-    <string name="Please_WaitUntil_Add_or_update_Instruction">Please wait Until Add / Updation process gets Finished.</string>
+    <string name="Please_WaitUntil_Add_or_update_Instruction">Please wait until Add / Updation process gets finished.</string>
 
     <string name="scan_new_barcode_toChangeEarTag">Scan New Eartag to replace the Lost EarTag</string>
-    <string name="Should_add_one_item"> You Should add atleast one item to finish the batch</string>
+    <string name="Should_add_one_item"> You should add atleast one item to finish the batch</string>
     <string name="BatchDetailsAlreadyCreated_Instruction"> Sorry!!  Batch for this Batch ID is Already Created .</string>
     <string name="GoatEarTagAlreadyCreated_Instruction"> This Barcode is already added . Please scan new One.</string>
     <string name="GoatEarTagAlreadyCreated_SwitchTag_Instruction"> This Barcode is already added . Please scan new One .</string>
-    <string name="CantEditItem_Which_isInCart_Instruction"> Please Clear this item from the cart to Edit it !</string>
-    <string name="BatchDetailsCannotUpdated_Instruction"> Sorry!! Cannot Update Item which is not  created yet .</string>
-    <string name="GoatEatTagsCannotUpdated_Instruction"> Sorry!! Cannot Update Item which is not  created yet.</string>
-    <string name="GoatEatTagsCannotUpdated_PleaseChangeTOUpdate_Instruction"> Sorry!! Cannot Save Item without Changing anything .</string>
+    <string name="CantEditItem_Which_isInCart_Instruction"> Please clear this item from the cart to edit it !</string>
+    <string name="BatchDetailsCannotUpdated_Instruction"> Sorry!! cannot update item which is not created yet .</string>
+    <string name="GoatEatTagsCannotUpdated_Instruction"> Sorry!! cannot update item which is not created yet.</string>
+    <string name="GoatEatTagsCannotUpdated_PleaseChangeTOUpdate_Instruction"> Sorry!! cannot save item without changing anything .</string>
     <string name="PleaseTryAgainAfterSometime_Instruction"> Sorry!! Please Try Again After Sometime .</string>
     <string name="BatchDetailsnotReviewedYet_Instruction"> Sorry!! Please Finish Reviewing this batch before place order  .</string>
+    <string name="Cancel_bill_Instruction"> Are you sure you want to cancel this order </string>
+
+    <string name="Clear_Cart_Instruction"> Are you sure you want to clear all items from cart ? </string>
+
+
+    <string name="do_you_need_fetch_dataFor_more_days_Instruction"> Do you need to load more orders ? </string>
+
+
+    <string name="RetailerNotFound_Instruction"> Sorry!! There is no buyer for this mobile no . Please add buyer by using the option in settings . </string>
+    <string name="RetailerNotFound_AddNewRetailer_Instruction"> Sorry!! There is no buyer for this mobile no . Do you need to add buyer now ?? . </string>
+    <string name="RetailerNametFound_AddNewRetailer_Instruction"> Sorry!! There is no buyer in this name . Do you need to add buyer now ?? . </string>
 
     <string name="BatchDetailsnotFound_Instruction"> Sorry!! Item for this Batch No is not found .</string>
-    <string name="EarTagDetailsNotFound_Instruction"> Sorry!! Item for this BarcodeNo is not  found .</string>
-    <string name="CartItemListNotFound_Instruction"> Sorry!! There is no Item Added in the cart .</string>
-    <string name="GoatLost_Instruction"> Sorry!! Goat Item for this Barcode is Already Marked as LOST !! .</string>
-    <string name="GoatDead_Instruction"> Sorry!! Goat Item for this Barcode is Already Marked as DEAD !! .</string>
-    <string name="GoatSick_Instruction"> Sorry!! Goat Item for this Barcode is Already Marked as SICK !! .</string>
-    <string name="EarTagLost_Instruction"> Sorry!! Ear Tag for this Barcode is Already Marked as LOST !! .</string>
-    <string name="EarTagSick_Instruction"> Sorry!! Ear Tag for this Barcode is Already Marked as SICK !! .</string>
-    <string name="EarTagSold_Instruction"> Sorry!! Ear Tag for this Barcode is Already Marked as SOLD !! .</string>
+    <string name="EarTagDetailsNotFound_Instruction"> Sorry!! Item for this barcodeno is not  found .</string>
+    <string name="CartItemListNotFound_Instruction"> Sorry!! There is no item added in the cart .</string>
+    <string name="GoatLost_Instruction"> Sorry!! Goat item for this barcode is already marked as LOST !! .</string>
+    <string name="GoatDead_Instruction"> Sorry!! Goat item for this barcode is already marked as DEAD !! .</string>
+    <string name="GoatSick_Instruction"> Sorry!! Goat item for this barcode is already marked as SICK !! .</string>
+    <string name="EarTagLost_Instruction"> Sorry!! Ear Tag for this barcode is already marked as LOST !! .</string>
+    <string name="EarTagSick_Instruction"> Sorry!! Ear Tag for this barcode is already marked as SICK !! .</string>
+    <string name="EarTagSold_Instruction"> Sorry!! Ear Tag for this barcode is already marked as SOLD !! .</string>
     <string name="notStockedYet_Instruction"> Sorry!! This Item is Not Stocked Yet !! .</string>
     <string name="EarTag_Is_AlreadyReviewedInstruction"> Sorry!! Ear Tag for this Barcode is Already Reviewed !! .</string>
-    <string name="EarTagCancelled_Instruction"> Sorry!! Ear Tag for this Barcode is Marked as CANCELLED !! .</string>
+    <string name="EarTagCancelled_Instruction"> Sorry!! EarTag for this barcode is marked as CANCELLED !! .</string>
+    <string name="manage_retailer_details">Manage Buyer Details </string>
 
-    <string name="retailers_mobileno_should_be_10digits">Retailers Mobile No Should be 10 digits </string>
-    <string name="retailers_name_cant_be_empty">Retailers  Name Cant be Empty </string>
+    <string name="retailers_mobileno_should_be_10digits">Buyers mobileno should be 10 digits </string>
+    <string name="retailers_name_cant_be_empty">Buyers name cant be empty </string>
+    <string name="retailers_Address_cant_be_empty">Buyers address cant be empty </string>
 
-    <string name="cant_enter_more_thanOne_ponit_weight">You cant Enter more than one Point</string>
+    <string name="cant_enter_more_thanOne_ponit_weight">you cant enter more than one point</string>
 
-    <string name="EnteredWeightShouldbegreaterthan0Instruction">Entered Weight should be Greater than 0 Kg</string>
+    <string name="EnteredWeightShouldbegreaterthan0Instruction">entered weight should be greater than 0 Kg</string>
 
-    <string name="EnteredWeightShouldbelessthan50Instruction">Entered Weight should be Less than 50 Kg</string>
+    <string name="EnteredWeightShouldbelessthan50Instruction">entered weight should be less than 50 Kg</string>
     <string name="NetworkErrorPlease_Try_again_afterSometime">Network Issue .. Please try again Later !!!! </string>
 
     <string name="LimitExceed_Please_Try_again_afterSometime">You tried too many times .. Please try again Later !!!! </string>
-    <string name="CannotSaveWithOutItemnameAlert">You Cannot save without Choosing item !!!! </string>
-    <string name="CannotSaveWithOutGenderAlert">You Cannot save without Choosing Gender !!!! </string>
-    <string name="CannotSaveWithOutBreedTypeAlert">You Cannot save without Choosing BreedType !!!! </string>
+    <string name="CannotSaveWithOutItemnameAlert">You cannot save without choosing item !!!! </string>
+    <string name="CannotSaveWithOutGenderAlert">You cannot save without choosing Gender !!!! </string>
+    <string name="CannotSaveWithOutBreedTypeAlert">You cannot sstrave without choosing breedtype !!!! </string>
+    <string name="CannotSaveWhenTotalPriceisZeroAlert">You cannot save when total price value is zero !!!! </string>
+    <string name="CannotSaveWhenTotalWeightisZeroAlert">You cannot save when total weight value is zero !!!! </string>
+    <string name="CannotSaveWhenTotalPriceWithOutDiscountisZeroAlert">You cannot save when price without discount value is zero !!!! </string>
+    <string name="CannotSaveWhenPartsisZeroAlert">You cannot save when parts value is zero !!!! </string>
+    <string name="CannotSaveWhenApproxWeightisZeroAlert">You cannot save when Approx weight value is zero !!!! </string>
+    <string name="CannotSaveWhenMeatYieldisZeroAlert">You cannot save when meat yield value is zero !!!! </string>
+    <string name="CannotSaveWhendiscountisgreaterthanpriceisZeroAlert">You cannot save when discount is greater than price !!! </string>
 
-    <string name="CannotSaveWithOutBarcodeAlert">You Cannot save without Scanning barcode !!!! </string>
-    <string name="CannotSaveWithOutWeightDetailsAlert">You Cannot leave weight as zero / Empty !!!! </string>
+    <string name="CannotSaveWhenAmounthaveMultiplePointsAlert">You cannot save when amount paid have multiple points !!! </string>
+    <string name="CannotSaveWhenAmountPaidislessthanZeroAlert">You cannot save when amount paid is less than price !!! </string>
+    <string name="CannotSaveWhenAmountPaidisgreaterThanOutstandingAmountAlert">You cannot save when amount paid is greater than Outstanding amount !!! </string>
+
+    <string name="CannotFetchWhenbuyerisNotSelected">You cannot Fetch when buyer is not selected !!! </string>
+    <string name="CannotFetchWhenstartdateNotSelected">You cannot Fetch when Start date is not selected !!! </string>
+    <string name="CannotFetchWhenendDateNotSelected">You cannot Fetch when End date not selected !!! </string>
+
+
+    <string name="CannotSaveWithOutBarcodeAlert">You cannot save without Scanning barcode !!!! </string>
+    <string name="CannotSaveWithOutWeightDetailsAlert">You cannot leave weight as zero / Empty !!!! </string>
     <string name="please_enter_correctweight">Please try to enter correct value in weight !!!! </string>
 
     <string name="Goat_Status_is_Not_good"> Goat Status is not GOOD / Sold . Do you need to Continue . </string>
-    <string name="CannotCreate_NewBatchAlert">You Cannot Create a New batch . When Last Batch is not closed yet !!!! </string>
+    <string name="CannotCreate_NewBatchAlert">You cannot Create a New batch . When Last Batch is not closed yet !!!! </string>
     <string name="Please_Connect_To_Internet">Please make sure your phone has an Internet Connection and try again !!  </string>
 
+
+    <string name="Enter_priceDetails_Instruction"> Enter price </string>
     <string name="selectItem_SpinnerInstruction"> --- Select an Item --- </string>
     <string name="Enter_weightDetails_Instruction"> Enter weight </string>
     <string name="DeleteBatch_Instruction">Are you sure you want to Delete this Batch !!!</string>
     <string name="Enter_Supplier_Password_Instruction">Enter correct Supplier Password</string>
     <string name="Please_scan_items_to_finish_this_batch">Please Scan All items to Finish this item .</string>
-    <string name="PleaseConfirmUpdateRetailerName">Are you Sure ! Do you need to update Retailer Details </string>
-    <string name="PleaseConfirmPaymentMode">Are you Sure ! Do you need to update Payment Mode </string>
-    <string name="PleaseConfirmUpdatePricePerKg">Are you Sure ! Do you need to update Price Per Kg Details </string>
-    <string name="PleaseConfirmUpdateRetailer_pricePerKg">Are you Sure ! Do you need to update Retailer &amp; Price Details  </string>
+    <string name="PleaseConfirmUpdateRetailerName">Are you Sure ! Do you need to update Buyer Details </string>
+    <string name="PleaseConfirmPaymentMode">Are you Sure ! Do you need to update Paymentmode </string>
+    <string name="PleaseConfirmUpdatePricePerKg">Are you Sure ! Do you need to update priceperkg Details </string>
+
+    <string name="PleaseConfirmPlaceOrder">Do you need to placeorder now ? </string>
+    <string name="PleaseAddGoatItemBrforePlaceOrder">Please Add atleast 1 item in the cart . Before Checkout !!  </string>
+    <string name="PleaseConfirmrecordpayment">Do you need to record this payment ? </string>
+
+    <string name="PleaseConfirmUpdateRetailer_pricePerKg">Are you Sure ! Do you need to update Buyer &amp; price Details  </string>
 
     <string name="Enter_DeliveryCenter_Password_Instruction">Enter correct Delivery Center Password</string>
     <string name="DeleteItemFromCart">Do you want to delete this Item from the cart !!!</string>
-    <string name="Enter_Mobileno_Instruction">Enter correct 10 digit Mobile Number</string>
+    <string name="Enter_Mobileno_Instruction">Enter 10 digit Mobile Number</string>
     <string name="Select_DeliveryCenter_Instruction">Please Select Delivery Center First</string>
     <string name="Enter_Otp_Instruction">Enter correct 6 digit OTP</string>
     <string name="Exit_Instruction">Are you sure you want to Exit !!!</string>
+    <string name="LogoutDeliveryCentre_Instruction">Are you sure you want to Logout from this Delivery Centre !!!</string>
+
     <string name="Logout_Instruction">Are you sure you want to Logout !!!</string>
     <string name="ScanAgain_Instruction">Please Use TMCBarcode &amp; Scan Again !!!</string>
     <string name="ChangeGoatStatus_Instruction">Do you need to change the status ? </string>
@@ -206,11 +268,17 @@
     <string name="No_Text">No</string>
     <string name="Cancel_Text">Cancel</string>
     <string name="OK_Text">OK</string>
+    <string name="Clear_Text">Clear</string>
     <string name="Empty_Text"></string>
-    <string name="weight_details">Weight Details</string>
-    <string name="current_weight">Current Weight</string>
-    <string name="new_details">New Weight</string>
+    <string name="weight_details">weight Details</string>
+    <string name="current_weight">Current weight</string>
+    <string name="meat_yield">Meat yield</string>
+    <string name="parts"> Parts </string>
+    <string name="Discount">discount </string>
+    <string name="TotalAmount">Total Amount </string>
+    <string name="new_details">New weight</string>
     <string name="description">Description</string>
+    <string name="address">Address</string>
     <string name="save">Save</string>
     <string name="click_to_create_new_item">Click to Create New Item</string>
     <string name="scanned_items">Scanned Items</string>
@@ -228,6 +296,8 @@
     <string name="addNewGrade">Add New Grade Detail</string>
     <string name="view_items_From_bill"> View Items in the Bill </string>
     <string name="view_items_From_cart"> View Item in Cart </string>
+    \
+    <string name="addRetailer"> Add New Buyer </string>
     <string name="addNew_items"> Add Item in Cart </string>
     <string name="Cancel_bill"> Cancel Bill </string>
     <string name="Print_bill"> Print Bill </string>
@@ -236,11 +306,12 @@
     <string name="Delivery_Center_Name">Delivery Center Name </string>
     <string name="Supplier_Name">Supplier Name </string>
     <string name="create_batch_amp_continue"> Contniue  </string>
-    <string name="loaded_weightInGrams">Loaded Weight</string>
-    <string name="stocked_weightInGrams">Stocked Weight</string>
-    <string name="minimum_weight">Mini - Weight</string>
-    <string name="maximum_weight">Maxi - Weight</string>
-    <string name="average_weight">Average Weight</string>
+    <string name="approx_liveweight">Approx Live weight</string>
+    <string name="loaded_weightInGrams">Loaded weight</string>
+    <string name="stocked_weightInGrams">Stocked weight</string>
+    <string name="minimum_weight">Mini - weight</string>
+    <string name="maximum_weight">Maxi - weight</string>
+    <string name="average_weight">Average weight</string>
     <string name="review_items">Review Items</string>
     <string name="view_unreviewed_items">View Un-Reviewed Items</string>
     <string name="view_reviewed_items">View Reviewed Items</string>
@@ -261,8 +332,13 @@
     <string name="unreviewed_item_details">UnReviewed Item Details</string>
     <string name="reviewed_item_details">Reviewed Item Details</string>
     <string name="placedOrder_Details_Screen">Placed Orders Details Screen</string>
+    <string name="placedOrder_Details_Screen_SecondVersion">Placed Orders Details Screen_SecondVersion</string>
+    <string name="pos_placedOrder_Details_Screen_SecondVersion">Placed Orders Details Screen_SecondVersion_POS</string>
+    <string name="datewise_placedOrder_Details_Screen_SecondVersion">Datewise Placed Orders Details Screen_SecondVersion</string>
+    <string name="markdeliveredOrders_detailsScreen">Marked Delivered Orders Screen</string>
+
     <string name="billing_Screen">Billing Screen</string>
-    <string name="billing_Screen_retailer">Billing Screen_Retailer</string>
+    <string name="billing_Screen_retailer">Billing Screen_Buyer</string>
     <string name="pos_billing_Screen_placeOrder">POS Billing Screen_PlaceOrder</string>
     <string name="billing_Screen_placeOrder">Billing Screen_PlaceOrder</string>
     <string name="billing_Screen_editOrder">Billing Screen_EditOrder</string>
@@ -276,11 +352,12 @@
     <string name="order_details_screen"> Order Details Screen </string>
 
     <string name="datewise_placed_orders_list"> Datewise Placed Orders List  </string>
+    <string name="view_orders_list"> View Orders List  </string>
 
     <string-array name="paymentmode">
         <item>CASH</item>
         <item>CARD</item>
-        <item>CREDIT</item>
+        <item>CHEQUE</item>
         <item>UPI</item>
     </string-array>
 

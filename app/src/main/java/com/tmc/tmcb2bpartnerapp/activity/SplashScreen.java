@@ -35,10 +35,11 @@ import com.tmc.tmcb2bpartnerapp.interfaces.B2BItemCtgyInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BRetailerDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.DeliveryCenterDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.SupplierDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_AppUserAccess;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BRetailerDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_SupplierDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_AppUserAccess;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BRetailerDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_SupplierDetails;
+import com.tmc.tmcb2bpartnerapp.second_version.activity.Home_Screen;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
@@ -342,7 +343,7 @@ private static final int REQUEST_CAMERA_PERMISSION = 201;
                             e.printStackTrace();
                         }
                         try {
-                            call_and_init_SupplierDetailsService();
+                          //  call_and_init_SupplierDetailsService();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -355,13 +356,13 @@ private static final int REQUEST_CAMERA_PERMISSION = 201;
 
 
                         try {
-                            Call_and_Initialize_GoatGradeDetails(Constants.CallGETListMethod);
+                         //   Call_and_Initialize_GoatGradeDetails(Constants.CallGETListMethod);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
 
 
-                        intent_to_MainActivity = new Intent(SplashScreen.this, DeliveryCenterDashboardScreen.class);
+                        intent_to_MainActivity = new Intent(SplashScreen.this, Home_Screen.class);
 
                     }
                     else if (userType.toUpperCase().equals(Constants.userType_SupplierCenter)) {
@@ -650,7 +651,7 @@ private static final int REQUEST_CAMERA_PERMISSION = 201;
 
         };
 
-        String getApiToCall = API_Manager.getretailerDetailsList ;
+        String getApiToCall = API_Manager.getretailerDetailsListWithDeliveryCentreKey+deliveryCenterKey  ;
 
         B2BRetailerDetails asyncTask = new B2BRetailerDetails(callback_retailerDetailsInterface,  getApiToCall, Constants.CallGETListMethod);
         asyncTask.execute();

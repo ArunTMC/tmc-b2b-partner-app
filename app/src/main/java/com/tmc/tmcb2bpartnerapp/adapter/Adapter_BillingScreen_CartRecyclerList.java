@@ -11,14 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.activity.BillingScreen;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 
 import java.util.HashMap;

@@ -157,6 +157,65 @@
                             android:textColor="@color/black"/>
                     </LinearLayout>
                 </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="10dp"
+
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/price_withoutDiscount"
+                                android:textColor="@color/TMCPrimaryPurpleColor"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/priceWithDiscount_textview"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginBottom="7dp"
+                                android:fontFamily="@font/open_sans_bold"
+
+                                android:text=" "
+                                android:textColor="@color/black"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/Discount"
+                                android:textSize="20sp"
+                                android:textColor="@color/TMCPrimaryPurpleColor"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="18sp"
+                                android:text=" "
+                                android:layout_marginBottom="7dp"
+                                android:fontFamily="@font/open_sans_bold"
+
+                                android:id="@+id/discount_textview"
+                                android:textColor="@color/black"/>
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -168,6 +227,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
@@ -192,6 +252,9 @@
                                 android:textColor="@color/black"
                                 android:textSize="18sp" />
                         </LinearLayout>
+
+
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -230,7 +293,7 @@
                 android:background="@color/Grey" />
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_weight="1.3"
+                android:layout_weight="2.4"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="5dp"
@@ -242,17 +305,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="10dp"
                         android:paddingEnd="10dp"
+                        android:layout_gravity="center"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
@@ -281,6 +347,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
@@ -318,7 +385,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/TOTALQUANTITY"
-                                android:textSize="20sp"
+                                android:textSize="22sp"
                                 android:gravity="center"
 
                                 android:textColor="@color/TMCPrimaryPurpleColor"/>
@@ -326,7 +393,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:textSize="18sp"
+                                android:textSize="20sp"
                                 android:text=" "
                                 android:layout_marginBottom="7dp"
                                 android:gravity="center"
@@ -340,6 +407,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -347,6 +416,8 @@
                             android:layout_weight="1"
                             android:paddingStart="10dp"
                             android:paddingEnd="10dp"
+                            android:visibility="gone"
+
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
@@ -377,6 +448,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_weight="1"
+                            android:visibility="gone"
+
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
@@ -414,7 +487,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/TOTALWEIGHT"
-                                android:textSize="20sp"
+                                android:textSize="22sp"
                                 android:gravity="center"
 
                                 android:textColor="@color/TMCPrimaryPurpleColor"/>
@@ -422,7 +495,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:textSize="18sp"
+                                android:textSize="21sp"
                                 android:layout_marginBottom="7dp"
                                 android:gravity="center"
                                 android:fontFamily="@font/open_sans_bold"

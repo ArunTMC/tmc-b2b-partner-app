@@ -1,5 +1,6 @@
 package com.tmc.tmcb2bpartnerapp.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -38,11 +39,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +62,7 @@ import com.itextpdf.text.pdf.PdfPCellEvent;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.tmc.tmcb2bpartnerapp.R;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BOrderItemDetails;
+import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartItemDetaillsInterface;
 import com.tmc.tmcb2bpartnerapp.utils.BarcodeScannerScreen;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 import com.tmc.tmcb2bpartnerapp.activity.DeliveryCenterDashboardScreen;
@@ -74,7 +77,6 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BInvoiceNoManager;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BItemCtgy;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BRetailerDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartDetaillsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartOrderDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BGoatGradeDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BInvoiceNoManagerInterface;
@@ -82,15 +84,15 @@ import com.tmc.tmcb2bpartnerapp.interfaces.B2BItemCtgyInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BRetailerDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.BarcodeScannerInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartItemDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartOrderDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BItemCtgy;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BRetailerDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_POJOClassForFinalSalesHashmap;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_UpdatedB2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BItemCtgy;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BRetailerDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_POJOClassForFinalSalesHashmap;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_UpdatedB2BCartOrderDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
@@ -146,7 +148,8 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
     static  DecimalFormat twoDecimalConverter = new DecimalFormat(Constants.twoDecimalPattern);
     Spinner paymentMode_spinner;
     CardView topCardView;
-
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    Switch scannerModeSwitch;
 
     private Handler handler;
     B2BGoatGradeDetailsInterface callback_goatGradeDetailsInterface = null;
@@ -162,7 +165,7 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
     boolean  isRetailerDetailsServiceCalled = false ;
 
 
-
+    public static boolean isScannerModeTurnedOn = false;
     public static boolean isorderSummary_checkoutClicked = false;
     public static  boolean  isRetailerSelected = false ,isRetailerEditedByUser = false ,ispaymentModeSelectedByuser = false ,isAdapter_for_paymentModeSetted =false;
     public static boolean isCartAlreadyCreated = false ,isRetailerUpdated = false ,isPricePerKgUpdated = false , priceperKg_not_edited_byUser = true  ;
@@ -194,7 +197,7 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
             ,retaileraddress =""  ,gradename ="" , gradeprice ="";
 
     boolean isB2BCartDetailsCalled = false;
-    B2BCartDetaillsInterface callback_b2BCartDetaillsInterface = null;
+    B2BCartItemDetaillsInterface callback_b2BCartItemDetaillsInterface = null;
 
     private static final int OPENPDF_ACTIVITY_REQUEST_CODE = 2;
     private static int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 1;
@@ -296,7 +299,7 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
         paymentMode_spinner =  view.findViewById(R.id.paymentMode_spinner);
         paymentMode_spinnerLayout  = view.findViewById(R.id.paymentMode_spinnerLayout);
         topCardView = view.findViewById(R.id.topCardView);
-
+        scannerModeSwitch = view.findViewById(R.id.scannerModeSwitch);
 
         deliveryCentre_placeOrderScreen_fragment =this;
 
@@ -396,7 +399,6 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
             }
         });
 
-
         paymentMode_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -426,6 +428,27 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
 
             }
         });
+
+
+
+        scannerModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+
+                if(isChecked){
+                    isScannerModeTurnedOn = true;
+                    Toast.makeText(mContext, "Turned On", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    isScannerModeTurnedOn = false;
+                    Toast.makeText(mContext, "Turned Off", Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            }
+        });
+
 
 
 
@@ -1415,7 +1438,7 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
         earTagDetails_weightStringHashMap.clear();
         earTagDetailsArrayList_String.clear();
         selected_gradeDetailss_arrayList.clear();
-        callback_b2BCartDetaillsInterface = new B2BCartDetaillsInterface()
+        callback_b2BCartItemDetaillsInterface = new B2BCartItemDetaillsInterface()
         {
 
 
@@ -1655,8 +1678,8 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
 
         };
 
-        String getApiToCall = API_Manager.getCartDetailsForOrderid+ orderid ;
-        B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartDetaillsInterface,  getApiToCall, callGETListMethod);
+        String getApiToCall = API_Manager.getCartItemDetailsForOrderid + orderid ;
+        B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartItemDetaillsInterface,  getApiToCall, callGETListMethod);
         asyncTask.execute();
 
 
@@ -1823,8 +1846,12 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
             Intent intent = new Intent(mContext, BarcodeScannerScreen.class);
             intent.putExtra(getString(R.string.scanner_called_to_do), processtoDOAfterScan);
             intent.putExtra(getString(R.string.called_from), getString(R.string.billing_Screen));
+            intent.putExtra(getString(R.string.isScannerModeTurnedOn), isScannerModeTurnedOn);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            startActivity(intent);
+           // startActivity(intent);
+            startActivityForResult(intent,2);
+
+
         }
         catch (Exception e){
             showProgressBar(false);
@@ -2592,8 +2619,7 @@ public class DeliveryCentre_PlaceOrderScreen_Fragment extends Fragment {
 
         };
 
-        String getApiToCall = API_Manager.getretailerDetailsList ;
-
+        String getApiToCall = API_Manager.getretailerDetailsListWithDeliveryCentreKey+deliveryCenterKey ;
         B2BRetailerDetails asyncTask = new B2BRetailerDetails(callback_retailerDetailsInterface,  getApiToCall, Constants.CallGETListMethod);
         asyncTask.execute();
 
@@ -4954,6 +4980,7 @@ foreground
 
     }
 
+
     public void neutralizeArray_and_OtherValues() {
         isB2BItemCtgyTableServiceCalled = false;
         isGoatEarTagDetailsTableServiceCalled = false;
@@ -5422,6 +5449,8 @@ foreground
             e.printStackTrace();
         }
     }
+
+
 
     public class RoundRectangle implements PdfPCellEvent {
         public void cellLayout(PdfPCell cell, Rectangle rect,

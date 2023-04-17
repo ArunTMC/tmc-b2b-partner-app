@@ -1,7 +1,6 @@
 package com.tmc.tmcb2bpartnerapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -24,39 +23,38 @@ import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.adapter.Adapter_PlacedOrdersList;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BOrderDetails;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BOrderDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BOrderDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.DateParser;
 import com.tmc.tmcb2bpartnerapp.utils.ListItemSizeSetter;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 import java.util.Objects;
-import java.util.TimeZone;
 
-public class DatewisePlacedOrdersList extends BaseActivity {
+public class  DatewisePlacedOrdersList extends BaseActivity {
 
     boolean isB2BCartOrderTableServiceCalled = false , isSearchButtonClicked = false;
     B2BOrderDetailsInterface callback_b2bOrderDetails;
     String deliveryCenterKey ="", deliveryCenterName ="",startDate ="", EndDate ="";
-    ArrayList<Modal_B2BOrderDetails> orderDetailsArrayList = new ArrayList<>();
+    static ArrayList<Modal_B2BOrderDetails> orderDetailsArrayList = new ArrayList<>();
     ArrayList<Modal_B2BOrderDetails> sortedOrderDetailsArrayList = new ArrayList<>();
-
+    Adapter_PlacedOrdersList adapter_placedOrdersList ;
     ListView orderdetailsListview;
     TextView ordersCount_textwidget , dateSelector_text ,fetchData_textView,ordersinstruction;
-    ImageView search_button;
+    ImageView search_button , closeSearchView_button;
     DatePickerDialog datepicker;
     LinearLayout dateSelectorLayout , loadingPanel ,loadingpanelmask , back_IconLayout,newOrdersSync_Layout;
     EditText mobile_search_barEditText;
     LinearLayout search_close_btn;
 
+    String calledFrom ="";
+
+
+   public static  DatewisePlacedOrdersList datewisePlacedOrdersList ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,11 +96,14 @@ public class DatewisePlacedOrdersList extends BaseActivity {
             mobile_search_barEditText = findViewById(R.id.search_barEdit);
             search_close_btn = findViewById(R.id.search_close_btn);
             newOrdersSync_Layout = findViewById(R.id.newOrdersSync_Layout);
+            calledFrom = getIntent().getExtras().getString("CalledFrom");
+
+
         }
         catch (Exception e){
             e.printStackTrace();
         }
-
+        datewisePlacedOrdersList = this;
 
         SharedPreferences sh1 = getSharedPreferences("DeliveryCenterData", MODE_PRIVATE);
 
@@ -323,9 +324,9 @@ public class DatewisePlacedOrdersList extends BaseActivity {
 
     }
 
-    private void callAdapter(ArrayList<Modal_B2BOrderDetails> orderDetailsArrayList) {
-        if(this.orderDetailsArrayList.size()>0) {
-            Adapter_PlacedOrdersList adapter_placedOrdersList = new Adapter_PlacedOrdersList(getApplicationContext(), orderDetailsArrayList, DatewisePlacedOrdersList.this, "DatewisePlacedOrders");
+    public void callAdapter(ArrayList<Modal_B2BOrderDetails> orderDetailsArrayList) {
+        if(orderDetailsArrayList.size()>0) {
+             adapter_placedOrdersList = new Adapter_PlacedOrdersList(getApplicationContext(), orderDetailsArrayList, DatewisePlacedOrdersList.this, calledFrom);
             orderdetailsListview.setAdapter(adapter_placedOrdersList);
             ListItemSizeSetter.getListViewSize(orderdetailsListview);
             orderdetailsListview.setVisibility(View.VISIBLE);
@@ -349,7 +350,7 @@ public class DatewisePlacedOrdersList extends BaseActivity {
         int month = cldr.get(Calendar.MONTH);
         int year = cldr.get(Calendar.YEAR);
         // date picker dialog
-        datepicker = new DatePickerDialog(DatewisePlacedOrdersList.this,
+        datepicker = new DatePickerDialog(DatewisePlacedOrdersList.this, AlertDialog.THEME_DEVICE_DEFAULT_DARK,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {

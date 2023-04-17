@@ -487,11 +487,23 @@
             </androidx.cardview.widget.CardView>
 
 
+
+            <Switch
+                android:id="@+id/scannerModeSwitch"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/topCardView"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_height="match_parent"
+                android:text="Turn on Scanner Mode"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/topCardView"
+                android:layout_below="@+id/scannerModeSwitch"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
                 android:id="@+id/secondCardView"
@@ -595,6 +607,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
+
 
 
 

@@ -225,7 +225,7 @@
                                 android:paddingTop="1dp"
                                 android:paddingEnd="15dp"
                                 android:inputType="textMultiLine"
-                                android:hint="@string/description"
+                                android:hint="@string/address"
                                 android:background="@drawable/grey_edittext_withoutborder"
                                 android:layout_height="wrap_content" />
 

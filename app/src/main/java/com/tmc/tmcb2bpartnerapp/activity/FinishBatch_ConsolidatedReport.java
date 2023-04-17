@@ -31,10 +31,10 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenterHomeScreenFragment;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsUpdate;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsUpdate;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
@@ -1199,6 +1199,8 @@ public class FinishBatch_ConsolidatedReport extends BaseActivity {
             Modal_B2BBatchDetailsUpdate modal_b2BBatchDetailsUpdate = new Modal_B2BBatchDetailsUpdate();
             modal_b2BBatchDetailsUpdate.setBatchno(batchno);
             modal_b2BBatchDetailsUpdate.setSupplierkey(supplierKey);
+            modal_b2BBatchDetailsUpdate.setDeliverycenterkey(selectedDeliveryCenterKey);
+
             processedDate = DateParser.getDate_and_time_newFormat();
             if(activityCalledFrom.equals(getString(R.string.delivery_center))|| activityCalledFrom.equals(getString(R.string.delivery_center_batchDetails))) {
                 if(Modal_B2BBatchDetailsStatic.getStatus().toUpperCase().equals(Constants.batchDetailsStatus_Fully_Loaded)){

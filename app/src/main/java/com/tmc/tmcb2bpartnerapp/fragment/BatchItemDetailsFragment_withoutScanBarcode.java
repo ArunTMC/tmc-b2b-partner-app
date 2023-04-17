@@ -29,7 +29,6 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.tmc.tmcb2bpartnerapp.R;
-import com.tmc.tmcb2bpartnerapp.utils.BarcodeScannerScreen;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 import com.tmc.tmcb2bpartnerapp.activity.GoatEarTagItemDetailsList;
 import com.tmc.tmcb2bpartnerapp.adapter.Adapter_goatGradeDetailsSpinnerItems;
@@ -41,23 +40,23 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BItemCtgy;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.GoatEarTagTransaction;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartDetaillsInterface;
+import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartItemDetaillsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartOrderDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BGoatGradeDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BItemCtgyInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.BarcodeScannerInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagTransactionInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartItemDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartOrderDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BItemCtgy;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagTransaction;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_UpdatedGoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BItemCtgy;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagTransaction;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_UpdatedGoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
@@ -93,7 +92,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
     Context mContext;
     Button save_button;
     String calledFrom,scannedBarcode="",selectedCategoryItem="",selectedGender="",selectedBreed="", selectedGradeName ="" , selectedGradePrice ="",selectedGradeKey =""
-            ,userType ="",userMobileNo ="",selectedGoatStatus="",earTaglastStatusFromDB = "",lastlySelectedSupplierKey="" ;
+            ,userType ="",userMobileNo ="",selectedGoatStatus="",earTaglastStatusFromDB = "",lastlySelectedSupplierKey="" , batchStatus ="" ;
     public static BarcodeScannerInterface barcodeScannerInterface = null;
     Spinner chooseItem_spinner,chooseGrade_spinner,breedType_spinner;
     ArrayList<String> itemCategory_arrayList = new ArrayList<>();
@@ -111,7 +110,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
     B2BItemCtgyInterface callback_B2BItemCtgyInterface = null;
     boolean  isB2BItemCtgyTableServiceCalled = false;
 
-    B2BCartDetaillsInterface callback_b2BCartDetaillsInterface = null;
+    B2BCartItemDetaillsInterface callback_b2BCartItemDetaillsInterface = null;
     B2BGoatGradeDetailsInterface callback_goatGradeDetailsInterface = null;
     boolean isGoatGradeDetailsServiceCalled = false;
 
@@ -123,7 +122,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
     double entered_Weight_double = 0 ;
     String previous_WeightInGrams  = "0";
     String previousSelectedGender = "",previouslySelectedGradekey ="" , previouslySelectedGradePrice ="";
-    String batchStatus ="" , batchNo ="" , deliveryCenterKey ="", deliveryCenterName ="" , orderid ="";
+    String  batchNo ="" , deliveryCenterKey ="", deliveryCenterName ="" , orderid ="";
     DecimalFormat df = new DecimalFormat(Constants.threeDecimalPattern);
     LinearLayout back_IconLayout,goatstatus_layout,noneditable_weight_breed_layout,editable_weight_breed_layout
             ,editable_weight_breed_Label_layout;
@@ -165,8 +164,6 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-
         try {
             BaseActivity.baseActivity.getDeviceName();
         }
@@ -248,7 +245,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
 
         batchNo = String.valueOf( Modal_B2BBatchDetailsStatic.getBatchno());
 
-        batchStatus = String.valueOf( Modal_B2BBatchDetailsStatic.getStatus().toUpperCase());
+        batchStatus = String.valueOf( Modal_Static_GoatEarTagDetails.getBatchWiseStatus().toUpperCase());
 
         SharedPreferences sh1 = mContext.getSharedPreferences("DeliveryCenterData", MODE_PRIVATE);
 
@@ -273,9 +270,6 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
 
 
 
-
-
-
         updateUIBasedOnCalledFrom();
         toolBarHeader_TextView.setText(calledFrom);
         getDataFrom_POJO_AND_setData_inUI();
@@ -286,7 +280,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
 
 
 
-        if(calledFrom.equals(getString(R.string.billing_Screen_placeOrder)) || calledFrom.equals(getString(R.string.billing_Screen_editOrder)) || calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder)) )
+        if(calledFrom.equals(getString(R.string.billing_Screen_placeOrder)) || calledFrom.equals(getString(R.string.billing_Screen_editOrder)) || calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder)) ||  calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) ||  calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))  )
         {
 
            // chooseGrade_label.setText("Grade Details");
@@ -329,6 +323,14 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                 else if(calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder)) ){
                     //     ((BillingScreen)getActivity()).closeFragment();
                     DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.closeFragment();
+                }
+                else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) ){
+                    //     ((BillingScreen)getActivity()).closeFragment();
+                    DeliveryCenter_PlaceOrderScreen_SecondVersn.deliveryCenter_placeOrderScreen_secondVersn.closeFragment();
+                }
+                else if(calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion)) ){
+                    //     ((BillingScreen)getActivity()).closeFragment();
+                    DeliveryCenter_PlaceOrderScreen_SecondVersn.deliveryCenter_placeOrderScreen_secondVersn.closeFragment();
                 }
                 else{
                     ((GoatEarTagItemDetailsList)getActivity()).closeFragment();
@@ -436,6 +438,30 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                                         Initialize_and_ExecuteB2BOrderCartDetails(Constants.CallADDMethod);
 
                                           //  Initialize_and_ExecuteInGoatEarTagDetails(Constants.CallUPDATEMethod);
+
+
+                                        //addItemInTheBillingScreenArrayList();
+
+                                        //  Initialize_and_ExecuteInGoatEarTagTransaction(Constants.CallADDMethod,Constants.CallUPDATEMethod);
+                                    }
+                                    else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion))){
+                                        previous_WeightInGrams = Modal_Static_GoatEarTagDetails.getCurrentweightingrams();
+                                        previousSelectedGender = Modal_Static_GoatEarTagDetails.getGender();
+                                        Initialize_and_ExecuteB2BOrderCartDetails(Constants.CallADDMethod);
+
+                                        //  Initialize_and_ExecuteInGoatEarTagDetails(Constants.CallUPDATEMethod);
+
+
+                                        //addItemInTheBillingScreenArrayList();
+
+                                        //  Initialize_and_ExecuteInGoatEarTagTransaction(Constants.CallADDMethod,Constants.CallUPDATEMethod);
+                                    }
+                                    else if(calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))){
+                                        previous_WeightInGrams = Modal_Static_GoatEarTagDetails.getCurrentweightingrams();
+                                        previousSelectedGender = Modal_Static_GoatEarTagDetails.getGender();
+                                        Initialize_and_ExecuteB2BOrderCartDetails(Constants.CallADDMethod);
+
+                                        //  Initialize_and_ExecuteInGoatEarTagDetails(Constants.CallUPDATEMethod);
 
 
                                         //addItemInTheBillingScreenArrayList();
@@ -740,7 +766,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
 
     private void getDataFrom_POJO_AND_setData_inUI() {
 
-
+        batchStatus = String.valueOf(Modal_Static_GoatEarTagDetails.getBatchWiseStatus());
         scannedBarcode = String.valueOf(Modal_Static_GoatEarTagDetails.getBarcodeno());
         previous_WeightInGrams = String.valueOf(Modal_Static_GoatEarTagDetails.getCurrentweightingrams());
         selectedBreed = String.valueOf(Modal_Static_GoatEarTagDetails.getBreedtype());
@@ -940,7 +966,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
             else if(calledFrom.equals(getString(R.string.deliverycenter_UnsoldgoatItemList))){
                 if (batchStatus.equals(Constants.batchDetailsStatus_Sold) || batchStatus.equals(Constants.batchDetailsStatus_Cancelled)) {
 
-                    showEditabeLayouts(false, true);
+                    showEditabeLayouts(false, false);
                 } else {
                     sold_goat_radio.setVisibility(View.GONE);
                     showEditabeLayouts(true, true);
@@ -972,11 +998,22 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
 
                 goatstatus_layout.setVisibility(View.GONE);
 
+            }
+            else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) ){
+                showEditabeLayouts(false, true);
 
-
+                goatstatus_layout.setVisibility(View.GONE);
 
 
             }
+            else if(calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                barcodeNo_textView.setVisibility(View.VISIBLE);
+                barcodeNo_EdittextView.setVisibility(View.GONE);
+                showEditabeLayouts(false, true);
+                goatstatus_layout.setVisibility(View.GONE);
+            }
+
+
             else if(calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))){
                 barcodeNo_textView.setVisibility(View.VISIBLE);
                 barcodeNo_EdittextView.setVisibility(View.GONE);
@@ -984,20 +1021,12 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
 
                 goatstatus_layout.setVisibility(View.GONE);
 
-
-
-
-
             }
             else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen))){
-
 
                 showEditabeLayouts(false, false);
 
                 goatstatus_layout.setVisibility(View.GONE);
-
-
-
 
 
             }
@@ -1501,6 +1530,12 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                     else if(calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))) {
                         DeliveryCentre_PlaceOrderScreen_Fragment.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
                     }
+                    else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion))) {
+                       // DeliveryCenter_PlaceOrderScreen_SecondVersn.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
+                    }
+                    else if(calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                      //  DeliveryCenter_PlaceOrderScreen_SecondVersn.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
+                    }
                     else  if(calledFrom.equals(getString(R.string.billing_Screen_editOrder))){
                         DeliveryCentre_PlaceOrderScreen_Fragment.removeEntryFromGradewiseQuantity_and_Weight(modal_b2BCartItemDetails,true);
                     }
@@ -1568,6 +1603,12 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                     else if(calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))) {
                         DeliveryCentre_PlaceOrderScreen_Fragment.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
                     }
+                    else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion))) {
+                        // DeliveryCenter_PlaceOrderScreen_SecondVersn.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
+                    }
+                    else if(calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                        //  DeliveryCenter_PlaceOrderScreen_SecondVersn.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
+                    }
                     else  if(calledFrom.equals(getString(R.string.billing_Screen_editOrder))){
                         DeliveryCentre_PlaceOrderScreen_Fragment.removeEntryFromGradewiseQuantity_and_Weight(modal_b2BCartItemDetails,true);
                     }
@@ -1633,6 +1674,14 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                     else if(calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))) {
                         DeliveryCentre_PlaceOrderScreen_Fragment.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
                     }
+                    else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion))) {
+                        // DeliveryCenter_PlaceOrderScreen_SecondVersn.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
+                    }
+                    else if(calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                        //  DeliveryCenter_PlaceOrderScreen_SecondVersn.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
+                    }
+
+
                     else  if(calledFrom.equals(getString(R.string.billing_Screen_editOrder))){
                         DeliveryCentre_PlaceOrderScreen_Fragment.removeEntryFromGradewiseQuantity_and_Weight(modal_b2BCartItemDetails,true);
                     }
@@ -1709,6 +1758,12 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                     else if(calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))) {
                         DeliveryCentre_PlaceOrderScreen_Fragment.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
                     }
+                    else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion))) {
+                        // DeliveryCenter_PlaceOrderScreen_SecondVersn.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
+                    }
+                    else if(calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                        //  DeliveryCenter_PlaceOrderScreen_SecondVersn.calculateGradewiseQuantity_and_Weight(modal_b2BCartItemDetails );
+                    }
                     else  if(calledFrom.equals(getString(R.string.billing_Screen_editOrder))){
                         DeliveryCentre_PlaceOrderScreen_Fragment.removeEntryFromGradewiseQuantity_and_Weight(modal_b2BCartItemDetails,true);
                     }            }
@@ -1729,6 +1784,22 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                 DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.closeFragment();
                 try{
                     DeliveryCentre_PlaceOrderScreen_Fragment.adapter_gradeWiseTotal_billingScreen.notifyDataSetChanged();
+
+                }
+                catch (Exception e){
+                    try{
+                        DeliveryCentre_PlaceOrderScreen_Fragment.deliveryCentre_placeOrderScreen_fragment.setAdapterForGradewiseTotal();
+                    }
+                    catch (Exception e1){
+                        e1.printStackTrace();
+                    }
+                    e.printStackTrace();
+                }
+            }
+            else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) || calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))){
+                        DeliveryCenter_PlaceOrderScreen_SecondVersn.deliveryCenter_placeOrderScreen_secondVersn.closeFragment();
+                try{
+                 //   DeliveryCenter_PlaceOrderScreen_SecondVersn.adapter_gradeWiseTotal_billingScreen.notifyDataSetChanged();
 
                 }
                 catch (Exception e){
@@ -1825,7 +1896,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
         if (callMethod.equals(Constants.CallGETMethod)) {
 
 
-            String addApiToCall = API_Manager.getBatchDetailsWithSupplierkeyBatchNo + "?supplierkey=" + Modal_Static_GoatEarTagDetails.getSupplierkey() + "&batchno=" + batchId;
+            String addApiToCall = API_Manager.getBatchDetailsWithDeliveryCenterKeyBatchNo + "?supplierkey=" + Modal_Static_GoatEarTagDetails.getSupplierkey() + "&batchno=" + batchId;
 
             B2BBatchDetails asyncTask = new B2BBatchDetails(callback_B2BBatchDetailsInterface, addApiToCall, Constants.CallGETMethod);
             asyncTask.execute();
@@ -1903,25 +1974,27 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
 
 
 
-
-
-
-
-
     private void Initialize_and_ExecuteB2BOrderCartDetails(String callADDMethod) {
         if(calledFrom.equals(getString(R.string.billing_Screen_placeOrder)) || calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))) {
            // ((BillingScreen)getActivity()).showProgressBar(true);
             DeliveryCentre_PlaceOrderScreen_Fragment.showProgressBar(true);
         }
+        else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) || calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+            DeliveryCenter_PlaceOrderScreen_SecondVersn.showProgressBar(true);
+        }
         else  if(calledFrom.equals(getString(R.string.billing_Screen_editOrder))){
             showProgressBar(true);
+        }
+        else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) || calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+            // ((BillingScreen)getActivity()).showProgressBar(false);
+            DeliveryCenter_PlaceOrderScreen_SecondVersn.showProgressBar(false);
         }
         if (isB2BCartDetailsCalled) {
             //  showProgressBar(false);
             return;
         }
         isB2BCartDetailsCalled = true;
-        callback_b2BCartDetaillsInterface = new B2BCartDetaillsInterface()
+        callback_b2BCartItemDetaillsInterface = new B2BCartItemDetaillsInterface()
         {
 
             @Override
@@ -1930,10 +2003,16 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                    // ((BillingScreen)getActivity()).showProgressBar(false);
                     DeliveryCentre_PlaceOrderScreen_Fragment.showProgressBar(false);
                 }
+                else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) || calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                    DeliveryCenter_PlaceOrderScreen_SecondVersn.showProgressBar(false);
+                }
                 else  if(calledFrom.equals(getString(R.string.billing_Screen_editOrder))){
                     showProgressBar(false);
                 }
-
+                else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) || calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                    // ((BillingScreen)getActivity()).showProgressBar(false);
+                    DeliveryCenter_PlaceOrderScreen_SecondVersn.showProgressBar(false);
+                }
 
 
             }
@@ -2035,7 +2114,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
             }
 
 
-            B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartDetaillsInterface,  getApiToCall, callADDMethod,modal_b2BCartDetails);
+            B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartItemDetaillsInterface,  getApiToCall, callADDMethod,modal_b2BCartDetails);
             asyncTask.execute();
 
         }
@@ -2055,14 +2134,14 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
             }
 
 
-            B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartDetaillsInterface,  getApiToCall, callADDMethod,modal_b2BCartDetails);
+            B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartItemDetaillsInterface,  getApiToCall, callADDMethod,modal_b2BCartDetails);
             asyncTask.execute();
 
         }
         else if(callADDMethod.equals(Constants.CallGETMethod)) {
             String getApiToCall = API_Manager.getCartDetailsForOrderidWithBarcodeNo+"?orderid="+orderid+"&barcodeno="+scannedBarcode;
 
-            B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartDetaillsInterface,  getApiToCall, callADDMethod);
+            B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartItemDetaillsInterface,  getApiToCall, callADDMethod);
             asyncTask.execute();
 
         }
@@ -2199,6 +2278,11 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                 if (calledFrom.equals(getString(R.string.billing_Screen_placeOrder)) || calledFrom.equals(getString(R.string.billing_Screen_editOrder)) || calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))){
                     showProgressBar_in_theActivity(false);
                 }
+                else if(calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) || calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                    DeliveryCenter_PlaceOrderScreen_SecondVersn.showProgressBar(false);
+                }
+
+
 
                 ArrayAdapter breedType_aAdapter = new ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_dropdown_item, breedType_arrayList_string);
                 breedType_spinner.setAdapter(breedType_aAdapter);
@@ -2234,7 +2318,13 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                 DeliveryCentre_PlaceOrderScreen_Fragment.showProgressBar(show);
 
 
-            } else if (calledFrom.equals(getString(R.string.billing_Screen_editOrder))) {
+            }
+            else if (calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) || calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))) {
+                //  ((BillingScreen) getActivity()).showProgressBar(show);
+                DeliveryCenter_PlaceOrderScreen_SecondVersn.showProgressBar(show);
+
+            }
+            else if (calledFrom.equals(getString(R.string.billing_Screen_editOrder))) {
                 showProgressBar(show);
             } else {
                 showProgressBar(show);
@@ -2628,7 +2718,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
                 Modal_UpdatedGoatEarTagDetails.setUpdated_deliverycenterkey(deliveryCenterKey);
                 Modal_UpdatedGoatEarTagDetails.setUpdated_deliverycentername(deliveryCenterName);
 
-                if(!calledFrom.equals(getString(R.string.billing_Screen_placeOrder)) && !calledFrom.equals(getString(R.string.billing_Screen_editOrder)) && !calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))) {
+                if(!calledFrom.equals(getString(R.string.billing_Screen_placeOrder)) && !calledFrom.equals(getString(R.string.billing_Screen_editOrder)) && !calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder)) && !calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion)) && !calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion))) {
                     if(userType.equals(Constants.userType_DeliveryCenter)) {
                         if (selectedGoatStatus.toUpperCase().equals(getString(R.string.good)) || selectedGoatStatus.toUpperCase().equals(Constants.goatEarTagStatus_Loading)) {
                             Modal_UpdatedGoatEarTagDetails.setUpdated_status(Constants.goatEarTagStatus_Reviewed_and_READYFORSALE);
@@ -2652,7 +2742,7 @@ public class BatchItemDetailsFragment_withoutScanBarcode extends Fragment {
 
 
 
-                if(calledFrom.equals(getString(R.string.billing_Screen_placeOrder)) || calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder))){
+                if(calledFrom.equals(getString(R.string.billing_Screen_placeOrder)) || calledFrom.equals(getString(R.string.pos_billing_Screen_placeOrder)) || calledFrom.equals(getString(R.string.placedOrder_Details_Screen_SecondVersion)) || calledFrom.equals(getString(R.string.pos_placedOrder_Details_Screen_SecondVersion))){
                     if(Modal_UpdatedGoatEarTagDetails.isUpdated_currentweightingrams_boolean() || Modal_UpdatedGoatEarTagDetails.isUpdated_gradekey_boolean()){
                         String addApiToCall = API_Manager.updateGoatEarTag ;
                         GoatEarTagDetails asyncTask = new GoatEarTagDetails(callback_GoatEarTagDetails,  addApiToCall , callMethod);

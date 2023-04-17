@@ -1,8 +1,7 @@
 package com.tmc.tmcb2bpartnerapp.interfaces;
 
 import com.android.volley.VolleyError;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BOrderDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BOrderItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BOrderItemDetails;
 
 import java.util.ArrayList;
 

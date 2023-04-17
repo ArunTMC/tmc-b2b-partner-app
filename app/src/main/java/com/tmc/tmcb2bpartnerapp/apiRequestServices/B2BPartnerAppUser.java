@@ -8,7 +8,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BPartnerAppUserInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BPartnerAppUser;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BPartnerAppUser;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
 

@@ -15,42 +15,293 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:paddingBottom="40dp"
-        android:layout_marginTop="2dp"
-
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content" >
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:id="@+id/ManageRetailerDetailsConfiguration_linearLayout"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:fontFamily="@font/courier_prime_bold"
+                android:text="Manage Retailer Details"
+                android:textAllCaps="false"
+                android:paddingStart="5dp"
+
+                android:gravity="center_vertical"
+                android:textColor="@color/Grey"
+                android:background="@color/TMCBackgroundLightPurpleColor"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/add_or_edit_retailers_button"
+                android:background="@drawable/custom_bordered_ripple"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight=".1"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="10dp"
+                    android:text="Add or Edit Retailer Details "
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="20dp"
+                    android:alpha=".7"
+                    android:layout_marginTop="5dp"
+                    >
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="10dp"
+                        android:scaleType ="centerCrop"
+                        android:src="@mipmap/rightarrow"
+                        android:contentDescription="@string/todo" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/TMCBackgroundLightPurpleColor" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:paddingBottom="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content" >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/ManageGoatDetailsConfiguration_linearLayout"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/open_sans_semibold"
-                android:text="Manage Goat Details"
+                android:layout_height="35dp"
+                android:fontFamily="@font/courier_prime_bold"
+                android:text="Manage Order Details"
+                android:textAllCaps="false"
+                android:paddingStart="5dp"
 
-                android:textSize="24sp" />
+                android:gravity="center_vertical"
+                android:textColor="@color/Grey"
+                android:background="@color/TMCBackgroundLightPurpleColor"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/custom_bordered_ripple"
+                android:id="@+id/datewisePlacedOrdersList_button"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Datewise Placed Orders List "
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_weight=".1"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="1dp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="10dp"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/open_sans_semibold"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="20dp"
+                    android:alpha=".7"
+                    android:layout_marginTop="5dp"
+                    >
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="10dp"
+                        android:scaleType ="centerCrop"
+                        android:src="@mipmap/rightarrow"
+                        android:contentDescription="@string/todo" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/TMCBackgroundLightPurpleColor" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:paddingBottom="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content" >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/GeneralConfiguration_linearLayout"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:fontFamily="@font/courier_prime_bold"
+                android:text="General"
+                android:paddingStart="5dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/Grey"
+                android:background="@color/TMCBackgroundLightPurpleColor"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/goatgradeDetails_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/white_edittext_with_greyborder"
+                android:elevation="4dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:gravity="start|center_vertical"
+                android:paddingStart="10dp"
+                android:text="Change Goat Grade Details"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:text="@string/Delivery_Center_Name"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/deliveryCenter_name"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
+
+                    />
+            </LinearLayout>
+
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@drawable/border_line" />
+                android:layout_height="1dp"
+                android:alpha=".2"
+
+                android:visibility="visible"
+                android:background="@color/black" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
 
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/Mobile_Number"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans_bold"
 
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="+91-----------"
+                    android:textSize="17sp"
 
+                    android:id="@+id/userMobileNo"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/open_sans"
 
-
-
-
-
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:alpha=".2"
+                android:visibility="gone"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/black" />
 
 
 
@@ -59,13 +310,13 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Change Goat Grade Details"
+                android:text="@string/LogInAsAnotherVendor"
                 android:textColor="@color/black"
-                android:visibility="visible"
-                android:id="@+id/goatgradeDetails_button"
+                android:visibility="gone"
+                android:id="@+id/deliverycenterLogin"
                 android:gravity="start|center_vertical"
                 android:background="@drawable/white_edittext_with_greyborder"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textAllCaps="false"
                 android:paddingStart="10dp"
                 android:elevation="4dp"
@@ -73,21 +324,6 @@
                 android:fontFamily="@font/open_sans_bold"/>
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Datewise Placed Orders List "
-                android:textColor="@color/black"
-                android:visibility="visible"
-                android:id="@+id/datewisePlacedOrdersList_button"
-                android:gravity="start|center_vertical"
-                android:background="@drawable/white_edittext_with_greyborder"
-                android:textSize="20sp"
-                android:textAllCaps="false"
-                android:paddingStart="10dp"
-                android:elevation="4dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/open_sans_bold"/>
 
 
 
@@ -101,170 +337,65 @@
 
     </androidx.cardview.widget.CardView>
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/TMCBackgroundLightPurpleColor" />
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:paddingBottom="40dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content" >
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:id="@+id/GeneralConfiguration_linearLayout"
+            android:paddingBottom="10dp"
+            android:gravity="center_vertical"
             android:orientation="vertical">
-
-            <TextView
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/logout_button"
+                android:text="@string/LogOut"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/white_backgroundwith_black_border"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:fontFamily="@font/open_sans_bold"/>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/open_sans_semibold"
-                android:text="General"
-
-                android:textSize="24sp" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@drawable/border_line" />
-
-
-
-
-
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-
+                android:gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans_semibold"
-                    android:text="@string/Delivery_Center_Name"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="18sp"
-                    android:id="@+id/deliveryCenter_name"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/open_sans_semibold"
-
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:text="Version :  "
+                    android:textColor="@color/colorTransparent"
+                    android:textSize="13sp"
                     android:layout_marginTop="5dp"
-                    android:text="@string/Mobile_Number"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/open_sans_semibold"
 
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="+91-----------"
-                    android:textSize="18sp"
-
-                    android:id="@+id/userMobileNo"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/open_sans_semibold"
-
-                    />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Version No :  "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
                     android:fontFamily="@font/open_sans_bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Version_No"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textColor="@color/colorTransparent"
+                    android:textSize="13sp"
+                    android:layout_marginTop="5dp"
+
                     android:fontFamily="@font/open_sans_bold"/>
             </LinearLayout>
-
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/LogInAsAnotherVendor"
-                android:textColor="@color/black"
-                android:visibility="gone"
-                android:id="@+id/deliverycenterLogin"
-                android:gravity="start|center_vertical"
-                android:background="@drawable/white_edittext_with_greyborder"
-                android:textSize="14sp"
-                android:textAllCaps="false"
-                android:paddingStart="10dp"
-                android:elevation="4dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/open_sans_bold"/>
-
-
-
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/logout_button"
-
-                android:text="@string/LogOut"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/white_edittext_with_greyborder"
-                android:gravity="start|center_vertical"
-                android:paddingStart="10dp"
-                android:textAllCaps="false"
-                android:fontFamily="@font/open_sans_bold"/>
-
-
-
-
         </LinearLayout>
-
-
-
 
     </androidx.cardview.widget.CardView>
 

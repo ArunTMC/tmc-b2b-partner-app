@@ -15,8 +15,8 @@ import androidx.annotation.Nullable;
 import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.activity.Audit_UnstockedBatch_item;
 import com.tmc.tmcb2bpartnerapp.activity.UnStockedBatchEarTagItemList;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.DateParser;
 
 import java.util.List;

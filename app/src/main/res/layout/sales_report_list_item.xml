@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingStart="10dp"
+    android:paddingBottom="10dp"
+    android:paddingEnd="10dp"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/parentCardview"
+        android:layout_width="0dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="5dp"
+        android:layout_height="135dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/ordericon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="25dp"
+                android:alpha=".6"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_height="25dp"
+                app:srcCompat="@mipmap/ordericon" />
+
+
+
+
+            <TextView
+                android:id="@+id/BillNoLabel_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="10dp"
+                android:text=" Bill No :  "
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/BillNo_textview"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+            <TextView
+                android:id="@+id/BillNo_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:layout_marginTop="6dp"
+                android:text=" 75 "
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/rightarrowicon"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+            <TextView
+                android:id="@+id/retailerName_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:layout_marginStart="10dp"
+                android:text=" TMC Hasthinapuram "
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/ordericon"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+            <TextView
+                android:id="@+id/retailermobileno_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:gravity="left"
+                android:layout_marginStart="9dp"
+                android:text=" 9597580128 "
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/ordericon"
+                app:layout_constraintTop_toBottomOf="@+id/retailerName_textview"
+
+                />
+
+
+
+
+            <ImageView
+                android:id="@+id/rightarrowicon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="10dp"
+                android:alpha=".6"
+                android:layout_marginTop="9dp"
+                android:layout_height="10dp"
+                app:srcCompat="@mipmap/rightarrow" />
+            <ImageView
+                android:id="@+id/dottedLine"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/verticaldottedline"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/retailermobileno_textview"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:elevation="5dp"
+                android:paddingStart="10dp"
+                android:paddingBottom="5dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="1dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dottedLine"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|left"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/totalCount_label"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:text="Total Count"
+                        android:textColor="@color/black"
+                        android:textSize="11sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/totalCount_textview"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:gravity="center"
+                        android:text=" 012 "
+                        android:textColor="@color/black"
+                        android:textSize="11sp"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/totalWeight_label"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:text="Weight (Kg)"
+                        android:textColor="@color/black"
+                        android:textSize="11sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/totalWeight_textview"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:gravity="center"
+                        android:text=" 012 "
+                        android:textColor="@color/black"
+                        android:textSize="11sp"
+
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/totalAmount_label"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:text="Amount (Rs)"
+                        android:textColor="@color/black"
+                        android:textSize="11sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/totalAmount_textview"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:gravity="center"
+                        android:text=" 012 "
+                        android:textColor="@color/black"
+                        android:textSize="11sp"
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="3dp"
+                    android:layout_marginStart="5dp"
+
+                    android:background="@color/Grey"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintStart_toEndOf="@+id/ordericon"
+                    app:layout_constraintBottom_toTopOf="@+id/placedtime_textview"
+                    />
+
+            <ImageView
+                android:id="@+id/clockicon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="15dp"
+                android:alpha=".6"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="6dp"
+                android:layout_height="15dp"
+                app:srcCompat="@mipmap/clickicon" />
+
+            <TextView
+                android:id="@+id/placedtime_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:fontFamily="@font/open_sans"
+                android:gravity="center_vertical"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:text=" Thu, 06 Apr 2023 20:11:40 "
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/batchno_label"
+            app:layout_constraintStart_toStartOf="@+id/batchno_label">
+
+
+            <TextView
+                android:id="@+id/batchno_label"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Batch No "
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="11sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+            <TextView
+                android:id="@+id/batchno_textview"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:text=" 10012 "
+
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/batchno_label"
+
+                />
+
+            <ImageView
+                android:id="@+id/orderDetails_icon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="15dp"
+                android:padding="10dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/detailedreport"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="255dp"
+                android:layout_height="35dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:gravity="center"
+                    android:text=" Click here for Detailed Report"
+                    android:textColor="@color/Grey"
+                    android:textSize="11sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/batchno_label"
+
+                    />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/retailerName_label"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Buyer Name"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+
+                android:text=" TMC Hasthinapuram "
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/retailerName_label" />
+
+
+            <TextView
+                android:id="@+id/retailerNo_label"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Buyer No"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="11sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+
+            <TextView
+                android:id="@+id/retailerno_textview"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:text="99887766443 "
+
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintTop_toBottomOf="@+id/retailerNo_label"
+
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/orderDetailsrightarrow_icon"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:alpha=".8"
+                android:background="@color/TMCBackgroundLightPurpleColor"
+                android:paddingStart="10dp"
+                android:paddingTop="50dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="53dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/rightarrow"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/SaleValue_label"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Price (Rs)"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/saleValue_textview"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:text=" 012 "
+
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SaleValue_label"
+
+                />
+
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="46dp"
+                android:layout_marginTop="8dp"
+
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Weight (Kg)"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="11sp"
+                app:layout_constraintStart_toEndOf="@+id/SaleValue_label"
+                tools:ignore="MissingConstraints" />
+
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="46dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:text=" 012 "
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toEndOf="@+id/saleValue_textview"
+
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/maleCount_label"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Male"
+
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saleValue_textview" />
+
+
+            <TextView
+                android:id="@+id/maleCount_textview"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:text=" 012 "
+
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/maleCount_label"
+
+                />
+
+
+            <TextView
+                android:id="@+id/femaleCount_label"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Female"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="11sp"
+                app:layout_constraintStart_toEndOf="@+id/maleCount_label"
+
+                tools:ignore="MissingConstraints" />
+
+
+            <TextView
+                android:id="@+id/femaleCount_textview"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:text=" 012 "
+
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toEndOf="@+id/maleCount_label"
+                app:layout_constraintTop_toBottomOf="@+id/femaleCount_label"
+
+                />
+
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Total"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="11sp"
+
+                app:layout_constraintStart_toEndOf="@+id/femaleCount_label"
+                tools:ignore="MissingConstraints" />
+
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="left"
+                android:text=" 012 "
+
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                app:layout_constraintStart_toEndOf="@+id/femaleCount_label"
+                app:layout_constraintTop_toBottomOf="@+id/femaleCount_label"
+
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

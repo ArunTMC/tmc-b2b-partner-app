@@ -73,7 +73,7 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.fragment.AddRetailer_Fragment;
 import com.tmc.tmcb2bpartnerapp.fragment.BatchItemDetailsFragment_withoutScanBarcode;
 import com.tmc.tmcb2bpartnerapp.fragment.OrderSummary_fragement;
-import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartDetaillsInterface;
+import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartItemDetaillsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartOrderDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BGoatGradeDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BInvoiceNoManagerInterface;
@@ -81,15 +81,15 @@ import com.tmc.tmcb2bpartnerapp.interfaces.B2BItemCtgyInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BRetailerDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.BarcodeScannerInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartItemDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartOrderDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BItemCtgy;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BRetailerDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_POJOClassForFinalSalesHashmap;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_UpdatedB2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BItemCtgy;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BRetailerDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_POJOClassForFinalSalesHashmap;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_UpdatedB2BCartOrderDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BarcodeScannerScreen;
@@ -187,7 +187,7 @@ public class BillingScreen extends BaseActivity {
     ,retaileraddress =""  ,gradename ="" , gradeprice ="";
 
     boolean isB2BCartDetailsCalled = false;
-    B2BCartDetaillsInterface callback_b2BCartDetaillsInterface = null;
+    B2BCartItemDetaillsInterface callback_b2BCartItemDetaillsInterface = null;
 
     private static final int OPENPDF_ACTIVITY_REQUEST_CODE = 2;
     private static int REQUEST_CODE_WRITE_EXTERNAL_STORAGE_PERMISSION = 1;
@@ -771,7 +771,7 @@ public class BillingScreen extends BaseActivity {
         earTagDetails_weightStringHashMap.clear();
         earTagDetailsArrayList_String.clear();
         selected_gradeDetailss_arrayList.clear();
-        callback_b2BCartDetaillsInterface = new B2BCartDetaillsInterface()
+        callback_b2BCartItemDetaillsInterface = new B2BCartItemDetaillsInterface()
         {
 
 
@@ -989,8 +989,8 @@ public class BillingScreen extends BaseActivity {
 
         };
 
-        String getApiToCall = API_Manager.getCartDetailsForOrderid+ orderid ;
-        B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartDetaillsInterface,  getApiToCall, callGETListMethod);
+        String getApiToCall = API_Manager.getCartItemDetailsForOrderid + orderid ;
+        B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartItemDetaillsInterface,  getApiToCall, callGETListMethod);
         asyncTask.execute();
 
 
@@ -3893,7 +3893,7 @@ foreground
 
         };
 
-        String getApiToCall = API_Manager.getretailerDetailsList ;
+        String getApiToCall = API_Manager.getretailerDetailsListWithDeliveryCentreKey+deliveryCenterKey ; ;
 
         B2BRetailerDetails asyncTask = new B2BRetailerDetails(callback_retailerDetailsInterface,  getApiToCall, Constants.CallGETListMethod);
         asyncTask.execute();

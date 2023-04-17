@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:background="@color/TMCBackgroundLightPurpleColor"
+    android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/retailerName_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:text="Name "
+                />
+            <TextView
+                android:id="@+id/retailerName_textView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/retailerName_label"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="Retailer Name "
+                />
+
+
+
+            <TextView
+                android:id="@+id/retailerMobileNo_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/retailerName_textView"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:text="Mobileno "
+                />
+            <TextView
+                android:id="@+id/retailerMobileNo_textView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/retailerMobileNo_label"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="Retailer Mobile "
+                />
+
+
+
+            <TextView
+                android:id="@+id/paymentMode_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/retailerName_textView"
+                android:textSize="16sp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:text="Payment mode "
+                />
+            <TextView
+                android:id="@+id/paymentMode_textView"
+
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paymentMode_label"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:text=" Name "
+                />
+
+
+            <TextView
+                android:id="@+id/transactiontime_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paymentMode_textView"
+                android:textSize="16sp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:text="Time  "
+                />
+
+            <TextView
+                android:id="@+id/transactiontime_textView"
+
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/transactiontime_label" />
+
+
+
+            <TextView
+                android:id="@+id/transasction_valuelabel"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paymentMode_textView"
+                android:textSize="16sp"
+                android:gravity="end"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:text="Amount (rs) "
+                />
+            <TextView
+                android:id="@+id/transactionvalue_textView"
+
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/transasction_valuelabel"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:gravity="center"
+
+                android:textSize="14sp"
+                android:text=" "
+                />
+
+            <TextView
+                android:id="@+id/transactionType_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/transactionvalue_textView"
+                android:textSize="17sp"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:text=" Amount Received "
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

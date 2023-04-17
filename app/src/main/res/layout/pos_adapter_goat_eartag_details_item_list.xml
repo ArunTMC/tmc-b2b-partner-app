@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_semibold"
                 android:layout_marginTop="12dp"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="70dp"
                 android:layout_toEndOf="@+id/barcode_label"
                 android:textColor="@color/TMCPrimaryPurpleColor"
                 android:textSize="22sp"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_semibold"
                 android:layout_marginTop="12dp"
-                android:layout_marginStart="80dp"
+                android:layout_marginStart="85dp"
                 android:layout_toEndOf="@+id/gender_label"
                 android:textColor="@color/TMCPrimaryPurpleColor"
                 android:textSize="22sp"
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_semibold"
                 android:layout_marginTop="10dp"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="65dp"
                 android:layout_toEndOf="@+id/breedType_label"
                 android:textColor="@color/TMCPrimaryPurpleColor"
                 android:textSize="22sp"
@@ -214,6 +214,21 @@
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/auditItem_button"
                 android:text="@string/EarTagSick_Instruction" />
+            <TextView
+                android:id="@+id/deadGoatInstruction_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="center"
+                android:textColor="@color/TMCPrimaryPurpleColor"
+                android:textSize="13sp"
+                android:visibility="gone"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/auditItem_button"
+                android:text="@string/GoatDead_Instruction" />
 
 
         </RelativeLayout>

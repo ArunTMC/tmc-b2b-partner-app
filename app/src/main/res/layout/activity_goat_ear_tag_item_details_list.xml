@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/TMCBackgroundLightPurpleColor"
-
     tools:context=".activity.GoatEarTagItemDetailsList">
 
 
@@ -33,8 +31,27 @@
         android:layout_marginTop="10dp"
         android:text="@string/reviewed_item_details"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
+    <LinearLayout
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:visibility="gone"
+        android:id="@+id/cartclearing_IconLayout"
+        >
+        <ImageView
+            android:id="@+id/cartclearing_Icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:scaleType ="centerCrop"
+            android:src="@mipmap/delete_icon"
+            android:contentDescription="@string/todo" />
+    </LinearLayout>
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
@@ -52,9 +69,9 @@
         app:cardElevation="10dp"
         app:cardCornerRadius="20dp"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/courier_prime_bold"
         android:textAllCaps="false"
         android:layout_below="@+id/divider"
+        android:visibility="gone"
         android:layout_marginTop="18dp"
         android:textColor="@color/TMCDarkPinkTextColor"
         android:orientation="horizontal" >
@@ -79,6 +96,102 @@
 
     </androidx.cardview.widget.CardView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:id="@+id/searchBarcode_layout"
+        android:orientation="horizontal">
+
+
+
+
+
+        <TextView
+            android:id="@+id/barcodeNo_textView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:gravity="center_vertical"
+            android:text="Search Barcode Here"
+            android:paddingStart="10dp"
+            android:background="@drawable/white_backgroundwith_black_border"
+            android:paddingEnd="5dp"
+            android:visibility="visible"
+            />
+
+        <EditText
+            android:id="@+id/barcode_editText"
+            android:background="@drawable/white_edittext_with_greyborder"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="12dp"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:hint="Enter Barcode"
+            android:imeOptions="actionDone"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            />
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="visible"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/search_IconLayout"
+            >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType ="centerCrop"
+                android:src="@mipmap/search_icon"
+                android:visibility="visible"
+                android:contentDescription="@string/todo" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginEnd="10dp"
+            android:visibility="gone"
+            android:id="@+id/close_IconLayout"
+            >
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType ="fitXY"
+                android:alpha=".8"
+                android:visibility="visible"
+                android:src="@mipmap/close_thicker_icon"
+                android:contentDescription="@string/todo" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
     <ListView
         android:id="@+id/earTagItems_listview"
         android:layout_width="match_parent"
@@ -95,8 +208,36 @@
         android:visibility="gone"
         android:dividerHeight="2dp"
         android:background="@drawable/grey_backgroundwith_black_border"
-        android:layout_below="@+id/scanBarcode_view"
+        android:layout_below="@+id/searchBarcode_layout"
         android:layout_marginTop="15dp"/>
+
+
+
+
+
+    <TextView
+        android:id="@+id/instruction_Textview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:elevation="30dp"
+        android:text="There is No data to display"
+        android:visibility="visible"
+        android:fontFamily="@font/open_sans_bold"
+        android:layout_below="@+id/searchBarcode_layout"
+        android:layout_marginTop="17dp"/>
+
+
+
+
+
 
     <FrameLayout
         android:id="@+id/batchItemDetailsFrame"

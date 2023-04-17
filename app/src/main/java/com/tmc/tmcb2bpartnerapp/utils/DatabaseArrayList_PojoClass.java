@@ -1,13 +1,14 @@
 package com.tmc.tmcb2bpartnerapp.utils;
 
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BItemCtgy;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BRetailerDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_DeliveryCenterDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_SupplierDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BItemCtgy;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BRetailerDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_DeliveryCenterDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_SupplierDetails;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DatabaseArrayList_PojoClass {
@@ -19,10 +20,23 @@ public class DatabaseArrayList_PojoClass {
     public static ArrayList<Modal_SupplierDetails> supplierDetailsArrayList = new ArrayList<>();
     public static  ArrayList<String> breedType_arrayList_string = new ArrayList<>();
     public static  ArrayList<Modal_B2BItemCtgy> breedType_arrayList = new ArrayList<>();
+    public static  ArrayList<String> itemCtgyName_arrayList_String = new ArrayList<>();
+    public static HashMap<String,ArrayList<Modal_B2BItemCtgy>> itemCtgy_genderDetails_Hashmap = new HashMap<>();
+
+
     public static  ArrayList<Modal_GoatEarTagDetails> eartagDetails_arrayList = new ArrayList<>();
     public static ArrayList<Modal_B2BRetailerDetails> retailerDetailsArrayList = new ArrayList<>();
     public static ArrayList<Modal_B2BGoatGradeDetails> goatGradeDetailsArrayList = new ArrayList<>();
 
+
+    public static HashMap<String, ArrayList<Modal_B2BItemCtgy>> getItemCtgy_genderDetails_Hashmap() {
+        return itemCtgy_genderDetails_Hashmap;
+    }
+
+    public static void setItemCtgy_genderDetails_Hashmap(HashMap<String, ArrayList<Modal_B2BItemCtgy>> itemCtgy_genderDetails_Hashmap) {
+        DatabaseArrayList_PojoClass.itemCtgy_genderDetails_Hashmap.clear();
+        DatabaseArrayList_PojoClass.itemCtgy_genderDetails_Hashmap = itemCtgy_genderDetails_Hashmap;
+    }
 
     public static ArrayList<Modal_B2BGoatGradeDetails> getGoatGradeDetailsArrayList() {
         return goatGradeDetailsArrayList;
@@ -54,10 +68,21 @@ public class DatabaseArrayList_PojoClass {
         return breedType_arrayList;
     }
 
+
     public static void setBreedType_arrayList(ArrayList<Modal_B2BItemCtgy> breedType_arrayList) {
         DatabaseArrayList_PojoClass.breedType_arrayList.clear();
         DatabaseArrayList_PojoClass.breedType_arrayList .addAll(breedType_arrayList);
     }
+
+
+    public static ArrayList<String> getItemCtgyName_arrayList_String() {
+        return itemCtgyName_arrayList_String;
+    }
+
+    public static void setItemCtgyName_arrayList_String(ArrayList<String> itemCtgyName_arrayList_String) {
+        DatabaseArrayList_PojoClass.itemCtgyName_arrayList_String = itemCtgyName_arrayList_String;
+    }
+
 
     public static ArrayList<String> getBreedType_arrayList_string() {
         return breedType_arrayList_string;

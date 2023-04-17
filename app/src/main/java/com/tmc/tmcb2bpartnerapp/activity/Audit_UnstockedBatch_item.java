@@ -24,19 +24,19 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BCartOrderDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.GoatEarTagTransaction;
 import com.tmc.tmcb2bpartnerapp.fragment.SwitchEarTag_Fragment_UnscannedItems;
-import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartDetaillsInterface;
+import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartItemDetaillsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartOrderDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.BarcodeScannerInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagTransactionInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_AppUserAccess;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartItemDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartOrderDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagTransaction;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_UpdatedGoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_AppUserAccess;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagTransaction;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_UpdatedGoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
@@ -70,7 +70,7 @@ public class Audit_UnstockedBatch_item  extends BaseActivity {
     public static String itemsPositioninArray ="" , deliveryCenterKey ="" , deliveryCentername ="";
 
     boolean isB2BCartDetailsCalled = false;
-    B2BCartDetaillsInterface callback_b2BCartDetaillsInterface = null;
+    B2BCartItemDetaillsInterface callback_b2BCartItemDetaillsInterface = null;
 
     B2BCartOrderDetailsInterface callback_b2bOrderDetails =null ;
     boolean isB2BCartOrderTableServiceCalled = false;
@@ -338,7 +338,7 @@ public class Audit_UnstockedBatch_item  extends BaseActivity {
             return;
         }
         isB2BCartDetailsCalled = true;
-        callback_b2BCartDetaillsInterface = new B2BCartDetaillsInterface()
+        callback_b2BCartItemDetaillsInterface = new B2BCartItemDetaillsInterface()
         {
 
             @Override
@@ -404,7 +404,7 @@ public class Audit_UnstockedBatch_item  extends BaseActivity {
         if(callADDMethod.equals(Constants.CallGETMethod)) {
             String getApiToCall = API_Manager.getCartDetailsForOrderidWithBarcodeNo+"?orderid="+orderid+"&barcodeno="+barcodeno;
 
-            B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartDetaillsInterface,  getApiToCall, callADDMethod);
+            B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartItemDetaillsInterface,  getApiToCall, callADDMethod);
             asyncTask.execute();
 
         }

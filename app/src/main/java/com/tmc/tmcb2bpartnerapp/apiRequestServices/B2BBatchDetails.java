@@ -8,9 +8,9 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsUpdate;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetailsUpdate;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.DateParser;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
@@ -93,7 +93,7 @@ public class B2BBatchDetails extends AsyncTask<String, String, List<Modal_B2BBat
                               //  JSONArray JArray = response.getJSONArray("content");
                                 String statusCode = response.getString("statusCode");
                                 if(statusCode.equals("400")){
-                                    callback_b2BBatchDetailsInterface.notifySuccess(Constants.item_Already_Added_volley);
+                                    callback_b2BBatchDetailsInterface.notifySuccess(Constants.expressionAttribute_is_empty_volley_response);
 
                                 }
                                 else if(statusCode.equals("200")){
@@ -625,6 +625,9 @@ public class B2BBatchDetails extends AsyncTask<String, String, List<Modal_B2BBat
             }
             if(!Modal_B2BBatchDetailsUpdate.getCreateddate().toString().equals("") && !Modal_B2BBatchDetailsUpdate.getCreateddate().toString().equals("null")){
                 jsonObject.put("createddate",Modal_B2BBatchDetailsUpdate.getCreateddate());
+            }
+            if(!Modal_B2BBatchDetailsUpdate.getSolddate().toString().equals("") && !Modal_B2BBatchDetailsUpdate.getSolddate().toString().equals("null")){
+                jsonObject.put("solddate",Modal_B2BBatchDetailsUpdate.getSolddate());
             }
             if(!Modal_B2BBatchDetailsUpdate.getSuppliermobileno().toString().equals("") && !Modal_B2BBatchDetailsUpdate.getSuppliermobileno().toString().equals("null")){
                 jsonObject.put("suppliermobileno",Modal_B2BBatchDetailsUpdate.getSuppliermobileno());

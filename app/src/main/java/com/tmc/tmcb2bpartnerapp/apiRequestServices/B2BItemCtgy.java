@@ -1,6 +1,7 @@
 package com.tmc.tmcb2bpartnerapp.apiRequestServices;
 
 import android.os.AsyncTask;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 
@@ -9,7 +10,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BItemCtgyInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BItemCtgy;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BItemCtgy;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.DatabaseArrayList_PojoClass;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
@@ -17,6 +18,7 @@ import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +39,11 @@ public B2BItemCtgy(B2BItemCtgyInterface callback_ItemCtgyInterfacee, String apii
 @Override
 protected List<Modal_B2BItemCtgy> doInBackground(String... strings) {
 
-    DatabaseArrayList_PojoClass.breedType_arrayList_string.clear();
-    DatabaseArrayList_PojoClass.breedType_arrayList.clear();
+    //DatabaseArrayList_PojoClass.breedType_arrayList_string.clear();
+    //DatabaseArrayList_PojoClass.breedType_arrayList.clear();
 
+    DatabaseArrayList_PojoClass.itemCtgy_genderDetails_Hashmap.clear();
+    DatabaseArrayList_PojoClass.itemCtgyName_arrayList_String.clear();
 
 
     try{
@@ -91,7 +95,7 @@ protected List<Modal_B2BItemCtgy> doInBackground(String... strings) {
       */
 
 
-        try {
+    /*    try {
         if (json.has("subctgydetails")) {
         Modal_B2BItemCtgy.setSubctgydetails( json.getJSONArray("subctgydetails"));
             JSONArray subctgydetails = json.getJSONArray("subctgydetails");
@@ -106,8 +110,8 @@ protected List<Modal_B2BItemCtgy> doInBackground(String... strings) {
                     b2BItemCtgy.setSubctgy_key(jsonObject.getString("key"));
                     b2BItemCtgy.setKey(String.valueOf(json.get("key")));
                     b2BItemCtgy.setName(String.valueOf(json.get("name")));
-                    DatabaseArrayList_PojoClass.breedType_arrayList.add(b2BItemCtgy);
-                    DatabaseArrayList_PojoClass.breedType_arrayList_string.add(jsonObject.getString("name"));
+                    DatabaseArrayList_PojoClass.itemCtgyArrayList_arrayList.add(b2BItemCtgy);
+                    DatabaseArrayList_PojoClass.itemCtgyName_arrayList_String.add(jsonObject.getString("name"));
                 }
             }
             catch (Exception e){
@@ -125,6 +129,67 @@ protected List<Modal_B2BItemCtgy> doInBackground(String... strings) {
 
         e.printStackTrace();
         }
+
+
+     */
+
+            try {
+                if (json.has("genderdetails")) {
+                    Modal_B2BItemCtgy.setGenderdetails( json.getJSONArray("genderdetails"));
+                    JSONArray genderdetails = json.getJSONArray("genderdetails");
+
+
+                    try{
+                        for(int  iterator =0; iterator< genderdetails.length(); iterator++){
+                            JSONObject jsonObject = genderdetails.getJSONObject(iterator);
+
+                            Modal_B2BItemCtgy b2BItemCtgy = new Modal_B2BItemCtgy();
+                            b2BItemCtgy.setGender_name(jsonObject.getString("name"));
+                            b2BItemCtgy.setGender_key(jsonObject.getString("key"));
+                            b2BItemCtgy.setKey(String.valueOf(json.get("key")));
+                            b2BItemCtgy.setName(String.valueOf(json.get("name")));
+
+                            if(DatabaseArrayList_PojoClass.itemCtgy_genderDetails_Hashmap.containsKey(String.valueOf(json.get("name")))){
+                                ArrayList<Modal_B2BItemCtgy> genderArrayList = DatabaseArrayList_PojoClass.itemCtgy_genderDetails_Hashmap.get(String.valueOf(json.get("name")));
+
+                                if (genderArrayList != null) {
+                                    genderArrayList.add(b2BItemCtgy);
+                                }
+
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                    DatabaseArrayList_PojoClass.itemCtgy_genderDetails_Hashmap.replace(String.valueOf(json.get("name")) ,genderArrayList );
+                                }
+                                else{
+                                    DatabaseArrayList_PojoClass.itemCtgy_genderDetails_Hashmap.put(String.valueOf(json.get("name")) ,genderArrayList );
+                                }
+
+                            }
+                            else{
+                                ArrayList<Modal_B2BItemCtgy> genderArrayList = new ArrayList<>();
+                                genderArrayList.add(b2BItemCtgy);
+
+                                DatabaseArrayList_PojoClass.itemCtgy_genderDetails_Hashmap.put(String.valueOf(json.get("name")) ,genderArrayList );
+                                DatabaseArrayList_PojoClass.itemCtgyName_arrayList_String.add(jsonObject.getString("name"));
+                            }
+
+                        }
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+
+
+                } else {
+                    Modal_B2BItemCtgy.genderdetails = new JSONArray();
+
+                }
+            } catch (Exception e) {
+                Modal_B2BItemCtgy.genderdetails = new JSONArray();
+
+                e.printStackTrace();
+            }
+
 
 
 

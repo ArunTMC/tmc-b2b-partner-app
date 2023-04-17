@@ -3,13 +3,14 @@
     <color name="purple_200">#FFBB86FC</color>
 
     <color name="teal_200">#FF000000</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="teal_700">#4D19D3</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="Grey">#F1A1A1A1</color>
+    <color name="colorTransparent">#AA000000</color>
 
     <color name="TMCTransparentColor">#80000000</color>
-
+    <color name="TMCTransparentColor_Plain">#09000000</color>
     <color name="TMCBackgroundLightPurpleColor">#F4F0FE</color>
     <color name="TMCNavigationButtonBackgroundColor">#E3D8FB</color>
     4C19D1
@@ -18,6 +19,8 @@
 
     <color name="TMCPink">#FDC0BF</color>
     <color name="TMCDarkPinkTextColor">#4B3939</color>
+
+    <color name="TMCLightPalePurple">#eee8fd </color>
     <color name="TMCPalePurple">#CFBFFF</color>
     <color name="TMCPrimaryPurpleColor">#4D19D3</color>
     <color name="TMCButtonPurpleColor">#4D19D3</color>

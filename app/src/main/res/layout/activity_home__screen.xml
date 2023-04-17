@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/TMCBackgroundLightPurpleColor"
+    tools:context=".second_version.activity.Home_Screen">
+
+
+
+
+    <LinearLayout
+        android:layout_width="40dp"
+        android:visibility="gone"
+        android:layout_height="45dp"
+        android:id="@+id/back_IconLayout"
+        >
+        <ImageView
+            android:id="@+id/backButton_icon"
+            android:layout_width="11dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="center"
+            android:src="@drawable/icon_backbutton"
+            android:contentDescription="@string/todo" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/toolBarHeader_TextView"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:text="@string/tmc_deliveryCenter_1" />
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:alpha=".6"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/border_line"
+        />
+
+        <ScrollView
+            android:layout_below="@id/divider"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:paddingTop="7dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="70dp"
+
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+
+                    android:layout_height="wrap_content" >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/TMCBackgroundLightPurpleColor"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="Sales"
+                            android:paddingTop="15dp"
+                            android:paddingStart="17dp"
+                            android:paddingEnd="7dp"
+                            android:paddingBottom="4dp"
+
+                            android:gravity="bottom"
+                            android:layout_gravity="bottom"
+                            android:textAllCaps="true"
+                            android:fontFamily="@font/courier_prime_bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/Grey"
+                            android:background="@color/TMCBackgroundLightPurpleColor"/>
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/white"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="1dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="vertical">
+
+
+
+
+
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/placeOrder_ConstraintLayout"
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/placeordericon"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/createorder" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="13dp"
+                                    android:gravity="center"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:text="New Bill "
+                                    android:textColor="@color/black"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/placeordericon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:visibility="visible"
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/ItemsInCart_ConstraintLayout"
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/itemincarticon"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:scaleType="centerCrop"
+                                    android:alpha=".8"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/items_in_cart46" />
+
+                                <TextView
+                                    android:id="@+id/itemInCartTextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="11dp"
+                                    android:gravity="center"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:text="Review added items "
+                                    android:textColor="@color/black"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/itemincarticon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+                                <TextView
+                                    android:id="@+id/cartItem_count"
+                                    android:layout_width="38dp"
+                                    android:layout_height="38dp"
+                                    android:layout_marginStart="24dp"
+                                    android:background="@drawable/red_circle"
+                                    android:padding="3dp"
+                                    android:text=""
+                                    android:visibility="gone"
+                                    android:gravity="center"
+                                    android:textColor="@color/white"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/itemInCartTextview"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.530" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:layout_marginStart="52dp"
+                                android:id="@+id/iteminCart_dividerView"
+                                android:background="@drawable/border_line"
+                                />
+
+
+
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/markas_delivered_ConstraintLayout"
+                                android:visibility="visible"
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/markas_deliveredticon"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/tracking" />
+
+                                <TextView
+                                    android:id="@+id/markas_delivered_Textview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="7dp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:gravity="center"
+                                    android:text="Change Delivery Status For Bills "
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/markas_deliveredticon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/consolidatedSalesReport_ConstraintLayout"
+
+                                android:paddingStart="18dp">
+
+                                <ImageView
+                                    android:id="@+id/consolidatedSales_ReportIcon"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/sales_detail" />
+
+                                <TextView
+                                    android:id="@+id/consolidatedSales_ReportTextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="15dp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:gravity="center"
+                                    android:text="Batchwise  Report"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/consolidatedSales_ReportIcon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+
+
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:visibility="gone"
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+
+
+
+                        </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="Inventory"
+                            android:paddingTop="15dp"
+                            android:paddingStart="17dp"
+                            android:paddingEnd="7dp"
+                            android:paddingBottom="4dp"
+
+                            android:textAllCaps="true"
+                            android:gravity="bottom"
+                            android:layout_gravity="bottom"
+                            android:fontFamily="@font/courier_prime_bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/Grey"
+                            android:background="@color/TMCBackgroundLightPurpleColor"/>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="10dp"
+                            android:backgroundTint="@color/white"
+
+                            app:cardElevation="1dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/batchList_ConstraintLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@drawable/custom_bordered_ripple"
+
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/batchlisticon"
+                                    android:layout_width="20dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_height="20dp"
+                                    android:scaleType="fitXY"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/batch_list_icon" />
+
+                                <TextView
+                                    android:id="@+id/batchListTextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="13dp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:gravity="center"
+                                    android:text="Batch List"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/batchlisticon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:layout_marginEnd="15dp"
+                                    android:alpha=".4"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/viewStockBalance_ConstraintLayout"
+
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/stockbalanceIcon"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:scaleType="center"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/warehouse21" />
+
+                                <TextView
+                                    android:id="@+id/viewStockBalanceTextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:gravity="center"
+                                    android:text="Stock Balance Report"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/stockbalanceIcon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+
+
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:visibility="gone"
+
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+
+
+
+                        </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_gravity="bottom"
+                            android:background="@color/TMCBackgroundLightPurpleColor"
+                            android:fontFamily="@font/courier_prime_bold"
+                            android:gravity="bottom"
+                            android:paddingStart="17dp"
+                            android:paddingTop="15dp"
+                            android:paddingEnd="7dp"
+                            android:paddingBottom="4dp"
+                            android:text="Payments"
+                            android:textAllCaps="true"
+                            android:textColor="@color/Grey"
+                            android:textSize="16sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="10dp"
+                            android:backgroundTint="@color/white"
+
+                            app:cardElevation="1dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/clearOutStandingCredit_Retailer_ConstraintLayout"
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/clearCredit_Retailericon"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:scaleType="fitCenter"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/recordpaymenticon" />
+
+                                <TextView
+                                    android:id="@+id/clearCredit_RetailerTextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="13dp"
+                                    android:gravity="center"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:text="Record New payment "
+                                    android:textColor="@color/black"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/clearCredit_Retailericon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+
+
+
+
+
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/paymentReceivedReportsConstraintLayout"
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/payments_received_icon"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:scaleType="fitCenter"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/paymentrecord1" />
+
+                                <TextView
+                                    android:id="@+id/payments_receivedReports_Textview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="13dp"
+                                    android:gravity="center"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:text="Payment Reports Datewise"
+                                    android:textColor="@color/black"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/payments_received_icon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/paymentReportsByUserConstraintLayout"
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/payments_ReportsByUser_icon"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:scaleType="fitCenter"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/paymentrecord1" />
+
+                                <TextView
+                                    android:id="@+id/payments_ReportsByUser_Textview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="13dp"
+                                    android:gravity="center"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:text="Payment Reports By Buyer"
+                                    android:textColor="@color/black"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/payments_ReportsByUser_icon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/transactionDetail_byUser_ConstraintLayout"
+
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/transactionDetails_by_Buyer_ReportIcon"
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/outstandingreport" />
+
+                                <TextView
+                                    android:id="@+id/transactionDetailsBybuyer_ReportTextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="13dp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:gravity="center"
+                                    android:text="Transaction Details By Buyer"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/transactionDetails_by_Buyer_ReportIcon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+
+
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/OutStanding_Report_ConstraintLayout"
+
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/OutStanding_ReportIcon"
+                                    android:layout_width="17dp"
+                                    android:layout_height="17dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/outstandingreport" />
+
+                                <TextView
+                                    android:id="@+id/outStandingReportTextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="13dp"
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:gravity="center"
+                                    android:text="Outstanding Report"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/OutStanding_ReportIcon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+
+
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="Buyers"
+                            android:paddingTop="15dp"
+                            android:paddingStart="17dp"
+                            android:paddingEnd="7dp"
+                            android:paddingBottom="4dp"
+
+                            android:textAllCaps="true"
+                            android:fontFamily="@font/courier_prime_bold"
+                            android:textSize="16sp"
+                            android:gravity="bottom"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@color/Grey"
+                            android:background="@color/TMCBackgroundLightPurpleColor"/>
+
+
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="10dp"
+                            android:backgroundTint="@color/white"
+
+                            app:cardElevation="1dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:background="@drawable/custom_bordered_ripple"
+                                android:id="@+id/manageRetailer_ConstraintLayout"
+                                android:paddingStart="15dp">
+
+                                <ImageView
+                                    android:id="@+id/manageretailericon"
+                                    android:layout_width="18dp"
+                                    android:layout_height="19dp"
+                                    android:scaleType="fitXY"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/retailer_icon36" />
+
+                                <TextView
+                                    android:id="@+id/manageRetailerTextview"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="13dp"
+                                    android:gravity="center"
+                                    android:textSize="14sp"
+
+                                    android:fontFamily="@font/open_sans_semibold"
+                                    android:text="Add / Edit Buyer Details"
+                                    android:textColor="@color/black"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/manageretailericon"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.523" />
+
+                                <ImageView
+                                    android:layout_width="11dp"
+                                    android:layout_height="11dp"
+                                    android:alpha=".4"
+                                    android:layout_marginEnd="15dp"
+                                    android:scaleType="centerCrop"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:srcCompat="@mipmap/rightarrow" />
+
+
+
+
+
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:alpha=".2"
+                                android:visibility="gone"
+
+                                android:layout_marginStart="52dp"
+                                android:background="@drawable/border_line"
+                                />
+                        </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingTop="15dp"
+                            android:paddingStart="17dp"
+                            android:paddingEnd="7dp"
+                            android:paddingBottom="4dp"
+
+                            android:text="General"
+                            android:textAllCaps="true"
+
+                            android:fontFamily="@font/courier_prime_bold"
+                            android:textSize="16sp"
+                            android:textColor="@color/Grey"
+                            android:gravity="bottom"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/TMCBackgroundLightPurpleColor"/>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/white"
+
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="1dp">
+
+
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:background="@drawable/custom_bordered_ripple"
+                            android:id="@+id/settings_ConstraintLayout"
+                            android:paddingStart="15dp">
+
+                            <ImageView
+                                android:id="@+id/settingsicon"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@mipmap/settings_icon" />
+
+                            <TextView
+                                android:id="@+id/settingsTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:gravity="center"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/open_sans_semibold"
+                                android:text="Settings"
+                                android:textColor="@color/black"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/settingsicon"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.523" />
+
+
+                            <ImageView
+                                android:layout_width="11dp"
+                                android:layout_height="11dp"
+                                android:alpha=".4"
+                                android:layout_marginEnd="15dp"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@mipmap/rightarrow" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:visibility="gone"
+
+                            android:alpha=".2"
+                            android:layout_marginStart="52dp"
+                            android:background="@drawable/border_line"
+                            />
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/toolBarHeader_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:elevation="30dp"/>
+
+    <LinearLayout
+        android:id="@+id/loadingpanelmask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/TMC_ProgressBarGrey_Color"
+        android:alpha=".6"
+        android:translationZ="90dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:translationZ="100dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loadinganim_layout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            app:indicatorColor="@color/TMCPrimaryPurpleColor"
+            app:indicatorName="BallPulseIndicator" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

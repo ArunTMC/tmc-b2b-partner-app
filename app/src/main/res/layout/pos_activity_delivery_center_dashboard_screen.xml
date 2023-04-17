@@ -79,7 +79,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/white_navigation_bar_button"
+                android:background="@drawable/grey_navigation_bar_button"
                 android:fontFamily="@font/open_sans_semibold"
                 android:gravity="center"
                 android:text="@string/placeOrder"
@@ -99,11 +99,31 @@
                 android:background="@drawable/grey_navigation_bar_button"
                 android:fontFamily="@font/open_sans_semibold"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="@string/home"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 tools:ignore="ButtonStyle" />
+
+
+            <TextView
+                android:id="@+id/deliveryCenterStocklist_navigationButton"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_navigation_bar_button"
+                android:fontFamily="@font/open_sans_semibold"
+                android:gravity="center"
+                android:text="@string/stocklist"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:ignore="ButtonStyle" />
+
+
 
             <TextView
                 android:id="@+id/deliveryCenterSettings_navigationButton"

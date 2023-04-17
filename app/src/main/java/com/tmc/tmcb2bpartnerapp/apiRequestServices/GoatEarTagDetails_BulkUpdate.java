@@ -7,13 +7,13 @@ import androidx.annotation.NonNull;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetails_BulkUpdateInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BOrderItemDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagTransaction;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_UpdatedGoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BOrderItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagTransaction;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_UpdatedGoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
@@ -39,8 +39,8 @@ public class GoatEarTagDetails_BulkUpdate extends AsyncTask<String, String, List
     HashMap<String,Modal_GoatEarTagDetails> earTagDetailsHashMap = new HashMap<>();
     ArrayList<String> earTagDetailsArrayList_String = new ArrayList<>();
     Modal_B2BOrderItemDetails modal_b2BOrderItemDetails ;
-
-
+    HashMap<String, Modal_B2BCartItemDetails> earTagDetails_jsonFinalSalesHashMap = new HashMap<>();
+    Boolean isCalledFromPlaceOrderSecondVersn = false;
 
 
     public GoatEarTagDetails_BulkUpdate(GoatEarTagDetails_BulkUpdateInterface callBackGoatEarTagDetails_bulkUpdateInterfacee, String addApiToCall, String callADDMethod , Modal_B2BOrderItemDetails modal_b2BOrderItemDetailss,String orderplaceddate, String usermobileno_string) {
@@ -53,140 +53,351 @@ public class GoatEarTagDetails_BulkUpdate extends AsyncTask<String, String, List
         this.modal_b2BOrderItemDetails = modal_b2BOrderItemDetailss;
         this.earTagDetailsHashMap = modal_b2BOrderItemDetailss.getEarTagDetailsHashMap();
         this.earTagDetailsArrayList_String = modal_b2BOrderItemDetailss.getEarTagDetailsArrayList_String();
+        isCalledFromPlaceOrderSecondVersn = false;
 
 
     }
 
-
+    public GoatEarTagDetails_BulkUpdate(GoatEarTagDetails_BulkUpdateInterface goatEarTagDetailsBulkUpdateInterface, String addApiToCall, String callMethod, Modal_B2BOrderItemDetails modal_b2BOrderItemDetailss, String orderplaceddate, String usermobileno_string, HashMap<String, Modal_B2BCartItemDetails> earTagDetails_jsonFinalSalesHashMapp) {
+        this.ApitoCall = addApiToCall;
+        this.callMethod = callMethod;
+        this.orderplaceddate = orderplaceddate;
+        this.usermobileno_string = usermobileno_string;
+        this.callBackGoatEarTagDetails_bulkUpdateInterface = goatEarTagDetailsBulkUpdateInterface;
+        this.modal_b2BOrderItemDetails = modal_b2BOrderItemDetailss;
+        this.earTagDetails_jsonFinalSalesHashMap =earTagDetails_jsonFinalSalesHashMapp;
+        this.earTagDetailsArrayList_String = modal_b2BOrderItemDetailss.getEarTagDetailsArrayList_String();
+        isCalledFromPlaceOrderSecondVersn = true;
+    }
 
 
     @Override
     protected List<Modal_Static_GoatEarTagDetails> doInBackground(String... strings) {
        
-
-             for(int iterator =0 ; iterator < earTagDetailsArrayList_String.size();iterator++) {
-                 String barcodeString = earTagDetailsArrayList_String.get(iterator);
-                 if (earTagDetailsHashMap.containsKey(barcodeString)) {
-
-                     Modal_GoatEarTagDetails modal_goatEarTagDetails = earTagDetailsHashMap.get(barcodeString);
-
-                     try{
-                         jsontoUpdateEarTagDetails.put("barcodeno" , modal_goatEarTagDetails.getBarcodeno());
-                         jsontoUpdateEarTagDetails.put("batchno",modal_goatEarTagDetails.getBatchno());
-                         jsontoUpdateEarTagDetails.put("status" , modal_b2BOrderItemDetails.getStatus());
-                         try{
-                         String weightinGrams_str = modal_goatEarTagDetails.getNewWeight_forBillingScreen();
-                         weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
-                             if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
-                                 weightinGrams_str = "0";
-                             }
+            if(isCalledFromPlaceOrderSecondVersn){
+                for (int iterator = 0; iterator < earTagDetailsArrayList_String.size(); iterator++){
+                    String barcodeString = earTagDetailsArrayList_String.get(iterator);
+                    if (earTagDetails_jsonFinalSalesHashMap.containsKey(barcodeString)) {
+                        Modal_B2BCartItemDetails modal_goatEarTagDetails = earTagDetails_jsonFinalSalesHashMap.get(barcodeString);
+                        try {
+                            jsontoUpdateEarTagDetails.put("barcodeno", modal_goatEarTagDetails.getBarcodeno());
+                            jsontoUpdateEarTagDetails.put("batchno", modal_goatEarTagDetails.getBatchno());
+                            jsontoUpdateEarTagDetails.put("status", modal_b2BOrderItemDetails.getStatus());
 
 
-                         weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
-                         double weightinGrams_double = Double.parseDouble(weightinGrams_str);
-                         jsontoUpdateEarTagDetails.put("currentweightingrams",weightinGrams_double);
-                         }catch (Exception e){
-                             e.printStackTrace();
-                         }
-                     }
-                     catch (Exception e){
-                         e.printStackTrace();
-                     }
-
-
-                     try{
-                         jsontoAddEarTagTransactionDetails.put("barcodeno" , modal_goatEarTagDetails.getBarcodeno());
-                         jsontoAddEarTagTransactionDetails.put("batchno",modal_goatEarTagDetails.getBatchno());
-                         jsontoAddEarTagTransactionDetails.put("status" , modal_b2BOrderItemDetails.getStatus());
-                            try{
-                                 String weightinGrams_str = modal_goatEarTagDetails.getCurrentweightingrams();
-                                 weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
-                                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getTotalItemWeight();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
                                     weightinGrams_str = "0";
                                 }
 
-                                 weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
-                                 double weightinGrams_double = Double.parseDouble(weightinGrams_str);
-                                 jsontoAddEarTagTransactionDetails.put("previousweightingrams",weightinGrams_double);
-                            }catch (Exception e){
+
+                                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                               // jsontoUpdateEarTagDetails.put("totalweight", weightinGrams_double);
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
-                       try{
-                         String weightinGrams_str1 = modal_goatEarTagDetails.getNewWeight_forBillingScreen();
-                         weightinGrams_str1 = weightinGrams_str1.replaceAll("[^\\d.]", "");
-                           if(weightinGrams_str1.equals("") || weightinGrams_str1.equals(null)){
-                               weightinGrams_str1 = "0";
-                           }
+
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getMeatyieldweight();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
+
+
+                                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                                jsontoUpdateEarTagDetails.put("meatyieldweight", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getPartsweight();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
+
+
+                                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                                jsontoUpdateEarTagDetails.put("partsweight", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getItemprice();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
+
+
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                               // jsontoUpdateEarTagDetails.put("totalprice", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
 
 
 
-                         weightinGrams_str1 = ConvertKilogramstoGrams(weightinGrams_str1);
-                         double weightinGrams_double1 = Double.parseDouble(weightinGrams_str1);
-                         jsontoAddEarTagTransactionDetails.put("newweightingrams",weightinGrams_double1);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
 
-                         }catch (Exception e){
-                             e.printStackTrace();
-                         }
-                         jsontoAddEarTagTransactionDetails.put("weighingpurpose",String.valueOf(Constants.goatEarTagWeighingPurpose_RegularAudit));
-                         jsontoAddEarTagTransactionDetails.put("updateddate",String.valueOf(orderplaceddate));
-                         jsontoAddEarTagTransactionDetails.put("status",String.valueOf(modal_b2BOrderItemDetails.getStatus()));
-                         jsontoAddEarTagTransactionDetails.put("mobileno",String.valueOf(usermobileno_string));
-
-                     }
-                     catch (Exception e){
-                         e.printStackTrace();
-                     }
-
-                     updateEntryInEarTagDetails();
-                     AddEntryInEarTagTransactionTable();
+                        try {
+                            jsontoAddEarTagTransactionDetails.put("barcodeno", modal_goatEarTagDetails.getBarcodeno());
+                            jsontoAddEarTagTransactionDetails.put("batchno", modal_goatEarTagDetails.getBatchno());
+                            jsontoAddEarTagTransactionDetails.put("status", modal_b2BOrderItemDetails.getStatus());
+                            jsontoAddEarTagTransactionDetails.put("updateddate", orderplaceddate);
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getTotalItemWeight();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
 
 
-                     if(iterator == (earTagDetailsArrayList_String.size()-1)){
-                         try {
-                             new Modal_GoatEarTagTransaction();
-                         }
-                         catch (Exception e){
-                             e.printStackTrace();
-                         }
+                                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                              //  jsontoAddEarTagTransactionDetails.put("totalweight", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
 
-                         try {
-                             runOnUiThread(new Runnable() {
 
-                                 @Override
-                                 public void run() {
-                                     callBackGoatEarTagDetails_bulkUpdateInterface.notifySuccess(Constants.successResult_volley);
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getMeatyieldweight();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
 
-                                 }
-                             });
-                         }
-                         catch (Exception e){
-                             e.printStackTrace();
-                         }
 
-                     }
+                                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                                jsontoAddEarTagTransactionDetails.put("meatyieldweight", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
 
-                 }
-                 else{
-                     if(iterator == (earTagDetailsArrayList_String.size()-1)){
-                         new Modal_GoatEarTagTransaction();
-                         try {
-                             runOnUiThread(new Runnable() {
 
-                                 @Override
-                                 public void run() {
-                                     callBackGoatEarTagDetails_bulkUpdateInterface.notifySuccess(Constants.successResult_volley);
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getPartsweight();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
 
-                                 }
-                             });
-                         }
-                         catch (Exception e){
-                             e.printStackTrace();
-                         }
-                     }
-                 }
-             }
 
+                                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                                jsontoAddEarTagTransactionDetails.put("partsweight", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getItemprice();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
+
+
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                               // jsontoAddEarTagTransactionDetails.put("totalprice", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        try{
+                            updateEntryInEarTagDetails();
+                            AddEntryInEarTagTransactionTable();
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
+                        try{
+                            if (iterator == (earTagDetailsArrayList_String.size() - 1)) {
+                                try {
+                                    new Modal_GoatEarTagTransaction();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    runOnUiThread(new Runnable() {
+
+                                        @Override
+                                        public void run() {
+                                            callBackGoatEarTagDetails_bulkUpdateInterface.notifySuccess(Constants.successResult_volley);
+
+                                        }
+                                    });
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                    else{
+                        if (iterator == (earTagDetailsArrayList_String.size() - 1)) {
+                            new Modal_GoatEarTagTransaction();
+                            try {
+                                runOnUiThread(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        callBackGoatEarTagDetails_bulkUpdateInterface.notifySuccess(Constants.successResult_volley);
+
+                                    }
+                                });
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                for (int iterator = 0; iterator < earTagDetailsArrayList_String.size(); iterator++) {
+                    String barcodeString = earTagDetailsArrayList_String.get(iterator);
+                    if (earTagDetailsHashMap.containsKey(barcodeString)) {
+
+                        Modal_GoatEarTagDetails modal_goatEarTagDetails = earTagDetailsHashMap.get(barcodeString);
+
+                        try {
+                            jsontoUpdateEarTagDetails.put("barcodeno", modal_goatEarTagDetails.getBarcodeno());
+                            jsontoUpdateEarTagDetails.put("batchno", modal_goatEarTagDetails.getBatchno());
+                            jsontoUpdateEarTagDetails.put("status", modal_b2BOrderItemDetails.getStatus());
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getNewWeight_forBillingScreen();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
+
+
+                                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                              //  jsontoUpdateEarTagDetails.put("currentweightingrams", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                        try {
+                            jsontoAddEarTagTransactionDetails.put("barcodeno", modal_goatEarTagDetails.getBarcodeno());
+                            jsontoAddEarTagTransactionDetails.put("batchno", modal_goatEarTagDetails.getBatchno());
+                            jsontoAddEarTagTransactionDetails.put("status", modal_b2BOrderItemDetails.getStatus());
+                            try {
+                                String weightinGrams_str = modal_goatEarTagDetails.getCurrentweightingrams();
+                                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str.equals("") || weightinGrams_str.equals(null)) {
+                                    weightinGrams_str = "0";
+                                }
+
+                                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+                                jsontoAddEarTagTransactionDetails.put("previousweightingrams", weightinGrams_double);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                String weightinGrams_str1 = modal_goatEarTagDetails.getNewWeight_forBillingScreen();
+                                weightinGrams_str1 = weightinGrams_str1.replaceAll("[^\\d.]", "");
+                                if (weightinGrams_str1.equals("") || weightinGrams_str1.equals(null)) {
+                                    weightinGrams_str1 = "0";
+                                }
+
+
+                                weightinGrams_str1 = ConvertKilogramstoGrams(weightinGrams_str1);
+                                double weightinGrams_double1 = Double.parseDouble(weightinGrams_str1);
+                                jsontoAddEarTagTransactionDetails.put("newweightingrams", weightinGrams_double1);
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            jsontoAddEarTagTransactionDetails.put("weighingpurpose", String.valueOf(Constants.goatEarTagWeighingPurpose_RegularAudit));
+                            jsontoAddEarTagTransactionDetails.put("updateddate", String.valueOf(orderplaceddate));
+                            jsontoAddEarTagTransactionDetails.put("status", String.valueOf(modal_b2BOrderItemDetails.getStatus()));
+                            jsontoAddEarTagTransactionDetails.put("mobileno", String.valueOf(usermobileno_string));
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        updateEntryInEarTagDetails();
+                        AddEntryInEarTagTransactionTable();
+
+
+                        if (iterator == (earTagDetailsArrayList_String.size() - 1)) {
+                            try {
+                                new Modal_GoatEarTagTransaction();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                runOnUiThread(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        callBackGoatEarTagDetails_bulkUpdateInterface.notifySuccess(Constants.successResult_volley);
+
+                                    }
+                                });
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                    } else {
+                        if (iterator == (earTagDetailsArrayList_String.size() - 1)) {
+                            new Modal_GoatEarTagTransaction();
+                            try {
+                                runOnUiThread(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        callBackGoatEarTagDetails_bulkUpdateInterface.notifySuccess(Constants.successResult_volley);
+
+                                    }
+                                });
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
 
 
 
@@ -474,7 +685,7 @@ public class GoatEarTagDetails_BulkUpdate extends AsyncTask<String, String, List
 
                     double weightinGrams_double = Double.parseDouble(weightinGrams_str);
 
-                    jsonObject.put("currentweightingrams", weightinGrams_double);
+                  //  jsonObject.put("currentweightingrams", weightinGrams_double);
                 }
             }
             if(!Modal_UpdatedGoatEarTagDetails.getUpdated_gender().toString().equals("") && !Modal_UpdatedGoatEarTagDetails.getUpdated_gender().toString().equals("null")){

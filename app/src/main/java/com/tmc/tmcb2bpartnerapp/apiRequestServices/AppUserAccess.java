@@ -13,7 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.AppUserAccessInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_AppUserAccess;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_AppUserAccess;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.DateParser;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;

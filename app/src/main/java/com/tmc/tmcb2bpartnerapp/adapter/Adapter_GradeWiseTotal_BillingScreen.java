@@ -11,21 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.activity.BillingScreen;
-import com.tmc.tmcb2bpartnerapp.activity.ChangeGoatGradeDetails;
 import com.tmc.tmcb2bpartnerapp.activity.PlacedOrderDetailsScreen;
 import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCentre_PlaceOrderScreen_Fragment;
 import com.tmc.tmcb2bpartnerapp.fragment.OrderSummary_fragement;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_POJOClassForFinalSalesHashmap;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_POJOClassForFinalSalesHashmap;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
-import com.tmc.tmcb2bpartnerapp.utils.DateParser;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;

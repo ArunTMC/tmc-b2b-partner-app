@@ -9,7 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.DeliveryCenterDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_DeliveryCenterDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_DeliveryCenterDetails;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.DatabaseArrayList_PojoClass;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;

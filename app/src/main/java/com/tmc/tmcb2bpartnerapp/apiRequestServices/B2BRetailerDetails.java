@@ -8,11 +8,8 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BRetailerDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BRetailerDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsUpdate;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BRetailerDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BRetailerDetails;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.DatabaseArrayList_PojoClass;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
@@ -80,6 +77,76 @@ public class B2BRetailerDetails extends AsyncTask<String, String, List<Modal_B2B
     }
 
     private void updateEntryInBatchDetails() {
+
+        try{
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApitoCall,jsonToADD_Or_Update,
+                    response -> {
+                        if (callback_retailerDetailsInterface != null) {
+                            try {
+                                String statusCode = response.getString("statusCode");
+                                if(statusCode.equals("400")){
+                                    callback_retailerDetailsInterface.notifySuccess(Constants.item_Already_Added_volley);
+
+                                }
+                                else if(statusCode.equals("200")){
+                                   new Modal_B2BRetailerDetails();
+
+
+                                    callback_retailerDetailsInterface.notifySuccess(Constants.successResult_volley);
+
+                                }
+                                else{
+                                    callback_retailerDetailsInterface.notifySuccess(Constants.unknown_API_Result_volley);
+
+                                }
+                                //  callback_retailerDetailsInterface.notifySuccess("success");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                callback_retailerDetailsInterface.notifyProcessingError(e);
+                            }
+                        }
+                    }, error -> {
+
+
+                callback_retailerDetailsInterface.notifyVolleyError( error);
+
+                error.printStackTrace();
+            })
+            {
+                @Override
+                public Map<String, String> getParams() {
+                    final Map<String, String> params = new HashMap<>();
+                    params.put("modulename", "Store");
+                    return params;
+                }
+
+
+                @NonNull
+                @Override
+                public Map<String, String> getHeaders() {
+                    final Map<String, String> header = new HashMap<>();
+                    header.put("Content-Type", "application/json");
+
+                    return header;
+                }
+            };
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(40000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            // Make the request
+            volleyrequestqueuehelper.getInstance().addToRequestQueue(jsonObjectRequest);
+
+
+
+
+
+
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            callback_retailerDetailsInterface.notifyProcessingError(e);
+        }
     }
 
     private void getDataFromBatchDetails() {

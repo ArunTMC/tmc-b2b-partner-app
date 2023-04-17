@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartDetaillsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartItemDetails;
+import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartItemDetaillsInterface;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartItemDetails;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
 
@@ -21,14 +21,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Modal_B2BCartItemDetails>> {
-    B2BCartDetaillsInterface callbackB2BCartDetaillsInterface;
+    B2BCartItemDetaillsInterface callbackB2BCartItemDetaillsInterface;
     String ApitoCall ="" , callMethod ="";
     JSONObject jsonToADD_Or_Update;
     Modal_B2BCartItemDetails modal_b2BCartDetails;
     ArrayList<Modal_B2BCartItemDetails> arrayList  = new ArrayList<>();
 
-    public B2BCartItemDetails(B2BCartDetaillsInterface callbackB2BCartDetaillsInterfacee, String getApiToCall, String apiMethodtoCall, Modal_B2BCartItemDetails modal_b2BCartDetailss) {
-        this.callbackB2BCartDetaillsInterface = callbackB2BCartDetaillsInterfacee;
+    public B2BCartItemDetails(B2BCartItemDetaillsInterface callbackB2BCartItemDetaillsInterfacee, String getApiToCall, String apiMethodtoCall, Modal_B2BCartItemDetails modal_b2BCartDetailss) {
+        this.callbackB2BCartItemDetaillsInterface = callbackB2BCartItemDetaillsInterfacee;
         this.ApitoCall = getApiToCall;
         this.callMethod = apiMethodtoCall;
         this.modal_b2BCartDetails = modal_b2BCartDetailss;
@@ -43,9 +43,9 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
 
     }
 
-    public B2BCartItemDetails(B2BCartDetaillsInterface callback_b2BCartDetaillsInterfacee, String getApiToCall, String apiMethodtoCall) {
+    public B2BCartItemDetails(B2BCartItemDetaillsInterface callback_b2BCartItemDetaillsInterfacee, String getApiToCall, String apiMethodtoCall) {
 
-        this.callbackB2BCartDetaillsInterface = callback_b2BCartDetaillsInterfacee;
+        this.callbackB2BCartItemDetaillsInterface = callback_b2BCartItemDetaillsInterfacee;
         this.ApitoCall = getApiToCall;
         this.callMethod = apiMethodtoCall;
         if(callMethod.equals(Constants.CallGETMethod)){
@@ -67,16 +67,16 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
     protected ArrayList<Modal_B2BCartItemDetails> doInBackground(String... strings) {
 
         if(callMethod.equals(Constants.CallADDMethod)){
-            addEntryInBatchDetails();
+            addEntryDetails();
         }
         else if(callMethod.equals(Constants.CallGETMethod) || callMethod.equals(Constants.CallGETListMethod) || callMethod.equals(Constants.CallGETLastEntryMethod)){
-            getDataFromBatchDetails();
+            getData();
         }
         else if(callMethod.equals(Constants.CallUPDATEMethod)){
-            updateEntryInBatchDetails();
+            updateEntry();
         }
         else  if(callMethod.equals(Constants.CallDELETEMethod)){
-            deleteEntryInBatchDetails();
+            deleteEntry();
         }
 
 
@@ -87,39 +87,39 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
         return null;
     }
 
-    private void deleteEntryInBatchDetails() {
+    private void deleteEntry() {
         try{
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApitoCall,jsonToADD_Or_Update,
                     response -> {
-                        if (callbackB2BCartDetaillsInterface != null) {
+                        if (callbackB2BCartItemDetaillsInterface != null) {
                             try {
                                 String statusCode = response.getString("statusCode");
                                 if(statusCode.equals("400")){
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.item_Already_Added_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.item_Already_Added_volley);
 
                                 }
                                 else if(statusCode.equals("200")){
 
 
 
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.successResult_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.successResult_volley);
 
                                 }
                                 else{
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.unknown_API_Result_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.unknown_API_Result_volley);
 
                                 }
-                                //  callbackB2BCartDetaillsInterface.notifySuccess("success");
+                                //  callbackB2BCartItemDetaillsInterface.notifySuccess("success");
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                callbackB2BCartDetaillsInterface.notifyProcessingError(e);
+                                callbackB2BCartItemDetaillsInterface.notifyProcessingError(e);
                             }
                         }
                     }, error -> {
 
 
-                callbackB2BCartDetaillsInterface.notifyVolleyError( error);
+                callbackB2BCartItemDetaillsInterface.notifyVolleyError( error);
 
                 error.printStackTrace();
             })
@@ -155,45 +155,45 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
         }
         catch (Exception e){
             e.printStackTrace();
-            callbackB2BCartDetaillsInterface.notifyProcessingError(e);
+            callbackB2BCartItemDetaillsInterface.notifyProcessingError(e);
         }
     }
 
-    private void addEntryInBatchDetails() {
+    private void addEntryDetails() {
 
 
         try{
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApitoCall,jsonToADD_Or_Update,
                     response -> {
-                        if (callbackB2BCartDetaillsInterface != null) {
+                        if (callbackB2BCartItemDetaillsInterface != null) {
                             try {
                                 String statusCode = response.getString("statusCode");
                                 if(statusCode.equals("400")){
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.item_Already_Added_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.item_Already_Added_volley);
 
                                 }
                                 else if(statusCode.equals("200")){
 
 
 
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.successResult_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.successResult_volley);
 
                                 }
                                 else{
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.unknown_API_Result_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.unknown_API_Result_volley);
 
                                 }
-                                //  callbackB2BCartDetaillsInterface.notifySuccess("success");
+                                //  callbackB2BCartItemDetaillsInterface.notifySuccess("success");
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                callbackB2BCartDetaillsInterface.notifyProcessingError(e);
+                                callbackB2BCartItemDetaillsInterface.notifyProcessingError(e);
                             }
                         }
                     }, error -> {
 
 
-                callbackB2BCartDetaillsInterface.notifyVolleyError( error);
+                callbackB2BCartItemDetaillsInterface.notifyVolleyError( error);
 
                 error.printStackTrace();
             })
@@ -229,7 +229,7 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
         }
         catch (Exception e){
             e.printStackTrace();
-            callbackB2BCartDetaillsInterface.notifyProcessingError(e);
+            callbackB2BCartItemDetaillsInterface.notifyProcessingError(e);
         }
         
         
@@ -237,7 +237,7 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
     }
 
 
-    private void getDataFromBatchDetails() {
+    private void getData() {
 
 
 
@@ -245,13 +245,13 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ApitoCall,null,
                     response -> {
-                        if (callbackB2BCartDetaillsInterface != null) {
+                        if (callbackB2BCartItemDetaillsInterface != null) {
                             try {
                                 JSONArray JArray = response.getJSONArray("content");
 
 
                                 if (JArray.length() == 0) {
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.emptyResult_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.emptyResult_volley);
 
                                 }
                                 else {
@@ -354,7 +354,7 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
 
                                             try {
                                                 if (json.has("barcodeno")) {
-                                                    modal_b2BCartDetails.barcodeno = String.valueOf(json.get("barcodeno"));
+                                                    modal_b2BCartDetails.barcodeno = String.valueOf(json.get("barcodeno")).toUpperCase();
 
                                                 } else {
                                                     modal_b2BCartDetails.barcodeno = "";
@@ -472,17 +472,145 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
                                             }
 
 
+                                            try {
+                                                if (json.has("partsweight")) {
+                                                    modal_b2BCartDetails.partsweight = ConvertGramsToKilograms(String.valueOf(json.get("partsweight")));
+
+                                                } else {
+                                                    modal_b2BCartDetails.partsweight = "";
+                                                }
+                                            } catch (Exception e) {
+                                                modal_b2BCartDetails.partsweight = "";
+
+                                                e.printStackTrace();
+                                            }
+
+
+
+                                            try {
+                                                if (json.has("meatyieldweight")) {
+                                                    modal_b2BCartDetails.meatyieldweight = ConvertGramsToKilograms(String.valueOf(json.get("meatyieldweight")));
+                                                } else {
+                                                    modal_b2BCartDetails.meatyieldweight = "";
+
+                                                }
+                                            } catch (Exception e) {
+                                                modal_b2BCartDetails.meatyieldweight = "";
+                                                e.printStackTrace();
+                                            }
+
+
+
+
+
+                                            try {
+                                                if (json.has("approxliveweight")) {
+                                                    modal_b2BCartDetails.approxliveweight = ConvertGramsToKilograms(String.valueOf(json.get("approxliveweight")));
+
+                                                } else {
+                                                    modal_b2BCartDetails.approxliveweight = "";
+
+                                                }
+                                            } catch (Exception e) {
+                                                modal_b2BCartDetails.approxliveweight = "";
+
+                                                e.printStackTrace();
+                                            }
+
+
+
+                                            try {
+                                                if (json.has("totalprice")) {
+                                                    modal_b2BCartDetails.totalPrice_ofItem = String.valueOf(json.get("totalprice"));
+
+                                                } else {
+                                                    modal_b2BCartDetails.totalPrice_ofItem = "";
+                                                }
+                                            } catch (Exception e) {
+                                                modal_b2BCartDetails.totalPrice_ofItem = "";
+                                                e.printStackTrace();
+                                            }
+
+
+
+                                            try {
+                                                if (json.has("price")) {
+                                                    modal_b2BCartDetails.itemprice = String.valueOf(json.get("price"));
+
+                                                } else {
+                                                    modal_b2BCartDetails.itemprice = "";
+                                                }
+                                            } catch (Exception e) {
+                                                modal_b2BCartDetails.itemprice = "";
+                                                e.printStackTrace();
+                                            }
+
+
+                                            try {
+                                                if (json.has("discount")) {
+                                                    modal_b2BCartDetails.discount = String.valueOf(json.get("discount"));
+
+                                                } else {
+                                                    modal_b2BCartDetails.discount = "0";
+                                                }
+                                            } catch (Exception e) {
+                                                modal_b2BCartDetails.discount = "0";
+                                                e.printStackTrace();
+                                            }
+
+
+
+                                            double  meatYield_double =0 , parts_double = 0 , totalWeight_double =0 ;
+                                            try{
+                                                String text = String.valueOf(modal_b2BCartDetails.getMeatyieldweight());
+                                                text = text.replaceAll("[^\\d.]", "");
+                                                if(text.equals("")){
+                                                    text = "0";
+                                                }
+                                                meatYield_double = Double.parseDouble(text);
+                                            }
+                                            catch (Exception e){
+                                                meatYield_double = 0;
+                                                e.printStackTrace();
+                                            }
+
+
+                                            try{
+                                                String text = String.valueOf(modal_b2BCartDetails.getPartsweight());
+                                                text = text.replaceAll("[^\\d.]", "");
+                                                if(text.equals("")){
+                                                    text = "0";
+                                                }
+                                                parts_double = Double.parseDouble(text);
+                                            }
+                                            catch (Exception e){
+                                                parts_double = 0;
+                                                e.printStackTrace();
+                                            }
+
+                                            try{
+                                                totalWeight_double = meatYield_double+parts_double;
+                                            }
+                                            catch (Exception e){
+                                                totalWeight_double = 0;
+                                                e.printStackTrace();
+                                            }
+                                            modal_b2BCartDetails.setTotalItemWeight(String.valueOf(totalWeight_double));
+
+
+
+
 
                                             arrayList.add(modal_b2BCartDetails);
                                             if(arrayLength -1 == i1)
                                             {
 
                                                 if(callMethod.equals(Constants.CallGETMethod)){
-                                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.successResult_volley);
+                                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.successResult_volley);
 
                                                 }
                                                 else  if(callMethod.equals(Constants.CallGETListMethod)){
-                                                    callbackB2BCartDetaillsInterface.notifySuccessForGettingListItem(arrayList);
+                                                    callbackB2BCartItemDetaillsInterface.notifySuccessForGettingListItem(arrayList);
 
                                                 }
                                             }
@@ -491,13 +619,13 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                callbackB2BCartDetaillsInterface.notifyProcessingError(e);
+                                callbackB2BCartItemDetaillsInterface.notifyProcessingError(e);
                             }
                         }
                     }, error -> {
 
 
-                callbackB2BCartDetaillsInterface.notifyVolleyError( error);
+                callbackB2BCartItemDetaillsInterface.notifyVolleyError( error);
 
                 error.printStackTrace();
             })
@@ -533,47 +661,47 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
         }
         catch (Exception e){
             e.printStackTrace();
-            callbackB2BCartDetaillsInterface.notifyProcessingError(e);
+            callbackB2BCartItemDetaillsInterface.notifyProcessingError(e);
         }
 
 
 
     }
 
-    private void updateEntryInBatchDetails() {
+    private void updateEntry() {
 
         try{
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, ApitoCall,jsonToADD_Or_Update,
                     response -> {
-                        if (callbackB2BCartDetaillsInterface != null) {
+                        if (callbackB2BCartItemDetaillsInterface != null) {
                             try {
                                 String statusCode = response.getString("statusCode");
                                 if(statusCode.equals("400")){
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.item_Already_Added_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.item_Already_Added_volley);
 
                                 }
                                 else if(statusCode.equals("200")){
 
 
 
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.successResult_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.successResult_volley);
 
                                 }
                                 else{
-                                    callbackB2BCartDetaillsInterface.notifySuccess(Constants.unknown_API_Result_volley);
+                                    callbackB2BCartItemDetaillsInterface.notifySuccess(Constants.unknown_API_Result_volley);
 
                                 }
-                                //  callbackB2BCartDetaillsInterface.notifySuccess("success");
+                                //  callbackB2BCartItemDetaillsInterface.notifySuccess("success");
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                callbackB2BCartDetaillsInterface.notifyProcessingError(e);
+                                callbackB2BCartItemDetaillsInterface.notifyProcessingError(e);
                             }
                         }
                     }, error -> {
 
 
-                callbackB2BCartDetaillsInterface.notifyVolleyError( error);
+                callbackB2BCartItemDetaillsInterface.notifyVolleyError( error);
 
                 error.printStackTrace();
             })
@@ -609,7 +737,7 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
         }
         catch (Exception e){
             e.printStackTrace();
-            callbackB2BCartDetaillsInterface.notifyProcessingError(e);
+            callbackB2BCartItemDetaillsInterface.notifyProcessingError(e);
         }
 
 
@@ -698,6 +826,116 @@ public class B2BCartItemDetails extends AsyncTask<String, String, ArrayList<Moda
                 jsonObject.put("suppliername",String.valueOf(modal_b2BCartDetails.getSuppliername()));
             }
 
+
+           /* if(!modal_b2BCartDetails.getTotalPrice_ofItem().toString().equals("") && !modal_b2BCartDetails.getTotalPrice_ofItem().toString().equals("null")){
+
+                String str = modal_b2BCartDetails.getTotalPrice_ofItem();
+                str = str.replaceAll("[^\\d.]", "");
+                if(str.equals("") || str.equals(null)){
+                    str = "0";
+                }
+
+
+                double _double = Double.parseDouble(str);
+
+                jsonObject.put("totalprice",_double);
+            }
+
+            */
+            if(!modal_b2BCartDetails.getItemprice().toString().equals("") && !modal_b2BCartDetails.getItemprice().toString().equals("null")){
+
+                String str = modal_b2BCartDetails.getItemprice();
+                str = str.replaceAll("[^\\d.]", "");
+                if(str.equals("") || str.equals(null)){
+                    str = "0";
+                }
+
+
+                double _double = Double.parseDouble(str);
+
+                jsonObject.put("price",_double);
+            }
+            if(!modal_b2BCartDetails.getDiscount().toString().equals("") && !modal_b2BCartDetails.getDiscount().toString().equals("null")){
+
+
+                String str = modal_b2BCartDetails.getDiscount();
+                str = str.replaceAll("[^\\d.]", "");
+                if(str.equals("") || str.equals(null)){
+                    str = "0";
+                }
+
+
+                double _double = Double.parseDouble(str);
+
+                jsonObject.put("discount",_double);
+            }
+
+
+            if(!modal_b2BCartDetails.getMeatyieldweight().toString().equals("") && !modal_b2BCartDetails.getMeatyieldweight().toString().equals("null")){
+                String weightinGrams_str = modal_b2BCartDetails.getMeatyieldweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("meatyieldweight",weightinGrams_double);
+            }
+
+
+            if(!modal_b2BCartDetails.getPartsweight().toString().equals("") && !modal_b2BCartDetails.getPartsweight().toString().equals("null")){
+                String weightinGrams_str = modal_b2BCartDetails.getPartsweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("partsweight",weightinGrams_double);
+            }
+
+
+
+
+            if(!modal_b2BCartDetails.getApproxliveweight().toString().equals("") && !modal_b2BCartDetails.getApproxliveweight().toString().equals("null")){
+                String weightinGrams_str = modal_b2BCartDetails.getApproxliveweight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                jsonObject.put("approxliveweight",weightinGrams_double);
+            }
+
+
+
+            if(!modal_b2BCartDetails.getTotalItemWeight().toString().equals("") && !modal_b2BCartDetails.getTotalItemWeight().toString().equals("null")){
+                String weightinGrams_str = modal_b2BCartDetails.getTotalItemWeight();
+                weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+                if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                    weightinGrams_str = "0";
+                }
+
+
+                weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                //jsonObject.put("totalweight",weightinGrams_double);
+            }
+
+
+            
+            
 
 
         /*    if(!modal_b2BCartDetails.getRetailerkey().toString().equals("") && !modal_b2BCartDetails.getRetailerkey().toString().equals("null")){

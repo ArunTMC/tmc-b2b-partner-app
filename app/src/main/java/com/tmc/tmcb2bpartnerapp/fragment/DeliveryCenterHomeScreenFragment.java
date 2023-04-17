@@ -28,8 +28,8 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BBatchDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.SupplierDetails;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BBatchDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.SupplierDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_SupplierDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BBatchDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_SupplierDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.DatabaseArrayList_PojoClass;
@@ -278,11 +278,11 @@ public class DeliveryCenterHomeScreenFragment extends Fragment {
 
         String ApiToCall = "";
         if(calledFrom.equals(getString(R.string.placeOrder))){
-            ApiToCall =  API_Manager.getBatchDetailsWithSupplierkeyDeliveryCenterAndStatusFromToDate+"?deliverycentrekey="+ deliveryCenterKey+"&supplierkey="+selectedSupplierKey +"&status1="+Constants.batchDetailsStatus_Reviewed_and_READYFORSALE +"&fromdate="+fromDate+"&todate="+toDate ;
+            ApiToCall =  API_Manager.getBatchDetailsWithDeliveryCenterAndStatusFromToDate +"?deliverycentrekey="+ deliveryCenterKey+"&supplierkey="+selectedSupplierKey +"&status1="+Constants.batchDetailsStatus_Reviewed_and_READYFORSALE +"&fromdate="+fromDate+"&todate="+toDate ;
 
         }
         else if(calledFrom.equals(getString(R.string.home))){
-            ApiToCall =  API_Manager.getBatchDetailsWithSupplierkeyDeliveryCenterAndStatusFromToDate+"?deliverycentrekey="+ deliveryCenterKey+"&supplierkey="+selectedSupplierKey + "&status1="+Constants.batchDetailsStatus_Fully_Loaded +"&status2="+Constants.batchDetailsStatus_Sold +"&status3="+Constants.batchDetailsStatus_Reviewed_and_READYFORSALE +"&fromdate="+fromDate+"&todate="+toDate ;
+            ApiToCall =  API_Manager.getBatchDetailsWithDeliveryCenterAndStatusFromToDate +"?deliverycentrekey="+ deliveryCenterKey+"&supplierkey="+selectedSupplierKey + "&status1="+Constants.batchDetailsStatus_Fully_Loaded +"&status2="+Constants.batchDetailsStatus_Sold +"&status3="+Constants.batchDetailsStatus_Reviewed_and_READYFORSALE +"&fromdate="+fromDate+"&todate="+toDate ;
 
         }
 

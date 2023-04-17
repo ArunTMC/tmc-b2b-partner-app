@@ -14,9 +14,7 @@ import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.adapter.adapterHelpers.ListData;
 import com.tmc.tmcb2bpartnerapp.adapter.adapterHelpers.ListItem;
 import com.tmc.tmcb2bpartnerapp.adapter.adapterHelpers.ListSection;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Adapter_BatchWise_ConsolidatedReport extends BaseAdapter {

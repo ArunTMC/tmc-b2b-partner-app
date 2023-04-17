@@ -8,8 +8,8 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartOrderDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartOrderDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_UpdatedB2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_UpdatedB2BCartOrderDetails;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;
 import com.tmc.tmcb2bpartnerapp.utils.volleyrequestqueuehelper;
 
@@ -44,12 +44,15 @@ public class B2BCartOrderDetails extends AsyncTask<String, String, ArrayList<Mod
         }
         else if(callMethod.equals(Constants.CallGETMethod)){
             new Modal_B2BCartOrderDetails();
+            new Modal_UpdatedB2BCartOrderDetails();
         }
         else if(callMethod.equals(Constants.CallDELETEMethod)){
             new Modal_B2BCartOrderDetails();
+            new Modal_UpdatedB2BCartOrderDetails();
         }
         else if(callMethod.equals(Constants.CallGETListMethod) || callMethod.equals(Constants.CallGETLastEntryMethod)){
             new Modal_B2BCartOrderDetails();
+            new Modal_UpdatedB2BCartOrderDetails();
         }
 
     }
@@ -73,6 +76,12 @@ public class B2BCartOrderDetails extends AsyncTask<String, String, ArrayList<Mod
             }
 
 
+            if(Modal_UpdatedB2BCartOrderDetails.isretailerAddressUpdated_boolean){
+                jsonObject.put("retaileraddress",Modal_UpdatedB2BCartOrderDetails.getRetaileraddress());
+
+            }
+
+
             if(Modal_UpdatedB2BCartOrderDetails.retailermobileno_boolean){
                 jsonObject.put("retailermobileno",Modal_UpdatedB2BCartOrderDetails.getRetailermobileno());
 
@@ -86,10 +95,137 @@ public class B2BCartOrderDetails extends AsyncTask<String, String, ArrayList<Mod
                 jsonObject.put("priceperkg",Modal_UpdatedB2BCartOrderDetails.getPriceperkg());
 
             }
-            if(Modal_UpdatedB2BCartOrderDetails.paymentmode_boolean){
+            if(Modal_UpdatedB2BCartOrderDetails.isPaymentmode_boolean){
                 jsonObject.put("paymentmode",Modal_UpdatedB2BCartOrderDetails.getPaymentMode());
 
             }
+
+            if(Modal_UpdatedB2BCartOrderDetails.discount_boolean){
+
+
+
+
+                try {
+                    String value = Modal_UpdatedB2BCartOrderDetails.getDiscount();
+                    value = value.replaceAll("[^\\d.]", "");
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+
+                    double value_double = Double.parseDouble(value);
+
+                    jsonObject.put("discount", value_double);
+                }catch (Exception e){
+                    jsonObject.put("discount",Modal_UpdatedB2BCartOrderDetails.getDiscount());
+
+                    e.printStackTrace();
+                }
+
+
+
+            }
+
+
+
+            if (Modal_UpdatedB2BCartOrderDetails.feedPrice_boolean) {
+
+
+
+
+
+                try {
+                    String value = Modal_UpdatedB2BCartOrderDetails.getFeedPrice();
+                    value = value.replaceAll("[^\\d.]", "");
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+
+                    double value_double = Double.parseDouble(value);
+
+                    jsonObject.put("feedprice", value_double);
+                }catch (Exception e){
+                    jsonObject.put("feedprice",Modal_UpdatedB2BCartOrderDetails.getFeedPrice());
+
+                    e.printStackTrace();
+                }
+
+
+
+
+            }
+
+
+
+
+            if(Modal_UpdatedB2BCartOrderDetails.feedWeight_boolean){
+
+                try {
+                    String weightinGrams_str = Modal_UpdatedB2BCartOrderDetails.getFeedWeight();
+                    weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+
+                    if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                        weightinGrams_str = "0";
+                    }
+
+                    if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                        weightinGrams_str = "0";
+                    }
+
+
+                    weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                    double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                    jsonObject.put("feedweight", weightinGrams_double);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+                //jsonObject.put("feedweight",Modal_UpdatedB2BCartOrderDetails.getFeedWeight());
+
+            }
+
+
+            if(Modal_UpdatedB2BCartOrderDetails.feedPricePerKG_boolean){
+                //    jsonObject.put("price", Modal_B2BOrderDetails.getTotalPrice_Static());
+
+
+                try {
+                    String value = Modal_UpdatedB2BCartOrderDetails.getFeedPriceperkg();
+                    value = value.replaceAll("[^\\d.]", "");
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+
+                    double value_double = Double.parseDouble(value);
+
+                    jsonObject.put("feedpriceperkg", value_double);
+                }catch (Exception e){
+                    jsonObject.put("feedpriceperkg",Modal_UpdatedB2BCartOrderDetails.getFeedPriceperkg());
+
+                    e.printStackTrace();
+                }
+
+
+            }
+
 
             jsonObject.put("orderid",Modal_UpdatedB2BCartOrderDetails.getOrderid());
 
@@ -330,6 +466,19 @@ public class B2BCartOrderDetails extends AsyncTask<String, String, ArrayList<Mod
                                                 e.printStackTrace();
                                             }
 
+
+                                            try {
+                                                if (json.has("totalcount")) {
+                                                    Modal_B2BCartOrderDetails.totalCount = String.valueOf(json.get("totalcount"));
+
+                                                } else {
+                                                    Modal_B2BCartOrderDetails.totalCount = "";
+                                                }
+                                            } catch (Exception e) {
+                                                Modal_B2BCartOrderDetails.totalCount = "";
+                                                e.printStackTrace();
+                                            }
+
                                             try {
                                                 if (json.has("batchno")) {
                                                     Modal_B2BCartOrderDetails.batchno = String.valueOf(json.get("batchno"));
@@ -414,6 +563,20 @@ public class B2BCartOrderDetails extends AsyncTask<String, String, ArrayList<Mod
                                                 e.printStackTrace();
                                             }
 
+
+                                            try {
+                                                if (json.has("retaileraddress")) {
+                                                    Modal_B2BCartOrderDetails.retaileraddress = String.valueOf(json.get("retaileraddress"));
+
+                                                } else {
+                                                    Modal_B2BCartOrderDetails.retaileraddress = "";
+                                                }
+                                            } catch (Exception e) {
+                                                Modal_B2BCartOrderDetails.retaileraddress = "";
+                                                e.printStackTrace();
+                                            }
+
+
                                             try {
                                                 if (json.has("retailermobileno")) {
                                                     Modal_B2BCartOrderDetails.retailermobileno = String.valueOf(json.get("retailermobileno"));
@@ -438,6 +601,60 @@ public class B2BCartOrderDetails extends AsyncTask<String, String, ArrayList<Mod
                                                 Modal_B2BCartOrderDetails.retailername = "";
                                                 e.printStackTrace();
                                             }
+
+                                            try {
+                                                if (json.has("discount")) {
+                                                    Modal_B2BCartOrderDetails.discountAmount = String.valueOf(json.get("discount"));
+
+                                                } else {
+                                                    Modal_B2BCartOrderDetails.discountAmount = "0";
+                                                }
+                                            } catch (Exception e) {
+                                                Modal_B2BCartOrderDetails.discountAmount = "0";
+                                                e.printStackTrace();
+                                            }
+
+
+
+                                            try {
+                                                if (json.has("feedprice")) {
+                                                    Modal_B2BCartOrderDetails.feedPrice = String.valueOf(json.get("feedprice"));
+
+                                                } else {
+                                                    Modal_B2BCartOrderDetails.feedPrice = "0";
+                                                }
+                                            } catch (Exception e) {
+                                                Modal_B2BCartOrderDetails.feedPrice = "0";
+                                                e.printStackTrace();
+                                            }
+
+
+                                            try {
+                                                if (json.has("feedweight")) {
+                                                    Modal_B2BCartOrderDetails.feedWeight = ConvertGramsToKilograms(String.valueOf(json.get("feedweight")));
+
+                                                } else {
+                                                    Modal_B2BCartOrderDetails.feedWeight = "";
+                                                }
+                                            } catch (Exception e) {
+                                                Modal_B2BCartOrderDetails.feedWeight = "";
+                                                e.printStackTrace();
+                                            }
+
+
+
+                                            try {
+                                                if (json.has("feedpriceperkg")) {
+                                                    Modal_B2BCartOrderDetails.feedPriceperkg = String.valueOf(json.get("feedpriceperkg"));
+
+                                                } else {
+                                                    Modal_B2BCartOrderDetails.feedPriceperkg = "0";
+                                                }
+                                            } catch (Exception e) {
+                                                Modal_B2BCartOrderDetails.feedPriceperkg = "0";
+                                                e.printStackTrace();
+                                            }
+
 
                                             callbackB2BCartOrderDetaillsInterface.notifySuccess(Constants.successResult_volley);
 
@@ -596,6 +813,10 @@ public class B2BCartOrderDetails extends AsyncTask<String, String, ArrayList<Mod
                 jsonObject.put("retailername",String.valueOf(Modal_B2BCartOrderDetails.getRetailername()));
             }
 
+            if(!Modal_B2BCartOrderDetails.getRetaileraddress().toString().equals("") && !Modal_B2BCartOrderDetails.getRetaileraddress().toString().equals("null")){
+                jsonObject.put("retaileraddress",String.valueOf(Modal_B2BCartOrderDetails.getRetaileraddress()));
+            }
+
 
             if(!Modal_B2BCartOrderDetails.getDeliverycenterkey ().toString().equals("") && !Modal_B2BCartOrderDetails.getDeliverycenterkey().toString().equals("null")){
                 jsonObject.put("deliverycentrekey",String.valueOf(Modal_B2BCartOrderDetails.getDeliverycenterkey()));
@@ -620,7 +841,137 @@ public class B2BCartOrderDetails extends AsyncTask<String, String, ArrayList<Mod
             if(!Modal_B2BCartOrderDetails.getItemaddeddate().toString().equals("") && !Modal_B2BCartOrderDetails.getItemaddeddate().toString().equals("null")){
                 jsonObject.put("itemaddeddate",String.valueOf(Modal_B2BCartOrderDetails.getItemaddeddate()));
             }
-            
+
+
+            if(!Modal_B2BCartOrderDetails.getDiscountAmount().toString().equals("") && !Modal_B2BCartOrderDetails.getDiscountAmount().toString().equals("null")){
+
+
+                try {
+                    String value = Modal_B2BCartOrderDetails.getDiscountAmount();
+                    value = value.replaceAll("[^\\d.]", "");
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+
+                    double value_double = Double.parseDouble(value);
+
+                    jsonObject.put("discount", value_double);
+                }catch (Exception e){
+                    jsonObject.put("discount",String.valueOf(Modal_B2BCartOrderDetails.getDiscountAmount()));
+
+                    e.printStackTrace();
+                }
+
+
+
+
+
+
+
+            }
+
+            if(!Modal_B2BCartOrderDetails.getFeedPrice().toString().equals("") && !Modal_B2BCartOrderDetails.getFeedPrice().toString().equals("null")){
+
+
+                try {
+                    String value = Modal_B2BCartOrderDetails.getFeedPrice();
+                    value = value.replaceAll("[^\\d.]", "");
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+
+                    double value_double = Double.parseDouble(value);
+
+                    jsonObject.put("feedprice", value_double);
+                }catch (Exception e){
+                    jsonObject.put("feedprice",String.valueOf(Modal_B2BCartOrderDetails.getFeedPrice()));
+
+                    e.printStackTrace();
+                }
+
+
+
+
+
+
+
+            }
+
+            if(!Modal_B2BCartOrderDetails.getFeedWeight().toString().equals("") && !Modal_B2BCartOrderDetails.getFeedWeight().toString().equals("null")){
+
+
+
+                try {
+                    String weightinGrams_str = Modal_B2BCartOrderDetails.getFeedWeight();
+                    weightinGrams_str = weightinGrams_str.replaceAll("[^\\d.]", "");
+
+                    if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                        weightinGrams_str = "0";
+                    }
+
+                    if(weightinGrams_str.equals("") || weightinGrams_str.equals(null)){
+                        weightinGrams_str = "0";
+                    }
+
+
+                    weightinGrams_str = ConvertKilogramstoGrams(weightinGrams_str);
+                    double weightinGrams_double = Double.parseDouble(weightinGrams_str);
+
+                    jsonObject.put("feedweight", weightinGrams_double);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+
+
+
+               // jsonObject.put("feedweight",String.valueOf(Modal_B2BCartOrderDetails.getFeedWeight()));
+            }
+
+            if(!Modal_B2BCartOrderDetails.getFeedPriceperkg().toString().equals("") && !Modal_B2BCartOrderDetails.getFeedPriceperkg().toString().equals("null")){
+
+
+
+                try {
+                    String value = Modal_B2BCartOrderDetails.getFeedPriceperkg();
+                    value = value.replaceAll("[^\\d.]", "");
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+                    if(value.equals("") || value.equals(null)){
+                        value = "0";
+                    }
+
+
+                    double value_double = Double.parseDouble(value);
+
+                    jsonObject.put("feedpriceperkg", value_double);
+                }catch (Exception e){
+                    jsonObject.put("feedpriceperkg",String.valueOf(Modal_B2BCartOrderDetails.getFeedPriceperkg()));
+
+                    e.printStackTrace();
+                }
+
+
+
+
+
+
+            }
 
 
         }

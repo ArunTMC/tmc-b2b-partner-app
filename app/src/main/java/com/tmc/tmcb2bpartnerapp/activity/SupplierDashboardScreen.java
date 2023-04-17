@@ -22,9 +22,9 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.SupplierDetails;
 import com.tmc.tmcb2bpartnerapp.fragment.SupplierHomeScreenFragment;
 import com.tmc.tmcb2bpartnerapp.fragment.SupplierSettingsFragment;
 import com.tmc.tmcb2bpartnerapp.interfaces.SupplierDetailsInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_AppUserAccess;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_AppUserAccess;
 
-import com.tmc.tmcb2bpartnerapp.model.Modal_SupplierDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_SupplierDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
 import com.tmc.tmcb2bpartnerapp.utils.Constants;

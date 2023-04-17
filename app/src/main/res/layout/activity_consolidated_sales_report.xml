@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/TMCTransparentColor_Plain"
+    tools:context=".second_version.activity.ConsolidatedSalesReport">
+
+
+    <LinearLayout
+        android:id="@+id/loadingpanelmask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha=".6"
+        android:background="@color/TMC_ProgressBarGrey_Color"
+        android:orientation="vertical"
+        android:translationZ="90dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/loadingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:translationZ="100dp"
+        android:visibility="gone"
+
+        >
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loadinganim_layout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            app:indicatorColor="@color/TMCPrimaryPurpleColor"
+            app:indicatorName="BallPulseIndicator" />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/back_IconLayout"
+            android:layout_width="40dp"
+            android:layout_height="45dp">
+
+            <ImageView
+                android:id="@+id/backButton_icon"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:contentDescription="@string/todo"
+                android:scaleType="center"
+                android:src="@drawable/icon_backbutton" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/toolBarHeader_TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="10dp"
+            android:text="Batchwise Sales Report "
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/border_line" />
+
+
+    <TextView
+        android:id="@+id/spinner_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="Choose the Batch no"
+        android:textColor="@color/TMCPrimaryPurpleColor"
+        android:textSize="13sp"
+
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+
+    <View
+        android:id="@+id/batchwise_overlapView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="12dp"
+        android:background="@color/TMCTransparentColor_Plain"
+        android:elevation="20dp"
+        android:translationZ="90dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="14dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:src="@mipmap/downtriangulararrow"
+            android:translationZ="90dp" />
+
+
+        <AutoCompleteTextView
+        android:id="@+id/batchwise_Textview"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/white_backgroundwith_black_border"
+        android:elevation="20dp"
+        android:padding="10dp"
+        android:paddingEnd="10dp" />
+
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/noOrder_inthis_Batch_instructionTextview"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:gravity="center"
+        android:text="There is no orders in this batch"
+        android:textColor="@color/TMCPrimaryPurpleColor"
+        android:textSize="16dp"
+        android:visibility="gone" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:id="@+id/salesValue_parentLayout"
+
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:elevation="20dp"
+                app:cardCornerRadius="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:text="  Total Orders "
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+
+                        <TextView
+                            android:id="@+id/total_OrdersCount_textview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:gravity="right"
+                            android:text="00"
+
+                            android:textColor="@color/black"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="@drawable/border_line"
+                        android:visibility="gone" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/navigationbar_color_with_grey_button_background"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:text="  Male Count "
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/total_maleCount_textview"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/white_backgroundwith_black_border"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:gravity="center"
+                            android:text="00"
+
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/navigationbar_color_with_grey_button_background"
+                        android:gravity="center_vertical"
+
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:text="  Female Count  "
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/total_female_count_textview"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/white_backgroundwith_black_border"
+                            android:gravity="center"
+                            android:text="0"
+
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/navigationbar_color_with_grey_button_background"
+                        android:gravity="center_vertical"
+
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:text="  Total Goats  "
+                            android:layout_weight="1"
+
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/totalCount_textview"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/white_backgroundwith_black_border"
+                            android:gravity="center"
+                            android:text="00"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/navigationbar_color_with_grey_button_background"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:text="  Total Weight (Kg) "
+                            android:layout_weight="1"
+
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/total_weight_textview"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/white_backgroundwith_black_border"
+                            android:gravity="center"
+                            android:text="0000.00"
+
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/navigationbar_color_with_grey_button_background"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:text="  Discount Amount (Rs) "
+                            android:layout_weight="1"
+
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/discount_amount_textview"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:fontFamily="@font/open_sans_semibold"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/white_backgroundwith_black_border"
+                            android:gravity="center"
+                            android:text="0000.00"
+
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/navigationbar_color_with_grey_button_background"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/open_sans_bold"
+                            android:text="  Total Price (Rs) "
+                            android:textColor="@color/TMCPrimaryPurpleColor"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/final_sales_textview"
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:fontFamily="@font/open_sans_bold"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/white_backgroundwith_black_border"
+                            android:gravity="center"
+                            android:text="0000.00"
+
+                            android:textColor="@color/TMCPrimaryPurpleColor"
+                            android:textSize="17sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mRecyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/TMCBackgroundLightPurpleColor"
+                android:elevation="10dp"
+                android:padding="5dp"
+                android:scrollbars="none"
+                android:visibility="gone"
+
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <androidx.core.widget.NestedScrollView
+
+        android:id="@+id/idNestedSV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        android:visibility="gone">
+
+        <!--linear layout for displaying
+            our recycler view-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--recycler view for displaying our list of data
+                and we are making nested scroll for our
+                recycler view as false-->
+
+
+            <!--we are adding progress bar
+                for the purpose of loading-->
+            <ProgressBar
+                android:id="@+id/idPBLoading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

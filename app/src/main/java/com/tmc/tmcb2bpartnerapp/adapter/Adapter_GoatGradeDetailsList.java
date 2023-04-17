@@ -2,7 +2,6 @@ package com.tmc.tmcb2bpartnerapp.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
 import com.tmc.tmcb2bpartnerapp.R;
-import com.tmc.tmcb2bpartnerapp.activity.BillingScreen;
 import com.tmc.tmcb2bpartnerapp.activity.ChangeGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.activity.FinishBatch_ConsolidatedReport;
-import com.tmc.tmcb2bpartnerapp.activity.View_or_Edit_BatchItem_deliveryCenter;
-import com.tmc.tmcb2bpartnerapp.fragment.DeliveryCenterHomeScreenFragment;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BBatchDetailsStatic;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
-import com.tmc.tmcb2bpartnerapp.utils.Constants;
 
 import java.util.ArrayList;
 

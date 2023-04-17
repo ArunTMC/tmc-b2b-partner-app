@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/batchNo_textview"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans_semibold"
             android:layout_marginTop="5dp"
@@ -56,7 +56,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/open_sans_semibold"
-                android:text="@string/sent_date"
+                android:text="@string/received_date"
                 android:textColor="@color/TMCPrimaryPurpleColor"
                 android:textSize="16sp" />
 
@@ -95,7 +95,7 @@
                 android:id="@+id/batchStatus_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="25dp"
                 android:layout_below="@+id/statusLabel"
                 android:layout_marginEnd="20dp"
                 android:layout_toEndOf="@id/batchNo_textview"
@@ -104,7 +104,7 @@
                 android:fontFamily="@font/open_sans_semibold"
                 android:paddingStart="8dp"
                 android:paddingTop="5dp"
-                android:paddingEnd="5dp"
+                android:paddingEnd="15dp"
                 android:paddingBottom="5dp"
                 android:text="Loaddding"
                 android:textColor="@color/black"
@@ -132,7 +132,7 @@
                 android:textSize="13sp" />
             <Button
                 android:id="@+id/viewBatchDetails_Button"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="40dp"
                 android:layout_gravity="end"
@@ -141,7 +141,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:background="@drawable/pink_button_background"
@@ -188,7 +188,7 @@
 
             <TextView
                 android:id="@+id/gradename_textview"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/gradename_label"
                 android:layout_alignParentStart="true"
@@ -269,7 +269,7 @@
 
             <Button
                 android:id="@+id/editGrade_Button"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"

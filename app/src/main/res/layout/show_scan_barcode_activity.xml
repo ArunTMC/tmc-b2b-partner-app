@@ -22,7 +22,7 @@
             app:indicatorColor="@color/TMCPrimaryPurpleColor"
             app:indicatorName="SquareSpinIndicator" />
         <TextView
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/scanBarcode_label"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -30,7 +30,7 @@
             android:textColor="@color/black"
             android:textSize="25sp"
 
-            android:text="Please Scan Barcode " />
+            android:text="Please Scan / Enter  Barcode " />
     </LinearLayout>
     <EditText
         android:id="@+id/scannedbarcode_EditText"
@@ -42,6 +42,7 @@
         android:textColor="@color/black"
         android:textSize="17sp"
         android:singleLine="true"
-        android:hint="Please Scan Barcode Using Barcode Scanner" />
+        android:textAllCaps="true"
+        android:hint="Please Scan | Enter Barcode Using Barcode Scanner" />
 
 </LinearLayout>

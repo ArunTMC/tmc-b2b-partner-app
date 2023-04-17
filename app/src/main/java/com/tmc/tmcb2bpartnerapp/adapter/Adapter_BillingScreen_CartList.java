@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.tmc.tmcb2bpartnerapp.R;
 import com.tmc.tmcb2bpartnerapp.activity.BillingScreen;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
 
 import java.util.HashMap;
 

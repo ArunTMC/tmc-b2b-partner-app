@@ -97,14 +97,14 @@
                                 android:layout_marginStart="12dp"
                                 android:textColor="@color/TMCPrimaryPurpleColor"
                                 android:textSize="14sp"
-                                android:text="Retailers Name" />
+                                android:text="Buyers Name" />
 
 
 
                             <EditText
                                 android:id="@+id/retailerName_textView"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="35dp"
                                 android:layout_weight="1"
                                 android:importantForAutofill="no"
 
@@ -113,7 +113,7 @@
                                 android:singleLine="true"
                                 android:background="@drawable/grey_edittext_withoutborder"
                                 android:textSize="15sp"
-                                android:hint="Enter Retailers Name "
+                                android:hint="Enter Buyers Name "
                                 android:layout_marginTop="5dp"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginEnd="15dp"
@@ -132,13 +132,13 @@
                                 android:layout_marginStart="12dp"
                                 android:textColor="@color/TMCPrimaryPurpleColor"
                                 android:textSize="14sp"
-                                android:text="Retailers Phone Number" />
+                                android:text="Buyers Phone Number" />
 
 
                             <EditText
                                 android:id="@+id/mobileNo_textView"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="35dp"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/open_sans_semibold"
                                 android:textColor="@color/black"
@@ -179,7 +179,7 @@
                             <EditText
                                 android:id="@+id/gstin_editText"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="35dp"
                                 android:layout_weight="1"
                                 android:importantForAutofill="no"
 
@@ -221,7 +221,7 @@
                                 android:paddingStart="8dp"
                                 android:singleLine="false"
                                 android:inputType="textMultiLine"
-                                android:hint="@string/description"
+                                android:hint="@string/address"
                                 android:background="@drawable/grey_edittext_withoutborder"
                                 android:layout_height="75dp" />
 

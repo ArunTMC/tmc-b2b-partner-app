@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.tmc.tmcb2bpartnerapp.R;
-import com.tmc.tmcb2bpartnerapp.activity.BillingScreen;
 import com.tmc.tmcb2bpartnerapp.adapter.Adapter_GradeWiseTotal_BillingScreen;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BCartItemDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BCartOrderDetails;
@@ -29,7 +28,7 @@ import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BItemCtgy;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BOrderDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.B2BOrderItemDetails;
 import com.tmc.tmcb2bpartnerapp.apiRequestServices.GoatEarTagDetails_BulkUpdate;
-import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartDetaillsInterface;
+import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartItemDetaillsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BCartOrderDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BGoatGradeDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BItemCtgyInterface;
@@ -37,15 +36,15 @@ import com.tmc.tmcb2bpartnerapp.interfaces.B2BOrderDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.B2BOrderItemDetailsInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagDetails_BulkUpdateInterface;
 import com.tmc.tmcb2bpartnerapp.interfaces.GoatEarTagTransactionInterface;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartItemDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BCartOrderDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BGoatGradeDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BItemCtgy;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BOrderDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_B2BOrderItemDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_GoatEarTagDetails;
-import com.tmc.tmcb2bpartnerapp.model.Modal_POJOClassForFinalSalesHashmap;
-import com.tmc.tmcb2bpartnerapp.model.Modal_Static_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BCartOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BGoatGradeDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BItemCtgy;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BOrderDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_B2BOrderItemDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_GoatEarTagDetails;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_POJOClassForFinalSalesHashmap;
+import com.tmc.tmcb2bpartnerapp.modal.Modal_Static_GoatEarTagDetails;
 import com.tmc.tmcb2bpartnerapp.utils.API_Manager;
 import com.tmc.tmcb2bpartnerapp.utils.AlertDialogClass;
 import com.tmc.tmcb2bpartnerapp.utils.BaseActivity;
@@ -128,7 +127,7 @@ public class OrderSummary_fragement extends Fragment {
     B2BItemCtgyInterface callback_B2BItemCtgyInterface;
 
     boolean isB2BCartDetailsCalled = false;
-    B2BCartDetaillsInterface callback_b2BCartDetaillsInterface = null;
+    B2BCartItemDetaillsInterface callback_b2BCartItemDetaillsInterface = null;
     B2BGoatGradeDetailsInterface callback_goatGradeDetailsInterface = null;
     boolean isGoatGradeDetailsServiceCalled = false;
 
@@ -505,7 +504,7 @@ public class OrderSummary_fragement extends Fragment {
         earTagDetails_JSONFinalSalesHashMap.clear();
        // gradeWise_count_weightJSONOBJECT = new JSONObject();
         selected_gradeDetailss_arrayList.clear();
-        callback_b2BCartDetaillsInterface = new B2BCartDetaillsInterface()
+        callback_b2BCartItemDetaillsInterface = new B2BCartItemDetaillsInterface()
         {
 
             @Override
@@ -838,8 +837,8 @@ public class OrderSummary_fragement extends Fragment {
 
         };
 
-        String getApiToCall = API_Manager.getCartDetailsForOrderid+ DeliveryCentre_PlaceOrderScreen_Fragment. orderid  ;
-        B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartDetaillsInterface,  getApiToCall, callMethod);
+        String getApiToCall = API_Manager.getCartItemDetailsForOrderid + DeliveryCentre_PlaceOrderScreen_Fragment. orderid  ;
+        B2BCartItemDetails asyncTask = new B2BCartItemDetails(callback_b2BCartItemDetaillsInterface,  getApiToCall, callMethod);
         asyncTask.execute();
 
 
